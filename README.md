@@ -1,7 +1,8 @@
-# Chie Stroud React Template
+# Bookmarkable
+Week 21 (June 1) - Tuesday: Project ERD submission
+## ERD
+[Link to ERD](https://dbdiagram.io/d/607a3d63ef1b8f6b3dd5aefd)
 
-**This Template comes with NavBar and basic routing using React-Router-Dom**
 
-This is just like the webpack template. Use it, create the repo, connect it to your local and `npm i`.
-
-- [Steps to deploy](https://github.com/nss-nightclass-projects/REACT-Deployment-Netlify)
+## Flowchart
+[Link to Flowchart](https://docs.google.com/presentation/d/1riWBSH_KAwCb5nFBl29pyfBjhj1CzDOvJe4PO-HkNdA/edit?usp=sharing)
