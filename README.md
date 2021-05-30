@@ -14,35 +14,35 @@ I have personally come across many good resources to learn JavaScript through si
   <li>As a user, who is logged out, I should see the authentication button</li>
   <li>As a user, who is logged out, I should be able to click on an authentication button and login via google.</li>
   <li>As a user, who is logged in, I should see the signout button</li>
-  <li>As a user, who is logged in, I should be able to see the Open Source and Personal components.</li>
+  <li>As a user, who is logged in, I should be able to see the Open Space and Personal components.</li>
 </ul>
 <h3>CREATE Bookmarks</h3>
 <ul>
-  <li>As an authenticated user, I should be able to fill out a form to add a new bookmark on Open Source</li>
-  <li>As an authenticated user, when I submit a new Open Sourcec bookmark, a new bookmark should be created in firebase and should now show in Open Source component.</li>
+  <li>As an authenticated user, I should be able to fill out a form to add a new bookmark on Open Space</li>
+  <li>As an authenticated user, when I submit a new Open Space bookmark, a new bookmark should be created in firebase and should now show in Open Space component.</li>
   <li>As an authenticated user, I should be able to fill out a form to add a new bookmark on Personal Bookmark</li>
   <li>As an authenticated user, when I submit a new personal bookmark, a new bookmark should be created in firebase and should now show in Personal component.</li>
 </ul>
 <h3>READ Bookmarks</h3>
 <ul>
   <li>As an unauthenticated user, I should be able to see a card with 'get random resource' button on main page</li>
-  <li>As an authenticated user, I should be able to see the Open Source component with all the resources that I and everybody else created.</li>
+  <li>As an authenticated user, I should be able to see the Open Space component with all the resources that I and everybody else created.</li>
   <li>As an authenticated user, I should be able to see the Personal component with all the resources I created.</li>
   <li>As an authenticated user, I should not be able to see Personal component with resources that were created by another user.</li>
 </ul>
 <h3>UPDATE Bookmarks</h3>
 <ul>
-  <li>As an authenticated user, I should be able to see an edit button on cards on resources that I created. (Open Source)</li>
+  <li>As an authenticated user, I should be able to see an edit button on cards on resources that I created. (Open Space)</li>
   <li>As an authenticated user, I should be able to see an edit button all the cards that I created. (Personal)</li>
   <li>As an authenticated user, when I click the edit button I should see a form with the resource information pre-populated. (Both Open Space and Personal)</li>
   <li>As an authenticated user, I should be able to edit the information in the form and hit the submit button.</li>
-  <li>As an authenticated user, when I submit the edit form firebase should be updated and the component (Open Source & Personal) should update.</li>
+  <li>As an authenticated user, when I submit the edit form firebase should be updated and the component (Open Space & Personal) should update.</li>
 </ul>
 <h3>DELETE Bookmarks</h3>
 <ul>
-  <li>As an authenticated user, I should be able to see a delete button on cards on resources that I created. (Open Source)</li>
+  <li>As an authenticated user, I should be able to see a delete button on cards on resources that I created. (Open Space)</li>
   <li>As an authenticated user, I should be able to see a delete button all the cards that I created. (Personal)</li>
-  <li>As an authenticated user, when I click a delete button, that resource should be removed from firebase and the component (Open Source & Personal) should update.</li>
+  <li>As an authenticated user, when I click a delete button, that resource should be removed from firebase and the component (Open Space & Personal) should update.</li>
 </ul>
 <h3>Other Items</h3>
 <ul>
@@ -53,7 +53,7 @@ I have personally come across many good resources to learn JavaScript through si
 <h3>STRETCH - Admin</h3>
 <ul>
   <li>As an admin, I should be able to delete any public post that is not appropriate for users.</li>
-  <li>As an admin, I should be able to add category to Open Source.</li>
+  <li>As an admin, I should be able to add category to Open Space.</li>
   <li>As an admin, I should be able to see Admin page with a list of all the users using Bookmarkable.</li>
   <li>As an admin, I should be able to see Admin page with a list of reported posts.</li>
 </ul>
@@ -63,14 +63,15 @@ I have personally come across many good resources to learn JavaScript through si
 </ul>
 <h3>STRETCH - Authenticated users</h3>
 <ul>
-  <li>As an authenticated user, I should be be able to see Like button on Open Source posts.</li>
+  <li>As an authenticated user, I should be be able to see Like button on Open Space posts.</li>
   <li>As an authenticated user, I should be able to see how many Likes the post has.</li>
-  <li>As an authenticated user, I should be able to toggle Like/Unlike Open Source recommendations.</li>
-  <li>As an authenticated user, I should be able to search Open Source/Personal resources with words not just by categories.</li>
+  <li>As an authenticated user, I should be able to toggle Like/Unlike Open Space recommendations.</li>
+  <li>As an authenticated user, I should be able to search Open Space/Personal resources with words not just by categories.</li>
+  <li>As an authenticated user, I should be able to see "reviewed" button to notify me if I have already reviewed the resources.</li>
 </ul>
 <h3>STRETCH - Other Items</h3>
 <ul>
-  <li>All the posted links in Open Source/Personal to be converted into thumnails (link preview) to be more appealing</li>
+  <li>All the posted links in Open Space/Personal to be converted into thumnails (link preview) to be more appealing</li>
 </ul>
 
 
