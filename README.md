@@ -26,7 +26,7 @@ I have personally come across many good resources to learn JavaScript through si
 <h3>READ Bookmarks</h3>
 <ul>
   <li>As an unauthenticated user, I should be able to see a card with 'get random resource' button on main page</li>
-  <li>As an authenticated user, I should be able to see the the Open Source component with all the resources that I and everybody else created.</li>
+  <li>As an authenticated user, I should be able to see the Open Source component with all the resources that I and everybody else created.</li>
   <li>As an authenticated user, I should be able to see the Personal component with all the resources I created.</li>
   <li>As an authenticated user, I should not be able to see Personal component with resources that were created by another user.</li>
 </ul>
@@ -42,17 +42,40 @@ I have personally come across many good resources to learn JavaScript through si
 <ul>
   <li>As an authenticated user, I should be able to see a delete button on cards on resources that I created. (Open Source)</li>
   <li>As an authenticated user, I should be able to see a delete button all the cards that I created. (Personal)</li>
-  <li>As an authenticated user, when I click a delete button, that resource should be removed from firebase and the component (Open Source & Personal) should update</li>
+  <li>As an authenticated user, when I click a delete button, that resource should be removed from firebase and the component (Open Source & Personal) should update.</li>
 </ul>
-
 <h3>Other Items</h3>
 <ul>
-  <li>As an authenticated user, I should be able to create a new category for Personal component</li>
-  <li>As an authenticated user, I should be able to update a category for Personal component</li>
-  <li>As an authenticated user, I should be able to delete a category for Personal component</li>
-  <li>As authenticated user, I should be able to see "bookmark" button on some sorts on Open Space resource card that enables me to save the resource into my Personal component</li>
-  <li>As authenticated user, I should be able to see search resources by each category</li>
+  <li>As an authenticated user, I should be able to create a new category for Personal component.</li>
+  <li>As an authenticated user, I should be able to see "bookmark" button on some sorts on Open Space resource card that enables me to save the resource into my Personal component.</li>
+  <li>As authenticated user, I should be able to search resources by each category.</li>
 </ul>
+<h3>STRETCH - Admin</h3>
+<ul>
+  <li>As an admin, I should be able to delete any public post that is not appropriate for users.</li>
+  <li>As an admin, I should be able to add category to Open Source.</li>
+  <li>As an admin, I should be able to see Admin page with a list of all the users using Bookmarkable.</li>
+  <li>As an admin, I should be able to see Admin page with a list of reported posts.</li>
+</ul>
+<h3>STRETCH - Unauthenticated users</h3>
+<ul>
+  <li>As an unauthenticated user, I should be able to see 4 random resources finders on the main page.<ol><li>Good Read</li><li>Good Tutorial</li><li>Other Good Resources</li><li>Widely Used Japanese Words You May Know</li></ol></li>
+</ul>
+<h3>STRETCH - Authenticated users</h3>
+<ul>
+  <li>As an authenticated user, I should be be able to see Like button on Open Source posts.</li>
+  <li>As an authenticated user, I should be able to see how many Likes the post has.</li>
+  <li>As an authenticated user, I should be able to toggle Like/Unlike Open Source recommendations.</li>
+  <li>As an authenticated user, I should be able to search Open Source/Personal resources with words not just by categories.</li>
+</ul>
+<h3>STRETCH - Other Items</h3>
+<ul>
+  <li>All the posted links in Open Source/Personal to be converted into thumnails (link preview) to be more appealing</li>
+</ul>
+
+
+
+
 
 ## Wireframes
 [Link to Wireframe](https://www.canva.com/design/DAEeSWGLbBs/share/preview?token=xad8ziga5nxnVMmXKoaIkQ&role=EDITOR&utm_content=DAEeSWGLbBs&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
