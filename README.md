@@ -52,27 +52,27 @@ I have personally come across many good resources to learn JavaScript through si
 </ul>
 <h3>STRETCH - Admin</h3>
 <ul>
-  <li>As an admin, I should be able to delete any public post that is not appropriate for users.</li>
-  <li>As an admin, I should be able to add category to Open Space.</li>
-  <li>As an admin, I should be able to see Admin page with a list of all the users using Bookmarkable.</li>
-  <li>As an admin, I should be able to see Admin page with a list of reported posts.</li>
+  <li>:one: As an admin, I should be able to delete any public post that is not appropriate for users.</li>
+  <li>:question: As an admin, I should be able to add category to Open Space.</li>
+  <li>:two: As an admin, I should be able to see Admin page with a list of all the users using Bookmarkable.</li>
+  <li>:eight: As an admin, I should be able to see Admin page with a list of reported posts.</li>
 </ul>
 <h3>STRETCH - Unauthenticated users</h3>
 <ul>
-  <li>As an unauthenticated user, I should be able to see 4 random resources finders on the main page.<ol><li>Good Read</li><li>Good Tutorial</li><li>Other Good Resources</li><li>Widely Used Japanese Words You May Know</li></ol></li>
+  <li>:six: As an unauthenticated user, I should be able to see 4 random resources finders on the main page.<ol><li>Good Read</li><li>Good Tutorial</li><li>Other Good Resources</li><li>Widely Used Japanese Words You May Know</li></ol></li>
 </ul>
 <h3>STRETCH - Authenticated users</h3>
 <ul>
-  <li>As an authenticated user, I should be be able to see Like button on Open Space posts.</li>
-  <li>As an authenticated user, I should be able to see how many Likes the post has.</li>
-  <li>As an authenticated user, I should be able to toggle Like/Unlike Open Space recommendations.</li>
-  <li>As an authenticated user, I should be able to report any inappropriate Open Space posts.</li>
-  <li>As an authenticated user, I should be able to search Open Space/Personal resources with words not just by categories.</li>
-  <li>As an authenticated user, I should be able to see "reviewed" button to notify me if I have already reviewed the resources.</li>
+  <li>:three: As an authenticated user, I should be be able to see Like button on Open Space posts.</li>
+  <li>:four: As an authenticated user, I should be able to see how many Likes the post has.</li>
+  <li>:five: As an authenticated user, I should be able to toggle Like/Unlike Open Space recommendations.</li>
+  <li>:seven: As an authenticated user, I should be able to report any inappropriate Open Space posts.</li>
+  <li>:nine: As an authenticated user, I should be able to search Open Space/Personal resources with words not just by categories.</li>
+  <li>:keycap_ten: As an authenticated user, I should be able to see "reviewed" button to notify me if I have already reviewed the resources.</li>
 </ul>
 <h3>STRETCH - Other Items</h3>
 <ul>
-  <li>All the posted links in Open Space/Personal to be converted into thumnails (link preview) to be more appealing</li>
+  <li>:star::star::star:All the posted links in Open Space/Personal to be converted into thumnails (link preview) to be more appealing</li>
 </ul>
 
 
@@ -86,12 +86,11 @@ I have personally come across many good resources to learn JavaScript through si
 [Chie Stroud's Portfolio Site](https://chiestroud.com/)
 
 ## Loom Video
-## ERD
-[Link to ERD](https://dbdiagram.io/d/607a3d63ef1b8f6b3dd5aefd)
-
 
 ## Sample JSON
 [Sample JSON File](https://github.com/chiestroud/Bookmarkable/tree/cs-planning/src/sample_json)
+## ERD
+[Link to ERD](https://dbdiagram.io/d/607a3d63ef1b8f6b3dd5aefd)
 
 ## Flowchart
 [Link to Flowchart](https://docs.google.com/presentation/d/1riWBSH_KAwCb5nFBl29pyfBjhj1CzDOvJe4PO-HkNdA/edit?usp=sharing)
