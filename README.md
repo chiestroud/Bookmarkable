@@ -66,6 +66,7 @@ I have personally come across many good resources to learn JavaScript through si
   <li>As an authenticated user, I should be be able to see Like button on Open Space posts.</li>
   <li>As an authenticated user, I should be able to see how many Likes the post has.</li>
   <li>As an authenticated user, I should be able to toggle Like/Unlike Open Space recommendations.</li>
+  <li>As an authenticated user, I should be able to report any inappropriate Open Space posts.</li>
   <li>As an authenticated user, I should be able to search Open Space/Personal resources with words not just by categories.</li>
   <li>As an authenticated user, I should be able to see "reviewed" button to notify me if I have already reviewed the resources.</li>
 </ul>

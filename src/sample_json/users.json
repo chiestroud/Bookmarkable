@@ -1,3 +1,20 @@
 {
-  
+  "-CSKEkksrfZlGuGVKLPz" : {
+    "firebaseKey": "-CSKEkksrfZlGuGVKLPz",
+    "uid": "pMoZ9406o4PBfKiLZ5DZoIFpRrl1",
+    "displayName": "urirunrunkoko",
+    "fullName": "Chie Saito",
+    "photoURL": "https://lh3.googleusercontent.com/a-/AOh14Gghig5K4y8Jzke3_AjJId1LZB4j55zrWt1Jl0FEo8E=s96-c",
+    "email": "urirunrunkoko@gmail.com",
+    "admin": true
+  },
+  "-CSWgufW7RE0xX6jc1x1": {
+    "firebaseKey": "-CSWgufW7RE0xX6jc1x1",
+    "uid": "HoCiw3o7ciPx0Syes4Q7xQdNPZS2",
+    "displayName": "chiestroud",
+    "fullName": "Chie Stroud",
+    "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxa-lUIZSBMYleQbBsc5GiVZ8H028CX9AIh-ovW=s96-c",
+    "email": "cstroud@gmail.com",
+    "admin": false
+  }
 }
