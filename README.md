@@ -59,7 +59,7 @@ I have personally come across many good resources to learn JavaScript through si
 </ul>
 <h3>STRETCH - Unauthenticated users</h3>
 <ul>
-  <li>:six: As an unauthenticated user, I should be able to see 4 random resources finders on the main page.<ol><li>Good Read</li><li>Good Tutorial</li><li>Other Good Resources</li><li>Widely Used Japanese Words You May Know</li></ol></li>
+  <li>:six: As an unauthenticated user, I should be able to see 4 random resources finders on the main page.<ol><li>Good Read</li><li>Good Tutorial</li><li>Other Good Resources</li><li>Did you know?</li></ol></li>
 </ul>
 <h3>STRETCH - Authenticated users</h3>
 <ul>
@@ -72,12 +72,8 @@ I have personally come across many good resources to learn JavaScript through si
 </ul>
 <h3>STRETCH - Other Items</h3>
 <ul>
-  <li>:star::star::star:All the posted links in Open Space/Personal to be converted into thumnails (link preview) to be more appealing</li>
+  <li>:star::star::star: All the posted links in Open Space/Personal to be converted into thumbnails (link preview) to be more appealing</li>
 </ul>
-
-
-
-
 
 ## Wireframes
 [Link to Wireframe](https://www.canva.com/design/DAEeSWGLbBs/share/preview?token=xad8ziga5nxnVMmXKoaIkQ&role=EDITOR&utm_content=DAEeSWGLbBs&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
