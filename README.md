@@ -82,7 +82,7 @@ I have personally come across many good resources to learn JavaScript through si
 [Chie Stroud's Portfolio Site](https://chiestroud.com/)
 
 ## Loom Video
-
+https://www.loom.com/share/b5baf7b3f5584c129f540ed1c2e568a4
 ## Sample JSON
 [Sample JSON File](https://github.com/chiestroud/Bookmarkable/tree/cs-planning/src/sample_json)
 ## ERD
