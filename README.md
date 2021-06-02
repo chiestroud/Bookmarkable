@@ -49,30 +49,30 @@ I have personally come across many good resources to learn JavaScript through si
   <li>As an authenticated user, I should be able to create a new category for Personal component.</li>
   <li>As an authenticated user, I should be able to see "bookmark" button on some sorts on Open Space resource card that enables me to save the resource into my Personal component.</li>
   <li>As authenticated user, I should be able to search resources by each category.</li>
+   <li>As an admin, I should be able to delete any public post that is not appropriate for users.</li>
+    <li>As an authenticated user, I should be able to search Open Space/Personal resources with words not just by categories.</li>
 </ul>
 <h3>STRETCH - Admin</h3>
 <ul>
-  <li>:one: As an admin, I should be able to delete any public post that is not appropriate for users.</li>
-  <li>:question: As an admin, I should be able to add category to Open Space.</li>
-  <li>:two: As an admin, I should be able to see Admin page with a list of all the users using Bookmarkable.</li>
-  <li>:eight: As an admin, I should be able to see Admin page with a list of reported posts.</li>
+  <li>As an admin, I should be able to add category to Open Space.</li>
+  <li>As an admin, I should be able to see Admin page with a list of all the users using Bookmarkable.</li>
+  <li>As an admin, I should be able to see Admin page with a list of reported posts.</li>
 </ul>
 <h3>STRETCH - Unauthenticated users</h3>
 <ul>
-  <li>:six: As an unauthenticated user, I should be able to see 4 random resources finders on the main page.<ol><li>Good Read</li><li>Good Tutorial</li><li>Other Good Resources</li><li>Did you know?</li></ol></li>
+  <li>As an unauthenticated user, I should be able to see 4 random resources finders on the main page.<ol><li>Good Read</li><li>Good Tutorial</li><li>Other Good Resources</li><li>Did you know?</li></ol></li>
 </ul>
 <h3>STRETCH - Authenticated users</h3>
 <ul>
-  <li>:three: As an authenticated user, I should be be able to see Like button on Open Space posts.</li>
-  <li>:four: As an authenticated user, I should be able to see how many Likes the post has.</li>
-  <li>:five: As an authenticated user, I should be able to toggle Like/Unlike Open Space recommendations.</li>
-  <li>:seven: As an authenticated user, I should be able to report any inappropriate Open Space posts.</li>
-  <li>:nine: As an authenticated user, I should be able to search Open Space/Personal resources with words not just by categories.</li>
-  <li>:keycap_ten: As an authenticated user, I should be able to see "reviewed" button to notify me if I have already reviewed the resources.</li>
+  <li>As an authenticated user, I should be be able to see Like button on Open Space posts.</li>
+  <li>As an authenticated user, I should be able to see how many Likes the post has.</li>
+  <li>As an authenticated user, I should be able to toggle Like/Unlike Open Space recommendations.</li>
+  <li>As an authenticated user, I should be able to report any inappropriate Open Space posts.</li>
+  <li>As an authenticated user, I should be able to see "reviewed" button to notify me if I have already reviewed the resources.</li>
 </ul>
 <h3>STRETCH - Other Items</h3>
 <ul>
-  <li>:star::star::star: All the posted links in Open Space/Personal to be converted into thumbnails (link preview) to be more appealing</li>
+  <li>All the posted links in Open Space/Personal to be converted into thumbnails (link preview) to be more appealing</li>
 </ul>
 
 ## Wireframes

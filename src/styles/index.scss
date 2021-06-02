@@ -4,3 +4,18 @@
 body {
   background-color: $favColor;
 }
+
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+div.card {
+  height: 500px;
+  width: 1000px;
+  display: flex;
+  align-items: center;
+}
