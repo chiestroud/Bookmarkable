@@ -14,4 +14,15 @@ const getPersonalData = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export default getPersonalData;
+const addPersonalData = (dataObj) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/personal_bookmark.json`, dataObj)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/personal_bookmark/${response.data.name}.json`, body)
+        .then(() => {
+          getPersonalData().then((returnedArray) => resolve(returnedArray));
+        });
+    }).catch((err) => reject(err));
+});
+
+export { getPersonalData, addPersonalData };
