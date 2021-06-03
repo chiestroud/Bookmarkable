@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <section className="home">
       <header>Welcome to Bookmarkable</header>
-      <Card>
+      <Card className='homeCard'>
         <CardTitle>JavaScript Resource of the Day</CardTitle>
         {showResource && <div>
           <CardText>{singleResource.title}</CardText>

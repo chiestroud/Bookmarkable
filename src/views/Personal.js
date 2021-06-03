@@ -1,39 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Card, CardLink, CardText, CardTitle
-} from 'reactstrap';
+import PropTypes from 'prop-types';
+import PersonalBookmarkCard from '../components/PersonalBookmarkCard';
 import PersonalForm from '../components/PersonalForm';
-import getPersonalCategoryData from '../helpers/data/categoryData';
+import { getPersonalCategoryData } from '../helpers/data/categoryData';
 import { getPersonalData } from '../helpers/data/personalData';
+import CategoryForm from '../components/CategoryForm';
 
-export default function Personal() {
-  const [personalData, setPersonalData] = useState([]);
+export default function Personal({ user }) {
+  const [personalCards, setPersonalCards] = useState([]);
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    getPersonalData().then((response) => setPersonalData(response));
+    if (user) {
+      getPersonalData(user).then((response) => setPersonalCards(response));
+    }
   }, []);
 
   useEffect(() => {
-    getPersonalCategoryData().then((response) => setCategory(response));
+    if (user) {
+      getPersonalCategoryData(user).then((response) => setCategory(response));
+    }
   }, []);
 
   return (
     <section>
       <header>Personal Bookmark</header>
+      <div className="formContainer">
       <PersonalForm
-        formTitle='Add new personal bookmark'
-        personalData={personalData}
-        setPersonalData={setPersonalData}
+        formTitle='Add a new personal bookmark'
+        personalCards={personalCards}
+        setPersonalCards={setPersonalCards}
         category={category}
-      />
-      {personalData.map((personalCard) => (
-        <Card key={personalCard.firebaseKey}>
-          <CardTitle>{personalCard.title}</CardTitle>
-          <CardLink href={personalCard.url} target='_blank'>{personalCard.url}</CardLink>
-          <CardText>{personalCard.comments}</CardText>
-        </Card>
+        />
+        <CategoryForm
+          formTitle='Add a new category'
+          setCategory={setCategory}
+          user={user}
+        />
+      </div>
+      <div className="cardContainer">
+      {personalCards.map((personalCard) => (
+        <PersonalBookmarkCard
+          key={personalCard.firebaseKey}
+          {...personalCard}
+        />
       ))}
+      </div>
     </section>
   );
 }
+
+Personal.propTypes = {
+  user: PropTypes.any
+};
