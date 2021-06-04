@@ -23,6 +23,7 @@ export default function OpenSpace({ user }) {
     <section>
       <header>Open Space</header>
       <OpenSpaceBookmarkForm
+        formTitle='Add Bookmark'
         publicCategory={publicCategory}
         setPublicCategory={setPublicCategory}
         setPublicBookmarks={setPublicBookmarks}

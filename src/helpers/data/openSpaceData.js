@@ -14,15 +14,15 @@ const getPublicBookmarks = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-const addPublicBookmark = (dataObj) => new Promise((resolve, reject) => {
+const addPublicBookmarks = (dataObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/public_bookmark.json`, dataObj)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
-      axios.patch(`${dbUrl}/public_bookmark/${response.data.name}`, body)
+      axios.patch(`${dbUrl}/public_bookmark/${response.data.name}.json`, body)
         .then(() => {
           getPublicBookmarks().then((returnedArray) => resolve(returnedArray));
         });
     }).catch((err) => reject(err));
 });
 
-export { getPublicBookmarks, addPublicBookmark };
+export { getPublicBookmarks, addPublicBookmarks };
