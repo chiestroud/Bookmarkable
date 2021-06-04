@@ -6,7 +6,9 @@ import {
 import { addPersonalData } from '../helpers/data/personalData';
 import { getCurrentUserUid } from '../helpers/data/userData';
 
-export default function PersonalForm({ formTitle, category, setPersonalData }) {
+export default function PersonalForm({
+  formTitle, category, setPersonalCards, user
+}) {
   const [displayForm, setDisplayForm] = useState(false);
   const [personalBookmark, setPersonalBookmark] = useState({
     firebaseKey: null,
@@ -30,7 +32,7 @@ export default function PersonalForm({ formTitle, category, setPersonalData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addPersonalData(personalBookmark).then((response) => setPersonalData(response));
+    addPersonalData(personalBookmark, user).then((response) => setPersonalCards(response));
     setDisplayForm(false);
   };
 
@@ -102,5 +104,6 @@ export default function PersonalForm({ formTitle, category, setPersonalData }) {
 PersonalForm.propTypes = {
   formTitle: PropTypes.string.isRequired,
   category: PropTypes.array,
-  setPersonalData: PropTypes.func
+  setPersonalCards: PropTypes.func,
+  user: PropTypes.any
 };

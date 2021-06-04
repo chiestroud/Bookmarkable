@@ -31,6 +31,7 @@ export default function Personal({ user }) {
         personalCards={personalCards}
         setPersonalCards={setPersonalCards}
         category={category}
+        user={user}
         />
         <CategoryForm
           formTitle='Add a new category'

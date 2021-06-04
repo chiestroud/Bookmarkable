@@ -14,13 +14,13 @@ const getPersonalData = (user) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-const addPersonalData = (dataObj) => new Promise((resolve, reject) => {
+const addPersonalData = (dataObj, user) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/personal_bookmark.json`, dataObj)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/personal_bookmark/${response.data.name}.json`, body)
         .then(() => {
-          getPersonalData().then((returnedArray) => resolve(returnedArray));
+          getPersonalData(user).then((returnedArray) => resolve(returnedArray));
         });
     }).catch((err) => reject(err));
 });

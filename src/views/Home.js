@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Card, CardTitle, Button, CardText, CardLink
 } from 'reactstrap';
-import getPublicBookmarks from '../helpers/data/openSpaceData';
+import { getPublicBookmarks } from '../helpers/data/openSpaceData';
 
 export default function Home() {
   const [randomResources, setRandomResources] = useState([]);
