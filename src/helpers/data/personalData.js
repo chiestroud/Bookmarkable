@@ -3,8 +3,8 @@ import firebaseConfig from '../apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
 
-const getPersonalData = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/personal_bookmark.json`)
+const getPersonalData = (user) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/personal_bookmark.json?orderBy="uid"&equalTo="${user.uid}"`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
@@ -14,4 +14,15 @@ const getPersonalData = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export default getPersonalData;
+const addPersonalData = (dataObj, user) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/personal_bookmark.json`, dataObj)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/personal_bookmark/${response.data.name}.json`, body)
+        .then(() => {
+          getPersonalData(user).then((returnedArray) => resolve(returnedArray));
+        });
+    }).catch((err) => reject(err));
+});
+
+export { getPersonalData, addPersonalData };

@@ -1,7 +1,10 @@
 import axios from 'axios';
+import firebase from 'firebase';
 import firebaseConfig from '../apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
+
+const getCurrentUserUid = () => firebase.auth().currentUser?.uid;
 
 const getUsers = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/users.json`)
@@ -29,4 +32,6 @@ const addUser = (user) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export { getUsers, getSingleUser, addUser };
+export {
+  getCurrentUserUid, getUsers, getSingleUser, addUser
+};
