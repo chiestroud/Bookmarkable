@@ -29,6 +29,7 @@ export default function CategoryForm({ formTitle, user, setCategory }) {
     e.preventDefault();
     addPersonalCategoryData(personalCategory, user).then((response) => setCategory(response));
     setOpenForm(false);
+    setPersonalCategory('');
   };
 
   return (

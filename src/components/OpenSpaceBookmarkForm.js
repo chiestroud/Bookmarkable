@@ -4,23 +4,30 @@ import {
   Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
 import { getCurrentUserUid } from '../helpers/data/userData';
-import { addPublicBookmarks } from '../helpers/data/openSpaceData';
+import { addPublicBookmarks, updatePublicBookmark } from '../helpers/data/openSpaceData';
 
-export default function OpenSpaceBookmarkForm({ publicCategory, setPublicBookmarks, formTitle }) {
-  const [openForm, setOpenForm] = useState(false);
+export default function OpenSpaceBookmarkForm({
+  publicCategory,
+  setPublicBookmarks,
+  formTitle,
+  setOpenForm,
+  firebaseKey,
+  title,
+  url,
+  comments,
+  categoryId,
+  likes,
+  setShowForm
+}) {
   const [publicBookmark, setPublicBookmark] = useState({
-    firebaseKey: null,
-    categoryId: '',
-    title: '',
-    url: '',
-    comments: '',
+    firebaseKey: firebaseKey || null,
+    categoryId: categoryId || '',
+    title: title || '',
+    url: url || '',
+    comments: comments || '',
     uid: getCurrentUserUid(),
-    likes: 0
+    likes: likes || 0
   });
-
-  const handleClick = () => {
-    setOpenForm((prevState) => !prevState);
-  };
 
   const handleInputChange = (e) => {
     setPublicBookmark((prevState) => ({
@@ -31,73 +38,75 @@ export default function OpenSpaceBookmarkForm({ publicCategory, setPublicBookmar
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addPublicBookmarks(publicBookmark).then((response) => setPublicBookmarks(response));
-    setOpenForm(false);
+    if (publicBookmark.firebaseKey) {
+      updatePublicBookmark(publicBookmark).then((response) => setPublicBookmarks(response));
+      setShowForm(false);
+    } else {
+      addPublicBookmarks(publicBookmark).then((response) => setPublicBookmarks(response));
+      setOpenForm(false);
+      setPublicBookmark('');
+    }
   };
 
   return (
-    <>
-      <Button onClick={handleClick}>{openForm ? 'Close Form' : 'Open Form'}</Button>
-      {openForm
-        ? <Form
-          id='publicForm'
-          autoComplete='off'
-          onSubmit={handleSubmit}
-        >
-          <h2>{formTitle}</h2>
-          <FormGroup>
-            <Label for="title">Resource Title</Label>
-            <Input
-              type="text"
-              name="title" id="title"
-              placeholder="Title of the Resource"
-              value={publicBookmark.title}
-              onChange={handleInputChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="url">Link to the Resource</Label>
-            <Input
-              type="url"
-              name="url"
-              id="url"
-              placeholder="Link to the Resource"
-              value={publicBookmark.url}
-              onChange={handleInputChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="publicCategory">Category</Label>
-            <Input
-              type="select"
-              name="categoryId"
-              id="publicCategory"
-              value={publicBookmark.categoryId}
-              onChange={handleInputChange}
-            >
-              <option value=''>Select Category</option>
-              {publicCategory.map((item) => (
-                <option
-                  value={item.firebaseKey}
-                  key={item.firebaseKey}
-                >{item.categoryName}</option>
-              ))}
-            </Input>
-          </FormGroup>
-          <FormGroup>
-            <Label for="commentss">Comment</Label>
-            <Input
-              type="textarea"
-              name="comments"
-              id="publicComments"
-              placeholder="Comments"
-              value={publicBookmark.comments}
-              onChange={handleInputChange}
-            />
-          </FormGroup>
-          <Button>Submit</Button>
-        </Form> : ''}
-    </>
+    <Form
+      id='publicForm'
+      autoComplete='off'
+      onSubmit={handleSubmit}
+    >
+      <h2>{formTitle}</h2>
+      <FormGroup>
+        <Label for="title">Resource Title</Label>
+        <Input
+          type="text"
+          name="title" id="title"
+          placeholder="Title of the Resource"
+          value={publicBookmark.title}
+          onChange={handleInputChange}
+        />
+        </FormGroup>
+        <FormGroup>
+          <Label for="url">Link to the Resource</Label>
+          <Input
+            type="url"
+            name="url"
+            id="url"
+            placeholder="Link to the Resource"
+            value={publicBookmark.url}
+            onChange={handleInputChange}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="publicCategory">Category</Label>
+          <Input
+            type="select"
+            name="categoryId"
+            id="publicCategory"
+            value={publicBookmark.categoryId}
+            onChange={handleInputChange}
+          >
+            <option value=''>Select Category</option>
+            {publicCategory.map((item) => (
+              <option
+                value={item.firebaseKey}
+                key={item.firebaseKey}
+              >{item.categoryName}</option>
+            ))}
+          </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="commentss">Comment</Label>
+          <Input
+            type="textarea"
+            name="comments"
+            id="publicComments"
+            placeholder="Comments"
+            value={publicBookmark.comments}
+            onChange={handleInputChange}
+          />
+        </FormGroup>
+        <Button type='submit'>Submit</Button>
+      </Form>
   );
 }
 
@@ -106,5 +115,14 @@ OpenSpaceBookmarkForm.propTypes = {
   publicCategory: PropTypes.array,
   setPublicCategory: PropTypes.func,
   setPublicBookmarks: PropTypes.func,
-  formTitle: PropTypes.string
+  formTitle: PropTypes.string,
+  setOpenForm: PropTypes.func,
+  firebaseKey: PropTypes.string,
+  title: PropTypes.string,
+  url: PropTypes.string,
+  comments: PropTypes.string,
+  likes: PropTypes.number,
+  uid: PropTypes.string,
+  categoryId: PropTypes.string,
+  setShowForm: PropTypes.func
 };

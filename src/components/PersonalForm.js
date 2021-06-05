@@ -3,25 +3,30 @@ import PropTypes from 'prop-types';
 import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
-import { addPersonalData } from '../helpers/data/personalData';
+import { addPersonalData, updatePersonalData } from '../helpers/data/personalData';
 import { getCurrentUserUid } from '../helpers/data/userData';
 
 export default function PersonalForm({
-  formTitle, category, setPersonalCards, user
+  formTitle,
+  category,
+  setPersonalCards,
+  user,
+  setDisplayForm,
+  firebaseKey,
+  comments,
+  title,
+  url,
+  categoryId,
+  setShowForm
 }) {
-  const [displayForm, setDisplayForm] = useState(false);
   const [personalBookmark, setPersonalBookmark] = useState({
-    firebaseKey: null,
-    categoryId: '',
-    comments: '',
-    title: '',
+    firebaseKey: firebaseKey || null,
+    categoryId: categoryId || '',
+    comments: comments || '',
+    title: title || '',
     uid: getCurrentUserUid(),
-    url: ''
+    url: url || '',
   });
-
-  const handleClick = () => {
-    setDisplayForm((prevState) => !prevState);
-  };
 
   const handleInputChange = (e) => {
     setPersonalBookmark((prevState) => ({
@@ -32,14 +37,17 @@ export default function PersonalForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addPersonalData(personalBookmark, user).then((response) => setPersonalCards(response));
-    setDisplayForm(false);
+    if (personalBookmark.firebaseKey) {
+      updatePersonalData(personalBookmark, user).then((bookmarkArray) => setPersonalCards(bookmarkArray));
+      setShowForm(false);
+    } else {
+      addPersonalData(personalBookmark, user).then((response) => setPersonalCards(response));
+      setDisplayForm(false);
+    }
   };
 
   return (
-    <>
-    <Button onClick={handleClick}>{displayForm ? 'Close Form' : 'Add Bookmark'}</Button>
-      {displayForm ? <Form
+    <Form
         id="personalForm"
         autoComplete='off'
         onSubmit={handleSubmit}
@@ -96,8 +104,7 @@ export default function PersonalForm({
           </Input>
         </FormGroup>
         <Button>Submit</Button>
-      </Form> : ''}
-      </>
+      </Form>
   );
 }
 
@@ -105,5 +112,12 @@ PersonalForm.propTypes = {
   formTitle: PropTypes.string.isRequired,
   category: PropTypes.array,
   setPersonalCards: PropTypes.func,
-  user: PropTypes.any
+  user: PropTypes.any,
+  setDisplayForm: PropTypes.func,
+  firebaseKey: PropTypes.string,
+  comments: PropTypes.string,
+  title: PropTypes.string,
+  url: PropTypes.string,
+  categoryId: PropTypes.string,
+  setShowForm: PropTypes.func
 };

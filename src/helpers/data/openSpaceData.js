@@ -25,4 +25,34 @@ const addPublicBookmarks = (dataObj) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export { getPublicBookmarks, addPublicBookmarks };
+const updatePublicBookmark = (bookmark) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/public_bookmark/${bookmark.firebaseKey}.json`, bookmark)
+    .then(() => getPublicBookmarks().then(resolve))
+    .catch((err) => reject(err));
+});
+
+const deletePublicBookmark = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/public_bookmark/${firebaseKey}.json`)
+    .then(() => getPublicBookmarks().then((bookmarkArray) => resolve(bookmarkArray)))
+    .catch((err) => reject(err));
+});
+
+const searchPublicBookmarks = (searchValues) => new Promise((resolve, reject) => {
+  getPublicBookmarks().then((bookmarkArray) => {
+    const searchItems = bookmarkArray.filter((word) => word.title.toLowerCase().includes(searchValues));
+    resolve(searchItems);
+  })
+    .catch((err) => reject(err));
+});
+
+const searchPublicCategory = (firebaseKey) => new Promise((resolve, reject) => {
+  getPublicBookmarks().then((bookmarkArray) => {
+    const searchItems = bookmarkArray.filter((category) => category.categoryId.includes(firebaseKey));
+    resolve(searchItems);
+  })
+    .catch((err) => reject(err));
+});
+
+export {
+  getPublicBookmarks, addPublicBookmarks, deletePublicBookmark, updatePublicBookmark, searchPublicBookmarks, searchPublicCategory
+};

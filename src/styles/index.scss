@@ -19,3 +19,15 @@ div.homeCard {
   display: flex;
   align-items: center;
 }
+
+div.openBookmark {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+div.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
