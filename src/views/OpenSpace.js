@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Card, CardLink, CardText, CardTitle
-} from 'reactstrap';
+import OpenBookmarkCard from '../components/OpenBookmarkCard';
+import OpenSpaceBookmarkForm from '../components/OpenSpaceBookmarkForm';
 import { getPublicBookmarks } from '../helpers/data/openSpaceData';
 import getPublicCategoryData from '../helpers/data/publicCategoryData';
 
@@ -16,17 +15,20 @@ export default function OpenSpace() {
   useEffect(() => {
     getPublicCategoryData().then((response) => setPublicCategory(response));
   }, []);
-  console.warn(publicCategory);
 
   return (
     <section>
       <header>Open Space</header>
+      <OpenSpaceBookmarkForm
+        formTitle='Add Public Bookmark'
+        publicCategory={publicCategory}
+        setPublicBookmarks={setPublicBookmarks}
+      />
       {publicBookmarks.map((publicBookmark) => (
-        <Card key={publicBookmark.firebaseKey}>
-          <CardTitle>{publicBookmark.title}</CardTitle>
-          <CardLink href={publicBookmark.url} target='_blank'>{publicBookmark.url}</CardLink>
-          <CardText>{publicBookmark.comments}</CardText>
-        </Card>
+        <OpenBookmarkCard
+          key={publicBookmark.firebaseKey}
+          {...publicBookmark}
+        />
       ))}
     </section>
   );

@@ -31,7 +31,8 @@ export default function OpenSpaceBookmarkForm({ publicCategory, setPublicBookmar
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addPublicBookmarks().then((response) => setPublicBookmarks(response));
+    addPublicBookmarks(publicBookmark).then((response) => setPublicBookmarks(response));
+    setOpenForm(false);
   };
 
   return (
