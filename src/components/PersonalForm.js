@@ -26,7 +26,7 @@ export default function PersonalForm({
   const handleInputChange = (e) => {
     setPersonalBookmark((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value === 'category' ? e.target.selected : e.target.value
+      [e.target.name]: e.target.value === 'categoryId' ? e.target.selected : e.target.value
     }));
   };
 
