@@ -11,6 +11,7 @@ import {
   Button
 } from 'reactstrap';
 import { signInUser, signOutUser } from '../helpers/auth';
+import { NavLinkStyle, NavStyle } from '../styles/NavBarStyle';
 
 const NavBar = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,29 +19,31 @@ const NavBar = ({ user }) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <Link className='navbar-brand' to="/">Bookmarkable</Link>
+    <NavStyle>
+      <Navbar light expand="md">
+        <Link className='navbar-brand' to="/"><i className="fas fa-book-open mr-2"></i>Bookmarkable</Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
             {user
-              && <Nav className="mr-auto" navbar>
+            && <Nav className="mr-auto" navbar>
+              <NavLinkStyle>
               <NavItem>
                 <Link className='nav-link' to="/open-space">Open Space</Link>
               </NavItem>
               <NavItem>
                 <Link className='nav-link' to="/personal">Personal</Link>
               </NavItem>
+              </NavLinkStyle>
               <NavbarText>
                 <Button color='danger' onClick={signOutUser}>Log Out</Button>
             </NavbarText>
             </Nav>
             }
-          {user && <NavbarText>Welcome, <span>{user.displayName}</span><img src={user.photoURL}/></NavbarText>}
+          {user && <NavbarText className='welcomeText'>Welcome, <span className='displayName mr-2'>{user.displayName}</span><img className='profileImage' src={user.photoURL}/></NavbarText>}
           {!user && <Button color='info' onClick={signInUser}>Sign In</Button>}
         </Collapse>
       </Navbar>
-    </div>
+    </NavStyle>
   );
 };
 

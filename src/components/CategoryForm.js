@@ -34,7 +34,7 @@ export default function CategoryForm({ formTitle, user, setCategory }) {
 
   return (
     <>
-      <Button color='success' onClick={handleClick}>{openForm ? 'Close Form' : 'Add Category'}</Button>
+      <div><Button color='success' onClick={handleClick}>{openForm ? 'Close Form' : 'Add Category'}</Button></div>
       {openForm
         && <Form
         id="personalCategoryForm"

@@ -18,7 +18,7 @@ PrivateRoute.propTypes = {
   user: PropTypes.any
 };
 
-export default function Routes({ user }) {
+export default function Routes({ user, admin }) {
   return (
     <div>
       <Switch>
@@ -26,7 +26,7 @@ export default function Routes({ user }) {
         <PrivateRoute
           path='/open-space'
           user={user}
-          component={() => <OpenSpace user={user} />} />
+          component={() => <OpenSpace user={user} admin={admin} />} />
         <PrivateRoute
           path='/personal'
           user={user}
@@ -38,5 +38,6 @@ export default function Routes({ user }) {
 }
 
 Routes.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
+  admin: PropTypes.any
 };

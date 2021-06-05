@@ -9,19 +9,26 @@ import {
 } from 'reactstrap';
 import OpenSpaceBookmarkForm from './OpenSpaceBookmarkForm';
 import { deletePublicBookmark } from '../helpers/data/openSpaceData';
+import BookmarkForm from './BookmarkForm';
+import { IndividualCardStyle } from '../styles/BookmarkStyle';
 
 export default function OpenBookmarkCard({
   firebaseKey,
   title,
   url,
   comments,
+  categoryId,
   uid,
   user,
   likes,
   publicCategory,
-  setPublicBookmarks
+  setPublicBookmarks,
+  admin,
+  setOpenForm
 }) {
   const [showForm, setShowForm] = useState(false);
+  const [showCategory, setShowCategory] = useState(false);
+
   const handleClick = (type) => {
     switch (type) {
       case 'edit':
@@ -30,18 +37,33 @@ export default function OpenBookmarkCard({
       case 'delete':
         deletePublicBookmark(firebaseKey).then((response) => setPublicBookmarks(response));
         break;
+      case 'categoryList':
+        setShowCategory((prevState) => !prevState);
+        break;
       default:
         console.warn('error');
     }
   };
 
   return (
+    <IndividualCardStyle>
     <Card>
-      <span><Button title='bookmark?'><i className="far fa-bookmark"></i></Button></span>
+      <span><Button className='bookmarkbtn' title='bookmark?' onClick={() => handleClick('categoryList')}><i className="far fa-bookmark"></i></Button></span>
+      {showCategory && <BookmarkForm
+        publicCategory={publicCategory}
+        firebaseKey={firebaseKey}
+        title={title}
+        categoryId={categoryId}
+        url={url}
+        comments={comments}
+        uid={uid}
+        user={user}
+        setShowCategory={setShowCategory}
+      />}
       <CardTitle>{title}</CardTitle>
       <CardLink href={url} target='_blank'>{url}</CardLink>
       <CardText>{comments}</CardText>
-      {(user && user.uid === uid)
+      {((user && user.uid === uid) || (user && admin === true))
         && <div>
         <Button color='warning' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
         {showForm && <OpenSpaceBookmarkForm
@@ -56,11 +78,14 @@ export default function OpenBookmarkCard({
           user={user}
           likes={likes}
           setShowForm={setShowForm}
+          categoryId={categoryId}
+          setOpenForm={setOpenForm}
         />}
           <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
         </div>
       }
     </Card>
+    </IndividualCardStyle>
   );
 }
 
@@ -73,5 +98,8 @@ OpenBookmarkCard.propTypes = {
   user: PropTypes.any,
   likes: PropTypes.number,
   publicCategory: PropTypes.array,
-  setPublicBookmarks: PropTypes.func
+  setPublicBookmarks: PropTypes.func,
+  admin: PropTypes.any,
+  categoryId: PropTypes.string,
+  setOpenForm: PropTypes.func
 };

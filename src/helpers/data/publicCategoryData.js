@@ -14,4 +14,15 @@ const getPublicCategoryData = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export default getPublicCategoryData;
+const findPublicCategory = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/public_category.json?orderBy="firebaseKey"&equalTo="${firebaseKey}`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    }).catch((err) => reject(err));
+});
+
+export { getPublicCategoryData, findPublicCategory };

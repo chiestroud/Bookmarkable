@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <section className="home">
-      <header>Welcome to Bookmarkable</header>
+      <header className='title'>Welcome to Bookmarkable - JS Version</header>
       <Card className='homeCard'>
         <CardTitle>JavaScript Resource of the Day</CardTitle>
         {showResource && <div>

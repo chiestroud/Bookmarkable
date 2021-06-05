@@ -8,10 +8,10 @@ import { addPublicBookmarks, updatePublicBookmark } from '../helpers/data/openSp
 
 export default function OpenSpaceBookmarkForm({
   publicCategory,
+  firebaseKey,
   setPublicBookmarks,
   formTitle,
   setOpenForm,
-  firebaseKey,
   title,
   url,
   comments,
@@ -20,7 +20,7 @@ export default function OpenSpaceBookmarkForm({
   setShowForm
 }) {
   const [publicBookmark, setPublicBookmark] = useState({
-    firebaseKey: firebaseKey || null,
+    firebaseKey: firebaseKey || '',
     categoryId: categoryId || '',
     title: title || '',
     url: url || '',
@@ -105,7 +105,7 @@ export default function OpenSpaceBookmarkForm({
             onChange={handleInputChange}
           />
         </FormGroup>
-        <Button type='submit'>Submit</Button>
+        <Button>Submit</Button>
       </Form>
   );
 }
