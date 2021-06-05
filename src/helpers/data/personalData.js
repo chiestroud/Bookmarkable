@@ -25,4 +25,10 @@ const addPersonalData = (dataObj, user) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export { getPersonalData, addPersonalData };
+const deletePersonalData = (firebaseKey, user) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/personal_bookmark/${firebaseKey}.json`)
+    .then(() => getPersonalData(user).then((journalArray) => resolve(journalArray)))
+    .catch((err) => reject(err));
+});
+
+export { getPersonalData, addPersonalData, deletePersonalData };

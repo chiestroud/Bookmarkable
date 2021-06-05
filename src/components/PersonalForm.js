@@ -7,9 +7,8 @@ import { addPersonalData } from '../helpers/data/personalData';
 import { getCurrentUserUid } from '../helpers/data/userData';
 
 export default function PersonalForm({
-  formTitle, category, setPersonalCards, user
+  formTitle, category, setPersonalCards, user, setDisplayForm
 }) {
-  const [displayForm, setDisplayForm] = useState(false);
   const [personalBookmark, setPersonalBookmark] = useState({
     firebaseKey: null,
     categoryId: '',
@@ -19,14 +18,10 @@ export default function PersonalForm({
     url: ''
   });
 
-  const handleClick = () => {
-    setDisplayForm((prevState) => !prevState);
-  };
-
   const handleInputChange = (e) => {
     setPersonalBookmark((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value === 'categoryId' ? e.target.selected : e.target.value
+      [e.target.name]: e.target.value === 'category' ? e.target.selected : e.target.value
     }));
   };
 
@@ -37,9 +32,7 @@ export default function PersonalForm({
   };
 
   return (
-    <>
-    <Button onClick={handleClick}>{displayForm ? 'Close Form' : 'Add Bookmark'}</Button>
-      {displayForm ? <Form
+    <Form
         id="personalForm"
         autoComplete='off'
         onSubmit={handleSubmit}
@@ -96,8 +89,7 @@ export default function PersonalForm({
           </Input>
         </FormGroup>
         <Button>Submit</Button>
-      </Form> : ''}
-      </>
+      </Form>
   );
 }
 
@@ -105,5 +97,6 @@ PersonalForm.propTypes = {
   formTitle: PropTypes.string.isRequired,
   category: PropTypes.array,
   setPersonalCards: PropTypes.func,
-  user: PropTypes.any
+  user: PropTypes.any,
+  setDisplayForm: PropTypes.func
 };

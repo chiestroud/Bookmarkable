@@ -33,6 +33,7 @@ export default function OpenSpaceBookmarkForm({ publicCategory, setPublicBookmar
     e.preventDefault();
     addPublicBookmarks(publicBookmark).then((response) => setPublicBookmarks(response));
     setOpenForm(false);
+    setPublicBookmark('');
   };
 
   return (
@@ -95,7 +96,7 @@ export default function OpenSpaceBookmarkForm({ publicCategory, setPublicBookmar
               onChange={handleInputChange}
             />
           </FormGroup>
-          <Button>Submit</Button>
+          <Button type='submit'>Submit</Button>
         </Form> : ''}
     </>
   );
