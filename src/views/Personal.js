@@ -56,6 +56,8 @@ export default function Personal({ user }) {
           {...personalCard}
           setPersonalCards={setPersonalCards}
           user={user}
+          category={category}
+          setDisplayForm={setDisplayForm}
         />
       ))}
       </div>

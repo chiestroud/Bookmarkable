@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardTitle, CardLink, CardText, Button
 } from 'reactstrap';
 import { deletePersonalData } from '../helpers/data/personalData';
+import PersonalForm from './PersonalForm';
 
 export default function PersonalBookmarkCard({
   title,
@@ -11,11 +12,13 @@ export default function PersonalBookmarkCard({
   url,
   comments,
   user,
-  setPersonalCards
+  setPersonalCards,
+  category
 }) {
+  const [showForm, setShowForm] = useState(false);
   const handleClick = (type) => {
     if (type === 'edit') {
-      console.warn('edit', firebaseKey);
+      setShowForm((prevState) => !prevState);
     } else if (type === 'delete') {
       deletePersonalData(firebaseKey, user).then((response) => setPersonalCards(response));
     }
@@ -26,7 +29,10 @@ export default function PersonalBookmarkCard({
       <CardTitle>{title}</CardTitle>
       <CardLink href={url} target='_blank'>{url}</CardLink>
       <CardText>{comments}</CardText>
-      <Button onClick={() => handleClick('edit')}>Edit</Button>
+      <Button onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
+      {showForm && <PersonalForm
+        category={category}
+      />}
       <Button onClick={() => handleClick('delete')}>Delete</Button>
     </Card>
   );
@@ -38,5 +44,6 @@ PersonalBookmarkCard.propTypes = {
   url: PropTypes.string.isRequired,
   comments: PropTypes.string.isRequired,
   user: PropTypes.any,
-  setPersonalCards: PropTypes.func
+  setPersonalCards: PropTypes.func,
+  category: PropTypes.array
 };
