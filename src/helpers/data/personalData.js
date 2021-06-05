@@ -25,10 +25,18 @@ const addPersonalData = (dataObj, user) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
+const updatePersonalData = (bookmark, user) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/personal_bookmark/${bookmark.firebaseKey}.json`, bookmark)
+    .then(() => getPersonalData(user).then(resolve))
+    .catch((err) => reject(err));
+});
+
 const deletePersonalData = (firebaseKey, user) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/personal_bookmark/${firebaseKey}.json`)
     .then(() => getPersonalData(user).then((journalArray) => resolve(journalArray)))
     .catch((err) => reject(err));
 });
 
-export { getPersonalData, addPersonalData, deletePersonalData };
+export {
+  getPersonalData, addPersonalData, deletePersonalData, updatePersonalData
+};

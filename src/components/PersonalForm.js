@@ -3,32 +3,47 @@ import PropTypes from 'prop-types';
 import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
-import { addPersonalData } from '../helpers/data/personalData';
+import { addPersonalData, updatePersonalData } from '../helpers/data/personalData';
 import { getCurrentUserUid } from '../helpers/data/userData';
 
 export default function PersonalForm({
-  formTitle, category, setPersonalCards, user, setDisplayForm
+  formTitle,
+  category,
+  setPersonalCards,
+  user,
+  setDisplayForm,
+  firebaseKey,
+  comments,
+  title,
+  url,
+  categoryId,
+  setShowForm
 }) {
   const [personalBookmark, setPersonalBookmark] = useState({
-    firebaseKey: null,
-    categoryId: '',
-    comments: '',
-    title: '',
+    firebaseKey: firebaseKey || null,
+    categoryId: categoryId || '',
+    comments: comments || '',
+    title: title || '',
     uid: getCurrentUserUid(),
-    url: ''
+    url: url || '',
   });
 
   const handleInputChange = (e) => {
     setPersonalBookmark((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value === 'category' ? e.target.selected : e.target.value
+      [e.target.name]: e.target.value === 'categoryId' ? e.target.selected : e.target.value
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addPersonalData(personalBookmark, user).then((response) => setPersonalCards(response));
-    setDisplayForm(false);
+    if (personalBookmark.firebaseKey) {
+      updatePersonalData(personalBookmark, user).then((bookmarkArray) => setPersonalCards(bookmarkArray));
+      setShowForm(false);
+    } else {
+      addPersonalData(personalBookmark, user).then((response) => setPersonalCards(response));
+      setDisplayForm(false);
+    }
   };
 
   return (
@@ -98,5 +113,11 @@ PersonalForm.propTypes = {
   category: PropTypes.array,
   setPersonalCards: PropTypes.func,
   user: PropTypes.any,
-  setDisplayForm: PropTypes.func
+  setDisplayForm: PropTypes.func,
+  firebaseKey: PropTypes.string,
+  comments: PropTypes.string,
+  title: PropTypes.string,
+  url: PropTypes.string,
+  categoryId: PropTypes.string,
+  setShowForm: PropTypes.func
 };

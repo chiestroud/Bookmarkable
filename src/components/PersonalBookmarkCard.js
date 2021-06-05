@@ -30,8 +30,17 @@ export default function PersonalBookmarkCard({
       <CardLink href={url} target='_blank'>{url}</CardLink>
       <CardText>{comments}</CardText>
       <Button onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
-      {showForm && <PersonalForm
+      {showForm
+        && <PersonalForm
+        formTitle='Edit Bookmark'
+        user={user}
         category={category}
+        setShowForm={setShowForm}
+        firebaseKey={firebaseKey}
+        title={title}
+        url={url}
+        comments={comments}
+        setPersonalCards={setPersonalCards}
       />}
       <Button onClick={() => handleClick('delete')}>Delete</Button>
     </Card>
