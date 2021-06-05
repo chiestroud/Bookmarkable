@@ -17,6 +17,7 @@ export default function OpenBookmarkCard({
   comments,
   uid,
   user,
+  likes,
   publicCategory,
   setPublicBookmarks
 }) {
@@ -35,7 +36,8 @@ export default function OpenBookmarkCard({
   };
 
   return (
-    <Card key={firebaseKey}>
+    <Card>
+      <span><Button title='bookmark?'><i className="far fa-bookmark"></i></Button></span>
       <CardTitle>{title}</CardTitle>
       <CardLink href={url} target='_blank'>{url}</CardLink>
       <CardText>{comments}</CardText>
@@ -45,6 +47,15 @@ export default function OpenBookmarkCard({
         {showForm && <OpenSpaceBookmarkForm
           formTitle='Edit Bookmark'
           publicCategory={publicCategory}
+          setPublicBookmarks={setPublicBookmarks}
+          firebaseKey={firebaseKey}
+          title={title}
+          url={url}
+          comments={comments}
+          uid={uid}
+          user={user}
+          likes={likes}
+          setShowForm={setShowForm}
         />}
           <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
         </div>
@@ -60,6 +71,7 @@ OpenBookmarkCard.propTypes = {
   comments: PropTypes.string,
   uid: PropTypes.string,
   user: PropTypes.any,
+  likes: PropTypes.number,
   publicCategory: PropTypes.array,
   setPublicBookmarks: PropTypes.func
 };

@@ -29,7 +29,7 @@ export default function PersonalBookmarkCard({
       <CardTitle>{title}</CardTitle>
       <CardLink href={url} target='_blank'>{url}</CardLink>
       <CardText>{comments}</CardText>
-      <Button onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
+      <Button color='warning' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
       {showForm
         && <PersonalForm
         formTitle='Edit Bookmark'
@@ -42,7 +42,7 @@ export default function PersonalBookmarkCard({
         comments={comments}
         setPersonalCards={setPersonalCards}
       />}
-      <Button onClick={() => handleClick('delete')}>Delete</Button>
+      <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
     </Card>
   );
 }

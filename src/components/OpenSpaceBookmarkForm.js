@@ -4,19 +4,29 @@ import {
   Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
 import { getCurrentUserUid } from '../helpers/data/userData';
-import { addPublicBookmarks } from '../helpers/data/openSpaceData';
+import { addPublicBookmarks, updatePublicBookmark } from '../helpers/data/openSpaceData';
 
 export default function OpenSpaceBookmarkForm({
-  publicCategory, setPublicBookmarks, formTitle, setOpenForm
+  publicCategory,
+  setPublicBookmarks,
+  formTitle,
+  setOpenForm,
+  firebaseKey,
+  title,
+  url,
+  comments,
+  categoryId,
+  likes,
+  setShowForm
 }) {
   const [publicBookmark, setPublicBookmark] = useState({
-    firebaseKey: null,
-    categoryId: '',
-    title: '',
-    url: '',
-    comments: '',
+    firebaseKey: firebaseKey || null,
+    categoryId: categoryId || '',
+    title: title || '',
+    url: url || '',
+    comments: comments || '',
     uid: getCurrentUserUid(),
-    likes: 0
+    likes: likes || 0
   });
 
   const handleInputChange = (e) => {
@@ -28,9 +38,14 @@ export default function OpenSpaceBookmarkForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addPublicBookmarks(publicBookmark).then((response) => setPublicBookmarks(response));
-    setOpenForm(false);
-    setPublicBookmark('');
+    if (publicBookmark.firebaseKey) {
+      updatePublicBookmark(publicBookmark).then((response) => setPublicBookmarks(response));
+      setShowForm(false);
+    } else {
+      addPublicBookmarks(publicBookmark).then((response) => setPublicBookmarks(response));
+      setOpenForm(false);
+      setPublicBookmark('');
+    }
   };
 
   return (
@@ -101,5 +116,13 @@ OpenSpaceBookmarkForm.propTypes = {
   setPublicCategory: PropTypes.func,
   setPublicBookmarks: PropTypes.func,
   formTitle: PropTypes.string,
-  setOpenForm: PropTypes.func
+  setOpenForm: PropTypes.func,
+  firebaseKey: PropTypes.string,
+  title: PropTypes.string,
+  url: PropTypes.string,
+  comments: PropTypes.string,
+  likes: PropTypes.number,
+  uid: PropTypes.string,
+  categoryId: PropTypes.string,
+  setShowForm: PropTypes.func
 };
