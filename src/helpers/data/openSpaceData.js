@@ -25,4 +25,10 @@ const addPublicBookmarks = (dataObj) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export { getPublicBookmarks, addPublicBookmarks };
+const deletePublicBookmark = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/public_bookmark/${firebaseKey}.json`)
+    .then(() => getPublicBookmarks().then((bookmarkArray) => resolve(bookmarkArray)))
+    .catch((err) => reject(err));
+});
+
+export { getPublicBookmarks, addPublicBookmarks, deletePublicBookmark };
