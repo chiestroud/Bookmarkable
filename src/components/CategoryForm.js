@@ -5,6 +5,7 @@ import {
 } from 'reactstrap';
 import { getCurrentUserUid } from '../helpers/data/userData';
 import { addPersonalCategoryData } from '../helpers/data/categoryData';
+import { TitleStyle } from '../styles/FormStyle';
 
 export default function CategoryForm({ formTitle, user, setCategory }) {
   const [openForm, setOpenForm] = useState(false);
@@ -37,11 +38,11 @@ export default function CategoryForm({ formTitle, user, setCategory }) {
       <div><Button color='success' onClick={handleClick}>{openForm ? 'Close Form' : 'Add Category'}</Button></div>
       {openForm
         && <Form
-        id="personalCategoryForm"
+        id="form"
         autoComplete='off'
         onSubmit={handleSubmit}
       >
-        <h2>{formTitle}</h2>
+        <TitleStyle>{formTitle}</TitleStyle>
           <FormGroup>
           <Label for="categoryName">Category</Label>
           <Input

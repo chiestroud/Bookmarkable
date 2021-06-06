@@ -28,7 +28,7 @@ export default function Home() {
           <CardLink src={singleResource.url} target='_blank'>{singleResource.url}</CardLink>
           </div>
         }
-        <Button onClick={handleClick}>{!showResource ? 'Find' : 'Another Resource'}</Button>
+        <Button color='danger' onClick={handleClick}>{!showResource ? 'Find' : 'Another Resource'}</Button>
       </Card>
     </section>
   );

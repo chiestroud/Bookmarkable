@@ -63,9 +63,8 @@ export default function OpenBookmarkCard({
       <CardTitle>{title}</CardTitle>
       <CardLink href={url} target='_blank'>{url}</CardLink>
       <CardText>{comments}</CardText>
-      {((user && user.uid === uid) || (user && admin === true))
-        && <div>
-        <Button color='warning' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
+        <div>
+        {(user && user.uid === uid) && <Button color='warning' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>}
         {showForm && <OpenSpaceBookmarkForm
           formTitle='Edit Bookmark'
           publicCategory={publicCategory}
@@ -81,9 +80,8 @@ export default function OpenBookmarkCard({
           categoryId={categoryId}
           setOpenForm={setOpenForm}
         />}
-          <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
+          {((user && admin) || (user && user.uid === uid)) && <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>}
         </div>
-      }
     </Card>
     </IndividualCardStyle>
   );

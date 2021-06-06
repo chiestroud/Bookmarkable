@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
 const HeadStyle = styled.div`
-  display: flex;
-  flex-direction: column;
+  padding: 2%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: auto;
 `;
 
 const InputStyle = styled.div`
-  width: 250px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 90% 10%;
 `;
 
 const CardStyle = styled.div`
@@ -23,5 +25,5 @@ const IndividualCardStyle = styled.div`
 `;
 
 export {
-  HeadStyle, InputStyle, CardStyle, IndividualCardStyle
+  HeadStyle, CardStyle, IndividualCardStyle, InputStyle
 };

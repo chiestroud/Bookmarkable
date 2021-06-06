@@ -5,6 +5,7 @@ import Home from '../views/Home';
 import NotFound from '../views/NotFound';
 import Personal from '../views/Personal';
 import OpenSpace from '../views/OpenSpace';
+import Admin from '../views/Admin';
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
   const routeChecker = (taco) => (user
@@ -18,6 +19,17 @@ PrivateRoute.propTypes = {
   user: PropTypes.any
 };
 
+const AdminRoute = ({ component: Component, admin, ...rest }) => {
+  const routeChecker = (taco) => (admin
+    ? (<Component {...taco} admin={admin} />)
+    : (<Redirect to={{ pathname: '/', state: { from: taco.location } }} />));
+  return <Route {...rest} render={(props) => routeChecker(props)} />;
+};
+
+AdminRoute.propTypes = {
+  component: PropTypes.func,
+  admin: PropTypes.any
+};
 export default function Routes({ user, admin }) {
   return (
     <div>
@@ -30,7 +42,11 @@ export default function Routes({ user, admin }) {
         <PrivateRoute
           path='/personal'
           user={user}
-          component={() => <Personal user={user}/>} />
+          component={() => <Personal user={user} />} />
+        <AdminRoute
+          path='/admin'
+          admin={admin}
+          component={() => <Admin admin={admin} />} />
         <Route path='*' component={NotFound} />
       </Switch>
     </div>

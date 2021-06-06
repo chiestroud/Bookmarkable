@@ -5,6 +5,7 @@ import {
 } from 'reactstrap';
 import { getCurrentUserUid } from '../helpers/data/userData';
 import { addPublicBookmarks, updatePublicBookmark } from '../helpers/data/openSpaceData';
+import { TitleStyle } from '../styles/FormStyle';
 
 export default function OpenSpaceBookmarkForm({
   publicCategory,
@@ -50,11 +51,11 @@ export default function OpenSpaceBookmarkForm({
 
   return (
     <Form
-      id='publicForm'
+      id='form'
       autoComplete='off'
       onSubmit={handleSubmit}
     >
-      <h2>{formTitle}</h2>
+      <TitleStyle>{formTitle}</TitleStyle>
       <FormGroup>
         <Label for="title">Resource Title</Label>
         <Input

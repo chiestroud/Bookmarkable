@@ -44,33 +44,10 @@ export default function Personal({ user }) {
 
   return (
     <section>
-      <header>Personal Bookmark</header>
+      <header><h1>Personal Bookmark</h1></header>
       <HeadStyle>
-        <InputStyle>
-          <Input
-            type='select'
-            placeholder='Select Category'
-            onChange={(e) => setSearchTerm(e.target.value)}
-          >
-            <option value=''>Select</option>
-            {category.map((item) => (
-              <option
-                value={item.firebaseKey}
-                key={item.firebaseKey}
-              >{item.categoryName}</option>
-            ))}
-          </Input>
-          <Button color='success' onClick={() => handleClick('categorySearch')}>Search</Button>
-        </InputStyle>
-        <InputStyle>
-          <Input
-            type='text'
-            placeholder="keyword search"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <Button color='success' onClick={() => handleClick('keywordSearch')}>Search</Button>
-        </InputStyle>
-        <div><Button onClick={() => handleClick('display')}>{displayForm ? 'Close Form' : 'Add Bookmark'}</Button></div>
+      <div>
+      <Button onClick={() => handleClick('display')}>{displayForm ? 'Close Form' : 'Add Bookmark'}</Button>
         {displayForm
           && <PersonalForm
           formTitle='Add a new personal bookmark'
@@ -86,6 +63,33 @@ export default function Personal({ user }) {
           setCategory={setCategory}
           user={user}
         />
+        </div>
+        <div>
+        <InputStyle>
+          <Input
+            type='select'
+            placeholder='Search Category'
+            onChange={(e) => setSearchTerm(e.target.value)}
+          >
+            <option value=''>Search Category</option>
+            {category.map((item) => (
+              <option
+                value={item.firebaseKey}
+                key={item.firebaseKey}
+              >{item.categoryName}</option>
+            ))}
+          </Input>
+          <Button color='success' onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
+        </InputStyle>
+        <InputStyle>
+          <Input
+            type='text'
+            placeholder="Search Keywords"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <Button color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
+          </InputStyle>
+          </div>
       </HeadStyle>
       <CardStyle>
       {personalCards.map((personalCard) => (

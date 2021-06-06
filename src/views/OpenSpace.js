@@ -39,38 +39,42 @@ export default function OpenSpace({ user, admin }) {
 
   return (
     <section>
-      <header>Open Space</header>
+      <header><h1>Open Space</h1></header>
       <HeadStyle>
-      <InputStyle>
-          <Input
-            type='select'
-            placeholder="Select Category"
-            onChange={(e) => setSearchTerm(e.target.value)}>
-            <option value=''>Select</option>
-            {publicCategory.map((item) => (
-              <option
-              value={item.firebaseKey}
-              key={item.firebaseKey}
-              >{item.categoryName}</option>
-            ))}
-          </Input>
-          <Button color='success' onClick={() => handleClick('categorySearch')}>Search</Button>
-        </InputStyle>
-        <InputStyle>
-          <Input
-            type='text'
-            placeholder="Keyword search"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <Button color='success' onClick={() => handleClick('keywordSearch')}>Search</Button>
-        </InputStyle>
-      <div><Button onClick={() => handleClick('openForm')}>{openForm ? 'Close Form' : 'Add Bookmark'}</Button></div>
-      {openForm && <OpenSpaceBookmarkForm
-        formTitle='Add Public Bookmark'
-        publicCategory={publicCategory}
-        setPublicBookmarks={setPublicBookmarks}
-        setOpenForm={setOpenForm}
-        />}
+        <div>
+          <Button onClick={() => handleClick('openForm')}>{openForm ? 'Close Form' : 'Add Bookmark'}</Button>
+          {openForm && <OpenSpaceBookmarkForm
+            formTitle='Add Public Bookmark'
+            publicCategory={publicCategory}
+            setPublicBookmarks={setPublicBookmarks}
+            setOpenForm={setOpenForm}
+          />}
+        </div>
+        <div>
+          <InputStyle>
+            <Input
+              type='select'
+              placeholder="Search Category"
+              onChange={(e) => setSearchTerm(e.target.value)}>
+              <option value=''>Search by Category</option>
+              {publicCategory.map((item) => (
+                <option
+                value={item.firebaseKey}
+                key={item.firebaseKey}
+                >{item.categoryName}</option>
+              ))}
+            </Input>
+            <Button color='success' onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
+          </InputStyle>
+          <InputStyle>
+            <Input
+              type='text'
+              placeholder='Search Keywords'
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <Button color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
+          </InputStyle>
+        </div>
       </HeadStyle>
       <CardStyle>
       {publicBookmarks.map((publicBookmark) => (

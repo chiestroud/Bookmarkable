@@ -13,14 +13,14 @@ import {
 import { signInUser, signOutUser } from '../helpers/auth';
 import { NavLinkStyle, NavStyle } from '../styles/NavBarStyle';
 
-const NavBar = ({ user }) => {
+const NavBar = ({ user, admin }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <NavStyle>
-      <Navbar light expand="md">
+      <Navbar expand="md">
         <Link className='navbar-brand' to="/"><i className="fas fa-book-open mr-2"></i>Bookmarkable</Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -33,14 +33,20 @@ const NavBar = ({ user }) => {
               <NavItem>
                 <Link className='nav-link' to="/personal">Personal</Link>
               </NavItem>
+              {(user && admin)
+                && <NavItem>
+                  <Link className='nav-link' to="/admin">Admin</Link>
+                </NavItem>
+              }
               </NavLinkStyle>
               <NavbarText>
                 <Button color='danger' onClick={signOutUser}>Log Out</Button>
             </NavbarText>
             </Nav>
             }
-          {user && <NavbarText className='welcomeText'>Welcome, <span className='displayName mr-2'>{user.displayName}</span><img className='profileImage' src={user.photoURL}/></NavbarText>}
-          {!user && <Button color='info' onClick={signInUser}>Sign In</Button>}
+          {user
+            ? <NavbarText className='welcomeText'>Welcome, <span className='displayName mr-2'>{user.displayName}</span><img className='profileImage' src={user.photoURL} /></NavbarText>
+            : <NavbarText><Button color='warning' onClick={signInUser}>Sign In</Button></NavbarText>}
         </Collapse>
       </Navbar>
     </NavStyle>
@@ -48,7 +54,8 @@ const NavBar = ({ user }) => {
 };
 
 NavBar.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
+  admin: PropTypes.any
 };
 
 export default NavBar;
