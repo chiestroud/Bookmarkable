@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import OpenBookmarkCard from '../components/OpenBookmarkCard';
 import OpenSpaceBookmarkForm from '../components/OpenSpaceBookmarkForm';
 import { getPublicBookmarks, searchPublicBookmarks, searchPublicCategory } from '../helpers/data/openSpaceData';
-import getPublicCategoryData from '../helpers/data/publicCategoryData';
-import { HeadStyle, InputStyle } from '../styles/OpenBookStyle';
+import { getPublicCategoryData } from '../helpers/data/publicCategoryData';
+import { CardStyle, HeadStyle, InputStyle } from '../styles/BookmarkStyle';
 
-export default function OpenSpace({ user }) {
+export default function OpenSpace({ user, admin }) {
   const [publicBookmarks, setPublicBookmarks] = useState([]);
   const [publicCategory, setPublicCategory] = useState([]);
   const [openForm, setOpenForm] = useState(false);
@@ -21,68 +21,80 @@ export default function OpenSpace({ user }) {
     getPublicCategoryData().then((response) => setPublicCategory(response));
   }, []);
 
-  const handleClick = () => {
-    setOpenForm((prevState) => !prevState);
-  };
-
-  const handleSearchClick = () => {
-    searchPublicBookmarks(searchTerm).then((response) => setPublicBookmarks(response));
-  };
-
-  const handleCategorySearchClick = () => {
-    searchPublicCategory(searchTerm).then((response) => setPublicBookmarks(response));
+  const handleClick = (type) => {
+    switch (type) {
+      case 'openForm':
+        setOpenForm((prevState) => !prevState);
+        break;
+      case 'categorySearch':
+        searchPublicCategory(searchTerm).then((response) => setPublicBookmarks(response));
+        break;
+      case 'keywordSearch':
+        searchPublicBookmarks(searchTerm).then((response) => setPublicBookmarks(response));
+        break;
+      default:
+        console.warn('error');
+    }
   };
 
   return (
     <section>
-      <header>Open Space</header>
+      <header><h1>Open Space</h1></header>
       <HeadStyle>
-      <InputStyle>
-          <Input
-            type='select'
-            placeholder="Select Category"
-            onChange={(e) => setSearchTerm(e.target.value)}>
-            <option value=''>Select</option>
-            {publicCategory.map((item) => (
-              <option
-              value={item.firebaseKey}
-              key={item.firebaseKey}
-              >{item.categoryName}</option>
-            ))}
-          </Input>
-          <Button color='success' onClick={handleCategorySearchClick}>Search</Button>
-        </InputStyle>
-        <InputStyle>
-          <Input
-            type='text'
-            placeholder="Keyword search"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <Button color='success' onClick={handleSearchClick}>Search</Button>
-        </InputStyle>
-      <div><Button onClick={handleClick}>{openForm ? 'Close Form' : 'Open Form'}</Button></div>
-      {openForm && <OpenSpaceBookmarkForm
-        formTitle='Add Public Bookmark'
-        publicCategory={publicCategory}
-        setPublicBookmarks={setPublicBookmarks}
-        setOpenForm={setOpenForm}
-        />}
+        <div>
+          <Button onClick={() => handleClick('openForm')}>{openForm ? 'Close Form' : 'Add Bookmark'}</Button>
+          {openForm && <OpenSpaceBookmarkForm
+            formTitle='Add Public Bookmark'
+            publicCategory={publicCategory}
+            setPublicBookmarks={setPublicBookmarks}
+            setOpenForm={setOpenForm}
+          />}
+        </div>
+        <div>
+          <InputStyle>
+            <Input
+              type='select'
+              placeholder="Search Category"
+              onChange={(e) => setSearchTerm(e.target.value)}>
+              <option value=''>Search by Category</option>
+              {publicCategory.map((item) => (
+                <option
+                value={item.firebaseKey}
+                key={item.firebaseKey}
+                >{item.categoryName}</option>
+              ))}
+            </Input>
+            <Button color='success' onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
+          </InputStyle>
+          <InputStyle>
+            <Input
+              type='text'
+              placeholder='Search Keywords'
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <Button color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
+          </InputStyle>
+        </div>
       </HeadStyle>
-      <div className='openBookmark'>
+      <CardStyle>
       {publicBookmarks.map((publicBookmark) => (
         <OpenBookmarkCard
           key={publicBookmark.firebaseKey}
           {...publicBookmark}
           user={user}
+          admin={admin}
+          setOpenForm={setOpenForm}
           publicCategory={publicCategory}
+          publicBookmarks={publicBookmarks}
           setPublicBookmarks={setPublicBookmarks}
         />
       ))}
-      </div>
+      </CardStyle>
     </section>
   );
 }
 
 OpenSpace.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
+  admin: PropTypes.any
 };

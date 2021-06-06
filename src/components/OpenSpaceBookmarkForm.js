@@ -5,13 +5,14 @@ import {
 } from 'reactstrap';
 import { getCurrentUserUid } from '../helpers/data/userData';
 import { addPublicBookmarks, updatePublicBookmark } from '../helpers/data/openSpaceData';
+import { TitleStyle } from '../styles/FormStyle';
 
 export default function OpenSpaceBookmarkForm({
   publicCategory,
+  firebaseKey,
   setPublicBookmarks,
   formTitle,
   setOpenForm,
-  firebaseKey,
   title,
   url,
   comments,
@@ -20,7 +21,7 @@ export default function OpenSpaceBookmarkForm({
   setShowForm
 }) {
   const [publicBookmark, setPublicBookmark] = useState({
-    firebaseKey: firebaseKey || null,
+    firebaseKey: firebaseKey || '',
     categoryId: categoryId || '',
     title: title || '',
     url: url || '',
@@ -50,11 +51,11 @@ export default function OpenSpaceBookmarkForm({
 
   return (
     <Form
-      id='publicForm'
+      id='form'
       autoComplete='off'
       onSubmit={handleSubmit}
     >
-      <h2>{formTitle}</h2>
+      <TitleStyle>{formTitle}</TitleStyle>
       <FormGroup>
         <Label for="title">Resource Title</Label>
         <Input
@@ -105,7 +106,7 @@ export default function OpenSpaceBookmarkForm({
             onChange={handleInputChange}
           />
         </FormGroup>
-        <Button type='submit'>Submit</Button>
+        <Button>Submit</Button>
       </Form>
   );
 }

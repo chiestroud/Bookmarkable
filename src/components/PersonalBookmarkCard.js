@@ -5,6 +5,7 @@ import {
 } from 'reactstrap';
 import { deletePersonalData } from '../helpers/data/personalData';
 import PersonalForm from './PersonalForm';
+import { IndividualCardStyle } from '../styles/BookmarkStyle';
 
 export default function PersonalBookmarkCard({
   title,
@@ -13,7 +14,8 @@ export default function PersonalBookmarkCard({
   comments,
   user,
   setPersonalCards,
-  category
+  category,
+  categoryId
 }) {
   const [showForm, setShowForm] = useState(false);
   const handleClick = (type) => {
@@ -25,6 +27,7 @@ export default function PersonalBookmarkCard({
   };
 
   return (
+    <IndividualCardStyle>
     <Card key={firebaseKey}>
       <CardTitle>{title}</CardTitle>
       <CardLink href={url} target='_blank'>{url}</CardLink>
@@ -35,6 +38,7 @@ export default function PersonalBookmarkCard({
         formTitle='Edit Bookmark'
         user={user}
         category={category}
+        categoryId={categoryId}
         setShowForm={setShowForm}
         firebaseKey={firebaseKey}
         title={title}
@@ -44,6 +48,7 @@ export default function PersonalBookmarkCard({
       />}
       <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
     </Card>
+    </IndividualCardStyle>
   );
 }
 
@@ -54,5 +59,6 @@ PersonalBookmarkCard.propTypes = {
   comments: PropTypes.string.isRequired,
   user: PropTypes.any,
   setPersonalCards: PropTypes.func,
-  category: PropTypes.array
+  category: PropTypes.array,
+  categoryId: PropTypes.string
 };

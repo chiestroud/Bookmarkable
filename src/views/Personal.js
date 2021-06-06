@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import { Button, Input } from 'reactstrap';
 import PersonalBookmarkCard from '../components/PersonalBookmarkCard';
 import PersonalForm from '../components/PersonalForm';
 import { getPersonalCategoryData } from '../helpers/data/categoryData';
-import { getPersonalData } from '../helpers/data/personalData';
+import { getPersonalData, searchPersonalBookmark, searchPersonalCategory } from '../helpers/data/personalData';
 import CategoryForm from '../components/CategoryForm';
+import { CardStyle, HeadStyle, InputStyle } from '../styles/BookmarkStyle';
 
 export default function Personal({ user }) {
   const [personalCards, setPersonalCards] = useState([]);
   const [category, setCategory] = useState([]);
   const [displayForm, setDisplayForm] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     if (user) {
@@ -24,15 +26,28 @@ export default function Personal({ user }) {
     }
   }, []);
 
-  const handleClick = () => {
-    setDisplayForm((prevState) => !prevState);
+  const handleClick = (type) => {
+    switch (type) {
+      case 'display':
+        setDisplayForm((prevState) => !prevState);
+        break;
+      case 'categorySearch':
+        searchPersonalCategory(searchTerm, user).then((response) => setPersonalCards(response));
+        break;
+      case 'keywordSearch':
+        searchPersonalBookmark(searchTerm, user).then((response) => setPersonalCards(response));
+        break;
+      default:
+        console.warn('error');
+    }
   };
 
   return (
     <section>
-      <header>Personal Bookmark</header>
-      <div className="formContainer">
-        <Button onClick={handleClick}>{displayForm ? 'Close Form' : 'Add Bookmark'}</Button>
+      <header><h1>Personal Bookmark</h1></header>
+      <HeadStyle>
+      <div>
+      <Button onClick={() => handleClick('display')}>{displayForm ? 'Close Form' : 'Add Bookmark'}</Button>
         {displayForm
           && <PersonalForm
           formTitle='Add a new personal bookmark'
@@ -48,8 +63,35 @@ export default function Personal({ user }) {
           setCategory={setCategory}
           user={user}
         />
-      </div>
-      <div className="cardContainer">
+        </div>
+        <div>
+        <InputStyle>
+          <Input
+            type='select'
+            placeholder='Search Category'
+            onChange={(e) => setSearchTerm(e.target.value)}
+          >
+            <option value=''>Search Category</option>
+            {category.map((item) => (
+              <option
+                value={item.firebaseKey}
+                key={item.firebaseKey}
+              >{item.categoryName}</option>
+            ))}
+          </Input>
+          <Button color='success' onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
+        </InputStyle>
+        <InputStyle>
+          <Input
+            type='text'
+            placeholder="Search Keywords"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <Button color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
+          </InputStyle>
+          </div>
+      </HeadStyle>
+      <CardStyle>
       {personalCards.map((personalCard) => (
         <PersonalBookmarkCard
           key={personalCard.firebaseKey}
@@ -60,7 +102,7 @@ export default function Personal({ user }) {
           setDisplayForm={setDisplayForm}
         />
       ))}
-      </div>
+      </CardStyle>
     </section>
   );
 }

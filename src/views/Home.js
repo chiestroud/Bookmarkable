@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <section className="home">
-      <header>Welcome to Bookmarkable</header>
+      <header className='title'>Welcome to Bookmarkable - JS Version</header>
       <Card className='homeCard'>
         <CardTitle>JavaScript Resource of the Day</CardTitle>
         {showResource && <div>
@@ -28,7 +28,7 @@ export default function Home() {
           <CardLink src={singleResource.url} target='_blank'>{singleResource.url}</CardLink>
           </div>
         }
-        <Button onClick={handleClick}>{!showResource ? 'Find' : 'Another Resource'}</Button>
+        <Button color='danger' onClick={handleClick}>{!showResource ? 'Find' : 'Another Resource'}</Button>
       </Card>
     </section>
   );

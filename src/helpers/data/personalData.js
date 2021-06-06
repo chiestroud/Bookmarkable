@@ -37,6 +37,20 @@ const deletePersonalData = (firebaseKey, user) => new Promise((resolve, reject) 
     .catch((err) => reject(err));
 });
 
+const searchPersonalCategory = (searchTerm, user) => new Promise((resolve, reject) => {
+  getPersonalData(user).then((bookmarkArray) => {
+    const searchItems = bookmarkArray.filter((category) => category.categoryId.includes(searchTerm));
+    resolve(searchItems);
+  }).catch((err) => reject(err));
+});
+
+const searchPersonalBookmark = (searchTerm, user) => new Promise((resolve, reject) => {
+  getPersonalData(user).then((bookmarkArray) => {
+    const searchItems = bookmarkArray.filter((word) => word.title.toLowerCase().includes(searchTerm));
+    resolve(searchItems);
+  }).catch((err) => reject(err));
+});
+
 export {
-  getPersonalData, addPersonalData, deletePersonalData, updatePersonalData
+  getPersonalData, addPersonalData, deletePersonalData, updatePersonalData, searchPersonalCategory, searchPersonalBookmark
 };
