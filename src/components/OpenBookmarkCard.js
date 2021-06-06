@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import {
   Card,
   CardTitle,
-  CardLink,
   CardText,
-  Button
+  Button,
+  CardLink
 } from 'reactstrap';
+import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import OpenSpaceBookmarkForm from './OpenSpaceBookmarkForm';
 import { deletePublicBookmark } from '../helpers/data/openSpaceData';
 import BookmarkForm from './BookmarkForm';
-import { IndividualCardStyle } from '../styles/BookmarkStyle';
+import { CardButtonStyle, IndividualCardStyle } from '../styles/BookmarkStyle';
 
 export default function OpenBookmarkCard({
   firebaseKey,
@@ -60,9 +61,15 @@ export default function OpenBookmarkCard({
         user={user}
         setShowCategory={setShowCategory}
       />}
-      <CardTitle>{title}</CardTitle>
-      <CardLink href={url} target='_blank'>{url}</CardLink>
-      <CardText>{comments}</CardText>
+        <CardTitle>{title}</CardTitle>
+        <div><LinkPreview url={url} descriptionLength='50' imageHeight='150px'/></div>
+        <CardLink href={url} target='_blank'>{url}</CardLink>
+        <CardText>{comments}</CardText>
+        <CardButtonStyle>
+          <div><Button title='Like?'><i className="far fa-star"></i></Button></div>
+          <div>{likes}</div>
+          <div><Button title='Report?'><i className="fas fa-ban"></i></Button></div>
+        </CardButtonStyle>
         <div>
         {(user && user.uid === uid) && <Button color='warning' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>}
         {showForm && <OpenSpaceBookmarkForm
@@ -81,7 +88,7 @@ export default function OpenBookmarkCard({
           setOpenForm={setOpenForm}
         />}
           {((user && admin) || (user && user.uid === uid)) && <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>}
-        </div>
+          </div>
     </Card>
     </IndividualCardStyle>
   );

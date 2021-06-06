@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   Card, CardTitle, Button, CardText, CardLink
 } from 'reactstrap';
+import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import { getPublicBookmarks } from '../helpers/data/openSpaceData';
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
         <CardTitle>JavaScript Resource of the Day</CardTitle>
         {showResource && <div>
           <CardText>{singleResource.title}</CardText>
+          <CardText><LinkPreview url={singleResource.url} descriptionLength='100' imageHeight='200px'/></CardText>
           <CardLink src={singleResource.url} target='_blank'>{singleResource.url}</CardLink>
           </div>
         }
