@@ -27,7 +27,7 @@ const IndividualCardStyle = styled.div`
 
 const CardButtonStyle = styled.div`
   display: grid;
-  grid-template-columns: 15% 10% 15%;
+  grid-template-columns: 33% 33% 33%;
 `;
 
 const SpanStyle = styled.span`

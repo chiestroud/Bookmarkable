@@ -29,6 +29,17 @@ export default function OpenBookmarkCard({
 }) {
   const [showForm, setShowForm] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
+  const [likeColor, setLikeColor] = useState(false);
+  const [like, setLike] = useState(likes);
+
+  const toggleLike = () => {
+    setLikeColor((prevState) => !(prevState));
+    if (!likeColor) {
+      setLike((prevState) => prevState + 1);
+    } else {
+      setLike((prevState) => prevState - 1);
+    }
+  };
 
   const handleClick = (type) => {
     switch (type) {
@@ -66,8 +77,7 @@ export default function OpenBookmarkCard({
         <CardLink href={url} target='_blank'>{url}</CardLink>
         <CardText>{comments}</CardText>
         <CardButtonStyle>
-          <div><Button title='Like?'><i className="far fa-star"></i></Button></div>
-          <div>{likes}</div>
+          <div><Button onClick={toggleLike} id={likeColor ? 'starBtnOn' : 'starBtnOff'} title='Like?'><i className="far fa-star"></i></Button><span className='ml-2'>{like}</span></div>
           <div><Button title='Report?'><i className="fas fa-ban"></i></Button></div>
         </CardButtonStyle>
         <div>
