@@ -9,9 +9,10 @@ import {
 } from 'reactstrap';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import OpenSpaceBookmarkForm from './OpenSpaceBookmarkForm';
-import { deletePublicBookmark } from '../helpers/data/openSpaceData';
+import { deletePublicBookmark, updatePublicBookmark } from '../helpers/data/openSpaceData';
 import BookmarkForm from './BookmarkForm';
 import { CardButtonStyle, IndividualCardStyle } from '../styles/BookmarkStyle';
+import { addPublicBookmarkLikes, deletePublicBookmarkLikes } from '../helpers/data/publicBookmarkLikes.js';
 
 export default function OpenBookmarkCard({
   firebaseKey,
@@ -30,15 +31,29 @@ export default function OpenBookmarkCard({
   const [showForm, setShowForm] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
   const [likeColor, setLikeColor] = useState(false);
-  const [like, setLike] = useState(likes);
+  const [reportColor, setReportColor] = useState(false);
 
   const toggleLike = () => {
     setLikeColor((prevState) => !(prevState));
     if (!likeColor) {
-      setLike((prevState) => prevState + 1);
+      const obj = {
+        firebaseKey: '',
+        uid,
+        bookmarkId: firebaseKey,
+      };
+      addPublicBookmarkLikes(obj).then((response) => console.warn(response));
     } else {
-      setLike((prevState) => prevState - 1);
+      deletePublicBookmarkLikes(firebaseKey).then((response) => console.warn(response));
     }
+  };
+
+  const handleReport = () => {
+    const obj = {
+      firebaseKey,
+      reported: true
+    };
+    updatePublicBookmark(obj).then((response) => setPublicBookmarks(response));
+    setReportColor(true);
   };
 
   const handleClick = (type) => {
@@ -72,13 +87,14 @@ export default function OpenBookmarkCard({
         user={user}
         setShowCategory={setShowCategory}
       />}
-        <CardTitle>{title}</CardTitle>
-        <div><LinkPreview url={url} descriptionLength='50' imageHeight='150px'/></div>
+        <CardTitle className='cardTitle'>{title}</CardTitle>
+        <LinkPreview url={url} descriptionLength='50' imageHeight='120px'/>
         <CardLink href={url} target='_blank'>{url}</CardLink>
         <CardText>{comments}</CardText>
         <CardButtonStyle>
-          <div><Button onClick={toggleLike} id={likeColor ? 'starBtnOn' : 'starBtnOff'} title='Like?'><i className="far fa-star"></i></Button><span className='ml-2'>{like}</span></div>
-          <div><Button title='Report?'><i className="fas fa-ban"></i></Button></div>
+          <div><Button onClick={toggleLike} id={likeColor ? 'starBtnOn' : 'starBtnOff'} title='Like?'><i className="far fa-star"></i></Button><span className='ml-2'>{likes}</span></div>
+          <div><Button className='reportBtn' color='danger' onClick={handleReport} title='Report?'><i className="fas fa-ban"></i></Button></div>
+          <div>{reportColor ? 'Reported' : ''}</div>
         </CardButtonStyle>
         <div>
         {(user && user.uid === uid) && <Button color='warning' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>}

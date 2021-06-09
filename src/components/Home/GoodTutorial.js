@@ -17,8 +17,8 @@ export default function GoodTutorial({ goodTutorials }) {
     <Card className='homeCard'>
       <CardTitle className='randomCardTitle'>{showResource ? '' : 'Good Tutorial'}</CardTitle>
       {showResource && <div>
-        <CardText>{singleGoodTutorial.title}</CardText>
-        <CardText><LinkPreview url={singleGoodTutorial.url} descriptionLength='80' imageHeight='130px' /></CardText>
+        <CardText className='cardTitle'>{singleGoodTutorial.title}</CardText>
+        <LinkPreview url={singleGoodTutorial.url} descriptionLength='80' imageHeight='130px' />
         <CardLink src={singleGoodTutorial.url} target='_blank'>{singleGoodTutorial.url}</CardLink>
       </div>
       }

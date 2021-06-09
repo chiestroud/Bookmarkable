@@ -28,7 +28,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2%;
+  margin: 1%;
   height: 100%;
   border: 2px black solid;
 }
@@ -36,6 +36,12 @@ body {
 .randomCardTitle {
   font-size: 2rem;
   font-weight: bold;
+}
+
+.cardTitle {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 .profileImage {
   width: 60px;
@@ -66,7 +72,6 @@ button.bookmarkbtn.btn.btn-secondary:hover {
   background-color: green;
   color: white;
 }
-
 // NAVBAR 
 a.navbar-brand {
   font-weight: bold;
@@ -94,6 +99,10 @@ a.nav-link:hover {
 li.nav-item {
   display: flex;
   align-items: center;
+}
+
+.fa-hamburger {
+  color: white;
 }
 
 // CARD
@@ -129,4 +138,19 @@ div.card {
 
 #starBtnOff {
   background-color: gray;
+}
+
+.japaneseImage {
+  object-fit: cover;
+  height: 200px;
+}
+
+@media screen and (max-width: 1000px) {
+  .home {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 }

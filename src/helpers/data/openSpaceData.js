@@ -14,6 +14,17 @@ const getPublicBookmarks = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
+const getReportedPublicBookmarks = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/public_bookmark.json?orderBy="reported"&equalTo=true`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    }).catch((err) => reject(err));
+});
+
 const addPublicBookmarks = (dataObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/public_bookmark.json`, dataObj)
     .then((response) => {
@@ -31,9 +42,21 @@ const updatePublicBookmark = (bookmark) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const updateReportedPublicBookmark = (bookmark) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/public_bookmark/${bookmark.firebaseKey}.json`, bookmark)
+    .then(() => getReportedPublicBookmarks().then(resolve))
+    .catch((err) => reject(err));
+});
+
 const deletePublicBookmark = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/public_bookmark/${firebaseKey}.json`)
     .then(() => getPublicBookmarks().then((bookmarkArray) => resolve(bookmarkArray)))
+    .catch((err) => reject(err));
+});
+
+const deleteReportedPublicBookmark = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/public_bookmark/${firebaseKey}.json`)
+    .then(() => getReportedPublicBookmarks().then(resolve))
     .catch((err) => reject(err));
 });
 
@@ -54,5 +77,5 @@ const searchPublicCategory = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  getPublicBookmarks, addPublicBookmarks, deletePublicBookmark, updatePublicBookmark, searchPublicBookmarks, searchPublicCategory
+  getPublicBookmarks, addPublicBookmarks, deletePublicBookmark, updatePublicBookmark, updateReportedPublicBookmark, searchPublicBookmarks, searchPublicCategory, getReportedPublicBookmarks, deleteReportedPublicBookmark
 };

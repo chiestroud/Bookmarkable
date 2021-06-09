@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, CardTitle, CardText, Button
+  Card, CardTitle, CardText, Button, CardImg
 } from 'reactstrap';
 
 export default function Japanese({ japaneseTrivia }) {
@@ -16,7 +16,8 @@ export default function Japanese({ japaneseTrivia }) {
     <Card className='homeCard'>
       <CardTitle className='randomCardTitle'>{showResource ? '' : 'Did you know? (Japanese words in English)'}</CardTitle>
       {showResource && <div>
-        <CardText>{singleJapaneseResource.word}</CardText>
+        <CardText className='cardTitle'>{singleJapaneseResource.word}</CardText>
+        <CardImg className='japaneseImage' src={singleJapaneseResource.url} alt="{singleJapaneseResource.word}" />
         <CardText>{singleJapaneseResource.comment}</CardText>
       </div>}
       <Button color='danger' onClick={handleClick}>{!showResource ? 'Find' : 'Another Japanese Word'}</Button>

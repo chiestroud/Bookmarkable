@@ -30,7 +30,7 @@ export default function PersonalBookmarkCard({
   return (
     <IndividualCardStyle>
     <Card key={firebaseKey}>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className='cardTitle'>{title}</CardTitle>
         <CardLink href={url} target='_blank'><LinkPreview url={url} descriptionLength='50' imageHeight='150px'/></CardLink>
       <CardLink href={url} target='_blank'>{url}</CardLink>
       <CardText>{comments}</CardText>
