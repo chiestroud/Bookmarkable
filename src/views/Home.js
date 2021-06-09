@@ -1,35 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Card, CardTitle, Button, CardText, CardLink
-} from 'reactstrap';
-import { getPublicBookmarks } from '../helpers/data/openSpaceData';
+  getGoodReads, getGoodTutorials, getJapaneseTrivia, getOtherResources
+} from '../helpers/data/homeData';
+import Japanese from '../components/Home/Japanese';
+import GoodRead from '../components/Home/GoodRead';
+import GoodTutorial from '../components/Home/GoodTutorial';
+import OtherResources from '../components/Home/OtherResources';
 
 export default function Home() {
-  const [randomResources, setRandomResources] = useState([]);
-  const [singleResource, setSingleResource] = useState([]);
-  const [showResource, setShowResource] = useState(false);
+  const [goodTutorials, setGoodTutorials] = useState([]);
+  const [japaneseTrivia, setJapaneseTrivia] = useState([]);
+  const [goodReads, setGoodReads] = useState([]);
+  const [otherResources, setOtherResources] = useState([]);
 
   useEffect(() => {
-    getPublicBookmarks().then((resources) => setRandomResources(resources));
+    getGoodTutorials().then((resources) => setGoodTutorials(resources));
+    getJapaneseTrivia().then((response) => setJapaneseTrivia(response));
+    getGoodReads().then((response) => setGoodReads(response));
+    getOtherResources().then((response) => setOtherResources(response));
   }, []);
 
-  const handleClick = () => {
-    setSingleResource(randomResources[Math.floor(Math.random() * randomResources.length)]);
-    setShowResource(true);
-  };
-
   return (
+    <>
+    <header className='title'>Welcome to Bookmarkable - JS Version</header>
     <section className="home">
-      <header className='title'>Welcome to Bookmarkable - JS Version</header>
-      <Card className='homeCard'>
-        <CardTitle>JavaScript Resource of the Day</CardTitle>
-        {showResource && <div>
-          <CardText>{singleResource.title}</CardText>
-          <CardLink src={singleResource.url} target='_blank'>{singleResource.url}</CardLink>
-          </div>
-        }
-        <Button color='danger' onClick={handleClick}>{!showResource ? 'Find' : 'Another Resource'}</Button>
-      </Card>
+      <GoodTutorial goodTutorials={goodTutorials} />
+      <GoodRead goodReads={goodReads} />
+      <OtherResources otherResources={otherResources} />
+      <Japanese japaneseTrivia={japaneseTrivia}/>
     </section>
+    </>
   );
 }

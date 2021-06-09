@@ -12,23 +12,37 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+// Homw page
 .home {
   background-color: #eff4ed;
   height: 90vh;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
   align-items: center;
   justify-content: space-evenly;
+  padding: 1%;
 }
 
-div.homeCard {
-  height: 500px;
-  width: 1000px;
+.homeCard.card {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 1%;
+  height: 100%;
+  border: 2px black solid;
 }
 
+.randomCardTitle {
+  font-size: 2rem;
+  font-weight: bold;
+}
 
+.cardTitle {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
 .profileImage {
   width: 60px;
   border-radius: 50%;
@@ -46,6 +60,7 @@ div.homeCard {
 .title {
   font-weight: bold;
   font-size: 3rem;
+  text-align: center;
 }
 
 button.bookmarkbtn.btn.btn-secondary {
@@ -57,7 +72,6 @@ button.bookmarkbtn.btn.btn-secondary:hover {
   background-color: green;
   color: white;
 }
-
 // NAVBAR 
 a.navbar-brand {
   font-weight: bold;
@@ -87,6 +101,10 @@ li.nav-item {
   align-items: center;
 }
 
+.fa-hamburger {
+  color: white;
+}
+
 // CARD
 div.card {
   width: 100%;
@@ -102,4 +120,37 @@ div.card {
   display: flex;
   flex-direction: column;
   padding: 2%;
+}
+
+// Admin 
+.userCards.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #cad1c9;
+  max-width: 20%;
+  border: 2px solid #212529;
+}
+
+#starBtnOn {
+  background-color:yellow;
+  border: none;
+}
+
+#starBtnOff {
+  background-color: gray;
+}
+
+.japaneseImage {
+  object-fit: cover;
+  height: 200px;
+}
+
+@media screen and (max-width: 1000px) {
+  .home {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 }
