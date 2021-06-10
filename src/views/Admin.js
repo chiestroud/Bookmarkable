@@ -20,8 +20,6 @@ export default function Admin({ user }) {
     getReportedPublicBookmarks().then((response) => setReportedPublicBookmarks(response));
   }, []);
 
-  console.warn(reportedPublicBookmarks);
-
   return (
     <>
       <header><h1>Admin</h1></header>

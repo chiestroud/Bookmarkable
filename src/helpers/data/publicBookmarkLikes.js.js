@@ -14,13 +14,35 @@ const getPublicBookmarkLikes = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-const addPublicBookmarkLikes = (obj) => new Promise((resolve, reject) => {
+const getSingleBookmarkLikes = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/public_bookmark_likes.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    }).catch((err) => reject(err));
+});
+
+const getBookmarkLikesFromId = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/public_bookmark_likes.json?orderBy="bookmarkId"&equalTo="${firebaseKey}"`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    }).catch((err) => reject(err));
+});
+
+const addPublicBookmarkLikes = (obj, firebaseKey) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/public_bookmark_likes.json`, obj)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/public_bookmark_likes/${response.data.name}.json`, body)
         .then(() => {
-          getPublicBookmarkLikes().then((returnedArray) => resolve(returnedArray));
+          getBookmarkLikesFromId(firebaseKey).then((returnedArray) => resolve(returnedArray));
         });
     }).catch((err) => reject(err));
 });
@@ -31,4 +53,6 @@ const deletePublicBookmarkLikes = (firebaseKey) => new Promise((resolve, reject)
     .catch((err) => reject(err));
 });
 
-export { getPublicBookmarkLikes, addPublicBookmarkLikes, deletePublicBookmarkLikes };
+export {
+  getPublicBookmarkLikes, addPublicBookmarkLikes, deletePublicBookmarkLikes, getSingleBookmarkLikes, getBookmarkLikesFromId
+};
