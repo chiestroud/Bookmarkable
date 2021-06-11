@@ -47,9 +47,9 @@ const addPublicBookmarkLikes = (obj, firebaseKey) => new Promise((resolve, rejec
     }).catch((err) => reject(err));
 });
 
-const deletePublicBookmarkLikes = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/public_bookmark_likes/${firebaseKey}.json`)
-    .then(() => getPublicBookmarkLikes().then((journalArray) => resolve(journalArray)))
+const deletePublicBookmarkLikes = (firebasekey, firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/public_bookmark_likes/${firebasekey}.json`)
+    .then(() => getBookmarkLikesFromId(firebaseKey).then((journalArray) => resolve(journalArray)))
     .catch((err) => reject(err));
 });
 
