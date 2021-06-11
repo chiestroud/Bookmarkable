@@ -9,7 +9,7 @@ import './App.scss';
 
 function App() {
   const [user, setUser] = useState([]);
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState([]);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {

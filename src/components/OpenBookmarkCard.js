@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -9,10 +9,11 @@ import {
 } from 'reactstrap';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import OpenSpaceBookmarkForm from './OpenSpaceBookmarkForm';
-import { deletePublicBookmark, updatePublicBookmark } from '../helpers/data/openSpaceData';
+import { deletePublicBookmark } from '../helpers/data/openSpaceData';
 import BookmarkForm from './BookmarkForm';
-import { CardButtonStyle, IndividualCardStyle } from '../styles/BookmarkStyle';
-import { addPublicBookmarkLikes, deletePublicBookmarkLikes } from '../helpers/data/publicBookmarkLikes.js';
+import { IndividualCardStyle } from '../styles/BookmarkStyle';
+import { getBookmarkLikesFromId } from '../helpers/data/publicBookmarkLikesData';
+import LikeReportButton from './LikeReportButton';
 
 export default function OpenBookmarkCard({
   firebaseKey,
@@ -30,31 +31,12 @@ export default function OpenBookmarkCard({
 }) {
   const [showForm, setShowForm] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
-  const [likeColor, setLikeColor] = useState(false);
-  const [reportColor, setReportColor] = useState(false);
 
-  const toggleLike = () => {
-    setLikeColor((prevState) => !(prevState));
-    if (!likeColor) {
-      const obj = {
-        firebaseKey: '',
-        uid,
-        bookmarkId: firebaseKey,
-      };
-      addPublicBookmarkLikes(obj).then((response) => console.warn(response));
-    } else {
-      deletePublicBookmarkLikes(firebaseKey).then((response) => console.warn(response));
-    }
-  };
+  const [allLikes, setAllLikes] = useState([]);
 
-  const handleReport = () => {
-    const obj = {
-      firebaseKey,
-      reported: true
-    };
-    updatePublicBookmark(obj).then((response) => setPublicBookmarks(response));
-    setReportColor(true);
-  };
+  useEffect(() => {
+    getBookmarkLikesFromId(firebaseKey).then((response) => setAllLikes(response));
+  }, []);
 
   const handleClick = (type) => {
     switch (type) {
@@ -75,8 +57,15 @@ export default function OpenBookmarkCard({
   return (
     <IndividualCardStyle>
     <Card>
-      <span><Button className='bookmarkbtn' title='bookmark?' onClick={() => handleClick('categoryList')}><i className="far fa-bookmark"></i></Button></span>
-      {showCategory && <BookmarkForm
+      <span>
+        <Button
+          className='bookmarkbtn' t
+            itle='bookmark?'
+            onClick={() => handleClick('categoryList')}><i className="far fa-bookmark"></i>
+        </Button>
+      </span>
+      {showCategory
+        && <BookmarkForm
         publicCategory={publicCategory}
         firebaseKey={firebaseKey}
         title={title}
@@ -87,16 +76,12 @@ export default function OpenBookmarkCard({
         user={user}
         setShowCategory={setShowCategory}
       />}
-        <CardTitle className='cardTitle'>{title}</CardTitle>
-        <LinkPreview url={url} descriptionLength='50' imageHeight='120px'/>
-        <CardLink href={url} target='_blank'>{url}</CardLink>
+      <CardTitle className='cardTitle'>{title}</CardTitle>
+      <LinkPreview url={url} descriptionLength='50' imageHeight='120px'/>
+      <CardLink href={url} target='_blank'>{url}</CardLink>
         <CardText>{comments}</CardText>
-        <CardButtonStyle>
-          <div><Button onClick={toggleLike} id={likeColor ? 'starBtnOn' : 'starBtnOff'} title='Like?'><i className="far fa-star"></i></Button><span className='ml-2'>{likes}</span></div>
-          <div><Button className='reportBtn' color='danger' onClick={handleReport} title='Report?'><i className="fas fa-ban"></i></Button></div>
-          <div>{reportColor ? 'Reported' : ''}</div>
-        </CardButtonStyle>
-        <div>
+        <LikeReportButton allLikes={allLikes} firebaseKey={firebaseKey} uid={uid} setAllLikes={setAllLikes} setPublicBookmarks={setPublicBookmarks} user={user}/>
+      <div>
         {(user && user.uid === uid) && <Button color='warning' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>}
         {showForm && <OpenSpaceBookmarkForm
           formTitle='Edit Bookmark'
@@ -113,8 +98,8 @@ export default function OpenBookmarkCard({
           categoryId={categoryId}
           setOpenForm={setOpenForm}
         />}
-          {((user && admin) || (user && user.uid === uid)) && <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>}
-          </div>
+        {((user && admin) || (user && user.uid === uid)) && <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>}
+      </div>
     </Card>
     </IndividualCardStyle>
   );
