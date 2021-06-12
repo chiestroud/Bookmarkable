@@ -6,11 +6,11 @@ import UserStyle from '../styles/AdminStyle';
 import { getReportedPublicBookmarks } from '../helpers/data/openSpaceData';
 import ReportedCards from '../components/Admin/ReportedCards';
 
-export default function Admin({ user }) {
+export default function Admin({ admin }) {
   const [users, setUsers] = useState([]);
   const [reportedPublicBookmarks, setReportedPublicBookmarks] = useState([]);
 
-  if (user) {
+  if (admin) {
     useEffect(() => {
       getUsers().then((returnedUsers) => setUsers(returnedUsers));
     }, []);
@@ -22,7 +22,9 @@ export default function Admin({ user }) {
 
   return (
     <>
-      <header><h1>Admin</h1></header>
+      {admin
+        ? <div>
+        <header><h1>Admin</h1></header>
       <h2>List of Bookmarkable Users</h2>
       <UserStyle>
         {users.map((person) => (
@@ -37,14 +39,15 @@ export default function Admin({ user }) {
         <ReportedCards
           setReportedPublicBookmarks={setReportedPublicBookmarks}
           key={bookmark.firebaseKey}
-          user={user}
           {...bookmark}
         />
       ))}
+        </div> : ''
+      }
     </>
   );
 }
 
 Admin.propTypes = {
-  user: PropTypes.any
+  admin: PropTypes.any
 };

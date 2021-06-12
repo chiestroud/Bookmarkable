@@ -23,7 +23,9 @@ function App() {
         };
         setUser(userInfoObj);
         if (userInfoObj.uid === firebaseConfig.userUid) {
-          setAdmin(true);
+          setAdmin(userInfoObj);
+        } else {
+          setAdmin(false);
         }
         getSingleUser(userInfoObj).then((response) => {
           if (Object.values(response.data).length === 0) {
@@ -32,6 +34,7 @@ function App() {
         });
       } else if (user || user === null) {
         setUser(false);
+        setAdmin(false);
       }
     });
   }, []);

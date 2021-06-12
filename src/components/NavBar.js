@@ -15,6 +15,7 @@ import { NavLinkStyle, NavStyle } from '../styles/NavBarStyle';
 
 const NavBar = ({ user, admin }) => {
   const [isOpen, setIsOpen] = useState(false);
+  console.warn(admin);
 
   return (
     <NavStyle>
@@ -32,7 +33,7 @@ const NavBar = ({ user, admin }) => {
               <NavItem>
                 <Link className='nav-link' to="/personal">Personal</Link>
               </NavItem>
-              {(user && admin)
+              {admin
                 && <NavItem>
                   <Link className='nav-link' to="/admin">Admin</Link>
                 </NavItem>

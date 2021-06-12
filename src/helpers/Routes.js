@@ -19,10 +19,8 @@ PrivateRoute.propTypes = {
   user: PropTypes.any
 };
 
-const AdminRoute = ({
-  component: Component, user, admin, ...rest
-}) => {
-  const routeChecker = (taco) => (user
+const AdminRoute = ({ component: Component, admin, ...rest }) => {
+  const routeChecker = (taco) => (admin
     ? (<Component {...taco} admin={admin} />)
     : (<Redirect to={{ pathname: '/', state: { from: taco.location } }} />));
   return <Route {...rest} render={(props) => routeChecker(props)} />;
@@ -30,8 +28,7 @@ const AdminRoute = ({
 
 AdminRoute.propTypes = {
   component: PropTypes.func,
-  admin: PropTypes.any,
-  user: PropTypes.any
+  admin: PropTypes.any
 };
 export default function Routes({ user, admin }) {
   return (
@@ -49,8 +46,7 @@ export default function Routes({ user, admin }) {
         <AdminRoute
           path='/admin'
           admin={admin}
-          user={user}
-          component={() => <Admin admin={admin} user={user}/>} />
+          component={() => <Admin admin={admin}/>} />
         <Route path='*' component={NotFound} />
       </Switch>
     </div>
