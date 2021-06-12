@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Input } from 'reactstrap';
 import PropTypes from 'prop-types';
-import OpenBookmarkCard from '../components/OpenBookmarkCard';
-import OpenSpaceBookmarkForm from '../components/OpenSpaceBookmarkForm';
+import OpenBookmarkCard from '../components/OpenSpace/OpenBookmarkCard';
+import OpenSpaceBookmarkForm from '../components/OpenSpace/OpenSpaceBookmarkForm';
 import { getPublicBookmarks, searchPublicBookmarks, searchPublicCategory } from '../helpers/data/openSpaceData';
 import { getPublicCategoryData } from '../helpers/data/publicCategoryData';
 import { CardStyle, HeadStyle, InputStyle } from '../styles/BookmarkStyle';

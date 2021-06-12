@@ -19,11 +19,11 @@ export default function OtherResources({ otherResources }) {
       <CardTitle className='randomCardTitle'>{showResource ? '' : 'Other Good Resource'}</CardTitle>
       {showResource && <div>
         <CardText className='cardTitle'>{singleOtherResource.title}</CardText>
-        <LinkPreview url={singleOtherResource.url} descriptionLength='80' imageHeight='130px' />
+        <LinkPreview url={singleOtherResource.url} descriptionLength='80' imageHeight='150px' height='270px' />
         <CardLink src={singleOtherResource.url} target='_blank'>{singleOtherResource.url}</CardLink>
       </div>
       }
-      <Button color='danger' onClick={() => handleClick('random')}>{!showResource ? 'Find' : 'Another Good Resource'}</Button>
+      <Button id='goodResourceBtn' onClick={() => handleClick('random')}>{!showResource ? 'Find' : 'Another Good Resource'}</Button>
     </Card>
   );
 }

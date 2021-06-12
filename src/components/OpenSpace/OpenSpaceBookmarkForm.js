@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import {
   Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
-import { getCurrentUserUid } from '../helpers/data/userData';
-import { addPublicBookmarks, updatePublicBookmark } from '../helpers/data/openSpaceData';
-import { TitleStyle } from '../styles/FormStyle';
+import { getCurrentUserUid } from '../../helpers/data/userData';
+import { addPublicBookmarks, updatePublicBookmark } from '../../helpers/data/openSpaceData';
+import { TitleStyle } from '../../styles/FormStyle';
 
 export default function OpenSpaceBookmarkForm({
   publicCategory,
@@ -17,7 +17,6 @@ export default function OpenSpaceBookmarkForm({
   url,
   comments,
   categoryId,
-  likes,
   setShowForm
 }) {
   const [publicBookmark, setPublicBookmark] = useState({
@@ -26,8 +25,7 @@ export default function OpenSpaceBookmarkForm({
     title: title || '',
     url: url || '',
     comments: comments || '',
-    uid: getCurrentUserUid(),
-    likes: likes || 0
+    uid: getCurrentUserUid()
   });
 
   const handleInputChange = (e) => {
@@ -122,7 +120,6 @@ OpenSpaceBookmarkForm.propTypes = {
   title: PropTypes.string,
   url: PropTypes.string,
   comments: PropTypes.string,
-  likes: PropTypes.number,
   uid: PropTypes.string,
   categoryId: PropTypes.string,
   setShowForm: PropTypes.func

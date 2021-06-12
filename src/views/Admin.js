@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getUsers } from '../helpers/data/userData';
-import UserCards from '../components/UserCards';
-import UserStyle from '../styles/AdminStyle';
+import UserCards from '../components/Admin/UserCards';
 import { getReportedPublicBookmarks } from '../helpers/data/openSpaceData';
 import ReportedCards from '../components/Admin/ReportedCards';
+import { CardStyle } from '../styles/BookmarkStyle';
+import UserStyle from '../styles/AdminStyle';
 
 export default function Admin({ admin }) {
   const [users, setUsers] = useState([]);
@@ -22,9 +23,9 @@ export default function Admin({ admin }) {
 
   return (
     <>
-      {admin
-        ? <div>
-        <header><h1>Admin</h1></header>
+      <header>
+        <h1>Admin</h1>
+      </header>
       <h2>List of Bookmarkable Users</h2>
       <UserStyle>
         {users.map((person) => (
@@ -35,15 +36,15 @@ export default function Admin({ admin }) {
         ))}
       </UserStyle>
       <h2>List of Reported Bookmarks</h2>
-      {reportedPublicBookmarks.map((bookmark) => (
-        <ReportedCards
-          setReportedPublicBookmarks={setReportedPublicBookmarks}
-          key={bookmark.firebaseKey}
-          {...bookmark}
-        />
-      ))}
-        </div> : ''
-      }
+      <CardStyle>
+        {reportedPublicBookmarks.map((bookmark) => (
+          <ReportedCards
+            setReportedPublicBookmarks={setReportedPublicBookmarks}
+            key={bookmark.firebaseKey}
+            {...bookmark}
+          />
+        ))}
+      </CardStyle>
     </>
   );
 }

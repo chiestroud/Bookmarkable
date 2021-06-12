@@ -5,6 +5,7 @@ import {
   Card, CardTitle, CardText, CardLink, Button
 } from 'reactstrap';
 import { deleteReportedPublicBookmark, updateReportedPublicBookmark } from '../../helpers/data/openSpaceData';
+import { ButtonStyle, IndividualCardStyle } from '../../styles/BookmarkStyle';
 
 export default function ReportedCards({
   title,
@@ -25,14 +26,20 @@ export default function ReportedCards({
   };
 
   return (
-    <Card>
-      <CardTitle>{title}</CardTitle>
-      <div><LinkPreview url={url} descriptionLength='50' imageHeight='150px' /></div>
-      <CardLink href={url} target='_blank'>{url}</CardLink>
-      <CardText>{comments}</CardText>
-      <div><Button color='warning' onClick={handleReport}>WHAT IS WRONG WITH THIS BOOKMARK?</Button>
-      <Button color='danger' onClick={handleDelete}>Delete</Button></div>
-    </Card>
+    <IndividualCardStyle>
+      <Card>
+        <CardTitle>{title}</CardTitle>
+        <div>
+          <LinkPreview url={url} descriptionLength='50' imageHeight='150px' height='300px' />
+        </div>
+        <CardLink href={url} target='_blank'>{url}</CardLink>
+        <CardText>{comments}</CardText>
+        <ButtonStyle>
+          <Button color='warning' className='mr-2' onClick={handleReport}>TOTALLY APPROPRIATE</Button>
+          <Button color='danger' onClick={handleDelete}>GOODBYE</Button>
+        </ButtonStyle>
+      </Card>
+    </IndividualCardStyle>
   );
 }
 

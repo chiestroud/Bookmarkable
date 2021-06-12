@@ -33,6 +33,76 @@ body {
   border: 2px black solid;
 }
 
+// home buttons
+#goodResourceBtn {
+  background-color: yellow;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 5px solid orange;
+  color: black;
+  font-weight: bold;
+  border-radius: 100vh;
+  width: 200px;
+}
+
+#goodResourceBtn:hover {
+  margin-top: 3px;
+  border-bottom: 2px solid orange;
+}
+
+#goodReadBtn {
+  background-color: lightgreen;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 5px solid green;
+  color: black;
+  font-weight: bold;
+  border-radius: 100vh;
+  width: 200px;
+}
+
+#goodReadBtn:hover {
+  margin-top: 3px;
+  border-bottom: 2px solid green;
+}
+
+#goodTutorialBtn {
+  background-color: red;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 5px solid darkred;
+  color: black;
+  font-weight: bold;
+  border-radius: 100vh;
+  width: 200px;
+}
+
+#goodTutorialBtn:hover {
+  margin-top: 3px;
+  border-bottom: 2px solid darkred;
+}
+
+#randomJapaneseBtn {
+  background-color: lightskyblue;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 5px solid blue;
+  color: black;
+  font-weight: bold;
+  border-radius: 100vh;
+  width: 200px;
+}
+
+#randomJapaneseBtn:hover {
+  margin-top: 3px;
+  border-bottom: 2px solid blue;
+}
+
+
 .randomCardTitle {
   font-size: 2rem;
   font-weight: bold;
@@ -126,17 +196,18 @@ div.card {
 .userCards.card {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: #cad1c9;
-  max-width: 20%;
   border: 2px solid #212529;
+  max-width: 90%;
 }
 
-#starBtnOn {
+#likedBtn {
   background-color:yellow;
   border: none;
 }
 
-#starBtnOff {
+#unLikedBtn {
   background-color: gray;
 }
 
@@ -152,5 +223,14 @@ div.card {
     grid-template-rows: 1fr;
     align-items: center;
     justify-content: space-evenly;
+    margin: 5%;
+  }
+  div.individualCardStyle {
+    max-width: 45%;
+  }
+}
+@media screen and (max-width: 550px) {
+  div.individualCardStyle {
+    max-width: 90%;
   }
 }
