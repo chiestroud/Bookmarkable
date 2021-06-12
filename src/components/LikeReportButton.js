@@ -14,7 +14,6 @@ export default function LikeReportButton({
   user
 }) {
   const [reported, setReported] = useState(false);
-  console.warn(user);
 
   const handleToggle = () => {
     const filter = allLikes.filter((res) => res.uid === user.uid);
