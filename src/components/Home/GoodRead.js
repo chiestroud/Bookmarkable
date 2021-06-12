@@ -18,11 +18,11 @@ export default function GoodRead({ goodReads }) {
       <CardTitle className='randomCardTitle'>{showResource ? '' : 'Good Read'}</CardTitle>
         {showResource && <div>
           <CardText className='cardTitle'>{singleGoodRead.title}</CardText>
-          <LinkPreview url={singleGoodRead.url} descriptionLength='80' imageHeight='130px' height='70%'/>
+          <LinkPreview url={singleGoodRead.url} descriptionLength='80' imageHeight='130px' height='270px'/>
           <CardLink src={singleGoodRead.url} target='_blank'>{singleGoodRead.url}</CardLink>
           </div>
         }
-        <Button color='danger' onClick={() => handleClick('random')}>{!showResource ? 'Find' : 'Another Good Read'}</Button>
+        <Button id='goodReadBtn' onClick={() => handleClick('random')}>{!showResource ? 'Find' : 'Another Good Read'}</Button>
       </Card>
   );
 }

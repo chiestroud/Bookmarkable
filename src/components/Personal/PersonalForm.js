@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
-import { addPersonalData, updatePersonalData } from '../helpers/data/personalData';
-import { getCurrentUserUid } from '../helpers/data/userData';
+import { addPersonalData, updatePersonalData } from '../../helpers/data/personalData';
+import { getCurrentUserUid } from '../../helpers/data/userData';
 
 export default function PersonalForm({
   formTitle,

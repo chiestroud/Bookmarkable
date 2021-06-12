@@ -20,7 +20,7 @@ export default function Japanese({ japaneseTrivia }) {
         <CardImg className='japaneseImage' src={singleJapaneseResource.url} alt="{singleJapaneseResource.word}" />
         <CardText>{singleJapaneseResource.comment}</CardText>
       </div>}
-      <Button color='danger' onClick={handleClick}>{!showResource ? 'Find' : 'Another Japanese Word'}</Button>
+      <Button id='randomJapaneseBtn' onClick={handleClick}>{!showResource ? 'Find' : 'Another Japanese Word'}</Button>
     </Card>
   );
 }

@@ -4,9 +4,9 @@ import {
   Card, CardTitle, CardLink, CardText, Button
 } from 'reactstrap';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
-import { deletePersonalData } from '../helpers/data/personalData';
+import { deletePersonalData } from '../../helpers/data/personalData';
 import PersonalForm from './PersonalForm';
-import { IndividualCardStyle } from '../styles/BookmarkStyle';
+import { IndividualCardStyle } from '../../styles/BookmarkStyle';
 
 export default function PersonalBookmarkCard({
   title,
@@ -31,10 +31,10 @@ export default function PersonalBookmarkCard({
     <IndividualCardStyle>
     <Card key={firebaseKey}>
         <CardTitle className='cardTitle'>{title}</CardTitle>
-        <CardLink href={url} target='_blank'><LinkPreview url={url} descriptionLength='50' imageHeight='150px'/></CardLink>
+        <CardLink href={url} target='_blank'><LinkPreview url={url} descriptionLength='50' imageHeight='150px' height='300px'/></CardLink>
       <CardLink href={url} target='_blank'>{url}</CardLink>
       <CardText>{comments}</CardText>
-      <Button color='warning' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
+      <Button color='warning' className='editBtn' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
       {showForm
         && <PersonalForm
         formTitle='Edit Bookmark'

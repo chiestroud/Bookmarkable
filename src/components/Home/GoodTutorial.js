@@ -18,11 +18,11 @@ export default function GoodTutorial({ goodTutorials }) {
       <CardTitle className='randomCardTitle'>{showResource ? '' : 'Good Tutorial'}</CardTitle>
       {showResource && <div>
         <CardText className='cardTitle'>{singleGoodTutorial.title}</CardText>
-        <LinkPreview url={singleGoodTutorial.url} descriptionLength='80' imageHeight='130px' height='70%'/>
+        <LinkPreview url={singleGoodTutorial.url} descriptionLength='80' imageHeight='130px' height='270px'/>
         <CardLink src={singleGoodTutorial.url} target='_blank'>{singleGoodTutorial.url}</CardLink>
       </div>
       }
-      <Button color='danger' onClick={() => handleClick('random')}>{!showResource ? 'Find' : 'Another Good Tutorial'}</Button>
+      <Button id='goodTutorialBtn' onClick={() => handleClick('random')}>{!showResource ? 'Find' : 'Another Good Tutorial'}</Button>
     </Card>
   );
 }

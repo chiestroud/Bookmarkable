@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Input } from 'reactstrap';
-import PersonalBookmarkCard from '../components/PersonalBookmarkCard';
-import PersonalForm from '../components/PersonalForm';
+import PersonalBookmarkCard from '../components/Personal/PersonalBookmarkCard';
+import PersonalForm from '../components/Personal/PersonalForm';
 import { getPersonalCategoryData } from '../helpers/data/categoryData';
 import { getPersonalData, searchPersonalBookmark, searchPersonalCategory } from '../helpers/data/personalData';
-import CategoryForm from '../components/CategoryForm';
+import CategoryForm from '../components/Personal/CategoryForm';
 import { CardStyle, HeadStyle, InputStyle } from '../styles/BookmarkStyle';
 
 export default function Personal({ user }) {

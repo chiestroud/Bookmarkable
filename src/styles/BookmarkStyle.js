@@ -15,19 +15,22 @@ const InputStyle = styled.div`
 const CardStyle = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   padding: 2%;
 `;
 
 const IndividualCardStyle = styled.div`
   border: 2px solid red;
-  max-width: 25%;
+  max-width: 31%;
   display: flex;
   justify-content: center;
+  margin: 1%;
 `;
 
 const CardButtonStyle = styled.div`
   display: grid;
   grid-template-columns: 33% 33% 33%;
+  margin-bottom: 1%;
 `;
 
 const SpanStyle = styled.span`
@@ -36,6 +39,11 @@ const SpanStyle = styled.span`
   align-items: center;
 `;
 
+const ButtonStyle = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export {
-  HeadStyle, CardStyle, IndividualCardStyle, InputStyle, CardButtonStyle, SpanStyle
+  HeadStyle, CardStyle, IndividualCardStyle, InputStyle, CardButtonStyle, SpanStyle, ButtonStyle
 };

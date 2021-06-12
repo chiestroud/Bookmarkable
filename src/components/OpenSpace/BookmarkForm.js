@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import {
   Button, Form, FormGroup, Label, Input
 } from 'reactstrap';
-import { getPersonalCategoryData } from '../helpers/data/categoryData';
-import { getCurrentUserUid } from '../helpers/data/userData';
-import { addPersonalData } from '../helpers/data/personalData';
+import { getPersonalCategoryData } from '../../helpers/data/categoryData';
+import { getCurrentUserUid } from '../../helpers/data/userData';
+import { addPersonalData } from '../../helpers/data/personalData';
 
 export default function BookmarkForm({
   user,

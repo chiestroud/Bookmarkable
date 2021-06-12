@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import {
   Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
-import { getCurrentUserUid } from '../helpers/data/userData';
-import { addPublicBookmarks, updatePublicBookmark } from '../helpers/data/openSpaceData';
-import { TitleStyle } from '../styles/FormStyle';
+import { getCurrentUserUid } from '../../helpers/data/userData';
+import { addPublicBookmarks, updatePublicBookmark } from '../../helpers/data/openSpaceData';
+import { TitleStyle } from '../../styles/FormStyle';
 
 export default function OpenSpaceBookmarkForm({
   publicCategory,
