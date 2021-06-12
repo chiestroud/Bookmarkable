@@ -19,7 +19,7 @@ export default function OtherResources({ otherResources }) {
       <CardTitle className='randomCardTitle'>{showResource ? '' : 'Other Good Resource'}</CardTitle>
       {showResource && <div>
         <CardText className='cardTitle'>{singleOtherResource.title}</CardText>
-        <LinkPreview url={singleOtherResource.url} descriptionLength='80' imageHeight='130px' />
+        <LinkPreview url={singleOtherResource.url} descriptionLength='80' imageHeight='150px' height='70%' />
         <CardLink src={singleOtherResource.url} target='_blank'>{singleOtherResource.url}</CardLink>
       </div>
       }

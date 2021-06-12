@@ -23,7 +23,6 @@ export default function OpenBookmarkCard({
   categoryId,
   uid,
   user,
-  likes,
   publicCategory,
   setPublicBookmarks,
   admin,
@@ -93,7 +92,6 @@ export default function OpenBookmarkCard({
           comments={comments}
           uid={uid}
           user={user}
-          likes={likes}
           setShowForm={setShowForm}
           categoryId={categoryId}
           setOpenForm={setOpenForm}
@@ -112,7 +110,6 @@ OpenBookmarkCard.propTypes = {
   comments: PropTypes.string,
   uid: PropTypes.string,
   user: PropTypes.any,
-  likes: PropTypes.number,
   publicCategory: PropTypes.array,
   setPublicBookmarks: PropTypes.func,
   admin: PropTypes.any,

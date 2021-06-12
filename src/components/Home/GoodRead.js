@@ -18,7 +18,7 @@ export default function GoodRead({ goodReads }) {
       <CardTitle className='randomCardTitle'>{showResource ? '' : 'Good Read'}</CardTitle>
         {showResource && <div>
           <CardText className='cardTitle'>{singleGoodRead.title}</CardText>
-          <LinkPreview url={singleGoodRead.url} descriptionLength='80' imageHeight='130px'/>
+          <LinkPreview url={singleGoodRead.url} descriptionLength='80' imageHeight='130px' height='70%'/>
           <CardLink src={singleGoodRead.url} target='_blank'>{singleGoodRead.url}</CardLink>
           </div>
         }

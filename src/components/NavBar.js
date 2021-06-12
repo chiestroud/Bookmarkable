@@ -15,7 +15,6 @@ import { NavLinkStyle, NavStyle } from '../styles/NavBarStyle';
 
 const NavBar = ({ user, admin }) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.warn(admin);
 
   return (
     <NavStyle>
