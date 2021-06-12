@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   getGoodReads, getGoodTutorials, getJapaneseTrivia, getOtherResources
 } from '../helpers/data/homeData';
@@ -22,7 +23,10 @@ export default function Home() {
 
   return (
     <>
-    <header className='title'>Welcome to Bookmarkable - JS Version</header>
+      <motion.header className='title'
+        initial={{ x: -1000 }}
+        animate={{ x: 0 }}
+      >Welcome to Bookmarkable - JS Version</motion.header>
     <section className="home">
       <GoodTutorial goodTutorials={goodTutorials} />
       <GoodRead goodReads={goodReads} />

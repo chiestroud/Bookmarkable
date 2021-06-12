@@ -54,7 +54,7 @@ export default function OpenBookmarkCard({
   };
 
   return (
-    <IndividualCardStyle className='individualCardStyle'>
+    <IndividualCardStyle>
       <Card>
         <span>
           <Button

@@ -15,13 +15,13 @@ body {
 // Homw page
 .home {
   background-color: #eff4ed;
-  height: 90vh;
+  height: 83vh;
+  width: 99vw;
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 50% 50%;
   align-items: center;
   justify-content: space-evenly;
-  padding: 1%;
 }
 
 .homeCard.card {
@@ -35,15 +35,15 @@ body {
 
 // home buttons
 #goodResourceBtn {
-  background-color: yellow;
+  background-color: #f7ba0b;
   border-top: none;
   border-right: none;
   border-left: none;
   border-bottom: 5px solid orange;
-  color: black;
+  color: #fff;
   font-weight: bold;
   border-radius: 100vh;
-  width: 200px;
+  width: 220px;
 }
 
 #goodResourceBtn:hover {
@@ -52,15 +52,15 @@ body {
 }
 
 #goodReadBtn {
-  background-color: lightgreen;
+  background-color: #007243;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-bottom: 5px solid green;
-  color: black;
+  border-bottom: 5px solid #006400;
+  color: #fff;
   font-weight: bold;
   border-radius: 100vh;
-  width: 200px;
+  width: 220px;
 }
 
 #goodReadBtn:hover {
@@ -69,15 +69,15 @@ body {
 }
 
 #goodTutorialBtn {
-  background-color: red;
+  background-color: #E60012;
   border-top: none;
   border-right: none;
   border-left: none;
   border-bottom: 5px solid darkred;
-  color: black;
+  color: white;
   font-weight: bold;
   border-radius: 100vh;
-  width: 200px;
+  width: 220px;
 }
 
 #goodTutorialBtn:hover {
@@ -86,15 +86,15 @@ body {
 }
 
 #randomJapaneseBtn {
-  background-color: lightskyblue;
+  background-color: #0000FF;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-bottom: 5px solid blue;
-  color: black;
+  border-bottom: 5px solid #00004c;
+  color: white;
   font-weight: bold;
   border-radius: 100vh;
-  width: 200px;
+  width: 220px;
 }
 
 #randomJapaneseBtn:hover {
@@ -112,6 +112,7 @@ body {
   text-align: center;
   font-weight: bold;
   font-size: 1.2rem;
+  text-decoration: underline;
 }
 .profileImage {
   width: 60px;
@@ -184,6 +185,12 @@ div.card {
   justify-content: center;
 }
 
+.personalCard {
+  background-color: #bcf5bc;
+  border-radius: 5%;
+  padding: 2%;
+}
+
 // FORM
 #form {
   background-color: #cad1c9;
@@ -221,9 +228,9 @@ div.card {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 1fr;
+    max-width: 98%;
     align-items: center;
     justify-content: space-evenly;
-    margin: 5%;
   }
   div.individualCardStyle {
     max-width: 45%;
