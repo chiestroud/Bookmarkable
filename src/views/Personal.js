@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Input } from 'reactstrap';
+import CategoryTable from '../components/Personal/CategoryTable';
 import PersonalBookmarkCard from '../components/Personal/PersonalBookmarkCard';
 import PersonalForm from '../components/Personal/PersonalForm';
 import { getPersonalCategoryData } from '../helpers/data/categoryData';
@@ -44,10 +45,10 @@ export default function Personal({ user }) {
 
   return (
     <section>
-      <header><h1>Personal Bookmark</h1></header>
+      <header className='m-2'><h1><i className="fas fa-bookmark fa-lg" id='titleBookmark'></i>Personal Bookmark</h1></header>
       <HeadStyle>
       <div>
-      <Button onClick={() => handleClick('display')}>{displayForm ? 'Close Form' : 'Add Bookmark'}</Button>
+        <a type='button' className='addBookmarkbtn' onClick={() => handleClick('display')}>{displayForm ? 'Close Form' : 'Add Bookmark'}</a>
         {displayForm
           && <PersonalForm
           formTitle='Add a new personal bookmark'
@@ -65,6 +66,8 @@ export default function Personal({ user }) {
         />
         </div>
         <div>
+        <CategoryTable
+        category={category} user={user} setCategory={setCategory}/>
         <InputStyle>
           <Input
             type='select'
@@ -91,7 +94,7 @@ export default function Personal({ user }) {
           </InputStyle>
           </div>
       </HeadStyle>
-      <CardStyle>
+      <CardStyle className='cardStyle'>
       {personalCards.map((personalCard) => (
         <PersonalBookmarkCard
           key={personalCard.firebaseKey}

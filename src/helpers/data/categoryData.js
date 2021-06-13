@@ -25,4 +25,10 @@ const addPersonalCategoryData = (categoryObj, user) => new Promise((resolve, rej
     }).catch((err) => reject(err));
 });
 
-export { getPersonalCategoryData, addPersonalCategoryData };
+const deletePersonalCategoryData = (firebaseKey, user) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/personal_category/${firebaseKey}.json/`)
+    .then(() => getPersonalCategoryData(user).then(resolve))
+    .catch((err) => reject(err));
+});
+
+export { getPersonalCategoryData, addPersonalCategoryData, deletePersonalCategoryData };

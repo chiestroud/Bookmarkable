@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 import {
-  Card,
   CardTitle,
   CardText,
   Button,
@@ -55,7 +55,9 @@ export default function OpenBookmarkCard({
 
   return (
     <IndividualCardStyle className='individualCardStyle'>
-      <Card>
+      <motion.div className='publicCard' key={firebaseKey}
+        whileHover={{ scale: 1.05 }}
+      >
         <span>
           <Button
             className='bookmarkbtn'
@@ -75,9 +77,8 @@ export default function OpenBookmarkCard({
           user={user}
           setShowCategory={setShowCategory}
         />}
-        <CardTitle className='cardTitle'>{title}</CardTitle>
+        <CardTitle className='cardTitle'><CardLink href={url} target='_blank'><motion.p className='cardTitleLink' whileHover={{ scale: 1.1 }}>{title}</motion.p></CardLink></CardTitle>
         <LinkPreview url={url} descriptionLength='50' imageHeight='120px' height='300px'/>
-        <CardLink href={url} target='_blank'>{url}</CardLink>
         <CardText>{comments}</CardText>
         <LikeReportButton
           allLikes={allLikes}
@@ -103,7 +104,7 @@ export default function OpenBookmarkCard({
             setOpenForm={setOpenForm}
           />}
         {((user && admin) || (user && user.uid === uid)) && <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>}
-      </Card>
+      </motion.div>
     </IndividualCardStyle>
   );
 }

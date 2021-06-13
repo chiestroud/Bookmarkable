@@ -48,7 +48,7 @@ export default function BookmarkForm({
   return (
       <Form id='form' onSubmit={handleSubmit}>
       <FormGroup className='formContainer'>
-        <Label for="categoryId">Category</Label>
+        <Label for="categoryId">Select Category</Label>
           <Input
             type="select"
             name="categoryId"

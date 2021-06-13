@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, CardTitle, CardLink, CardText, Button
+  CardTitle, CardLink, CardText, Button
 } from 'reactstrap';
+import { motion } from 'framer-motion';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import { deletePersonalData } from '../../helpers/data/personalData';
 import PersonalForm from './PersonalForm';
@@ -28,28 +29,29 @@ export default function PersonalBookmarkCard({
   };
 
   return (
-    <IndividualCardStyle>
-    <Card key={firebaseKey}>
-        <CardTitle className='cardTitle'>{title}</CardTitle>
+    <IndividualCardStyle className='individualCardStyle'>
+      <motion.div className='publicCard' key={firebaseKey}
+        whileHover={{ scale: 1.05 }}
+      >
+        <CardTitle className='cardTitle'><CardLink href={url} target='_blank'><motion.p className='cardTitleLink' whileHover={{ scale: 1.1 }}>{title}</motion.p></CardLink></CardTitle>
         <CardLink href={url} target='_blank'><LinkPreview url={url} descriptionLength='50' imageHeight='150px' height='300px'/></CardLink>
-      <CardLink href={url} target='_blank'>{url}</CardLink>
-      <CardText>{comments}</CardText>
-      <Button color='warning' className='editBtn' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
-      {showForm
-        && <PersonalForm
-        formTitle='Edit Bookmark'
-        user={user}
-        category={category}
-        categoryId={categoryId}
-        setShowForm={setShowForm}
-        firebaseKey={firebaseKey}
-        title={title}
-        url={url}
-        comments={comments}
-        setPersonalCards={setPersonalCards}
-      />}
-      <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
-    </Card>
+        <CardText>{comments}</CardText>
+        <Button color='warning' className='editBtn' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
+        {showForm
+          && <PersonalForm
+          formTitle='Edit Bookmark'
+          user={user}
+          category={category}
+          categoryId={categoryId}
+          setShowForm={setShowForm}
+          firebaseKey={firebaseKey}
+          title={title}
+          url={url}
+          comments={comments}
+          setPersonalCards={setPersonalCards}
+        />}
+        <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
+      </motion.div>
     </IndividualCardStyle>
   );
 }

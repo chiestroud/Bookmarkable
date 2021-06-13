@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HeadStyle = styled.div`
-  padding: 2%;
+  margin : 2%;
   display: grid;
   grid-template-columns: 60% 40%;
   grid-template-rows: auto;
@@ -20,11 +20,10 @@ const CardStyle = styled.div`
 `;
 
 const IndividualCardStyle = styled.div`
-  border: 2px solid red;
   max-width: 31%;
   display: flex;
   justify-content: center;
-  margin: 1%;
+  margin: 1.1%;
 `;
 
 const CardButtonStyle = styled.div`

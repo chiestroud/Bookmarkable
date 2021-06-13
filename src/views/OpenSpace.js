@@ -39,10 +39,10 @@ export default function OpenSpace({ user, admin }) {
 
   return (
     <section>
-      <header><h1>Open Space</h1></header>
+      <header className='m-2'><h1><i className="fas fa-bookmark fa-lg" id='titleBookmark'></i>Open Space</h1></header>
       <HeadStyle>
         <div>
-          <Button onClick={() => handleClick('openForm')}>{openForm ? 'Close Form' : 'Add Bookmark'}</Button>
+          <a type='button' className='addBookmarkBtn' onClick={() => handleClick('openForm')}>{openForm ? 'Close Form' : 'Add Bookmark'}</a>
           {openForm && <OpenSpaceBookmarkForm
             formTitle='Add Public Bookmark'
             publicCategory={publicCategory}
@@ -76,7 +76,7 @@ export default function OpenSpace({ user, admin }) {
           </InputStyle>
         </div>
       </HeadStyle>
-      <CardStyle>
+      <CardStyle className='cardStyle'>
       {publicBookmarks.map((publicBookmark) => (
         <OpenBookmarkCard
           key={publicBookmark.firebaseKey}

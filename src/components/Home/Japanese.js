@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 import {
   Card, CardTitle, CardText, Button, CardImg
 } from 'reactstrap';
@@ -14,7 +15,7 @@ export default function Japanese({ japaneseTrivia }) {
   };
   return (
     <Card className='homeCard'>
-      <CardTitle className='randomCardTitle'>{showResource ? '' : 'Did you know? (Japanese words in English)'}</CardTitle>
+      <CardTitle><motion.h2 className='randomCardTitle' whileHover={{ translateX: -45 }}>{showResource ? '' : 'Did you know? (Japanese words in English)'}</motion.h2></CardTitle>
       {showResource && <div>
         <CardText className='cardTitle'>{singleJapaneseResource.word}</CardText>
         <CardImg className='japaneseImage' src={singleJapaneseResource.url} alt="{singleJapaneseResource.word}" />
