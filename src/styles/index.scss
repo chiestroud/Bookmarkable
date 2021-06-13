@@ -102,7 +102,6 @@ body {
   border-bottom: 2px solid blue;
 }
 
-
 .randomCardTitle {
   font-size: 2rem;
   font-weight: bold;
@@ -111,9 +110,14 @@ body {
 .cardTitle {
   text-align: center;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-decoration: underline;
 }
+
+.cardTitleLink {
+  color: #222;
+}
+
 .profileImage {
   width: 60px;
   border-radius: 50%;
@@ -132,6 +136,11 @@ body {
   font-weight: bold;
   font-size: 3rem;
   text-align: center;
+}
+
+#titleBookmark {
+  color: green;
+  margin-right: 2%;
 }
 
 button.bookmarkbtn.btn.btn-secondary {
@@ -176,6 +185,10 @@ li.nav-item {
   color: white;
 }
 
+.fa-window-close {
+  color: #fff
+}
+
 // CARD
 div.card {
   width: 100%;
@@ -185,8 +198,8 @@ div.card {
   justify-content: center;
 }
 
-.personalCard {
-  background-color: #bcf5bc;
+.publicCard {
+  background-color: #d3f8d3;
   border-radius: 5%;
   padding: 2%;
 }
@@ -197,6 +210,12 @@ div.card {
   display: flex;
   flex-direction: column;
   padding: 2%;
+}
+
+.categoryTable {
+  background-color: #cad1c9;
+  text-align: center;
+  font-size: 1.1rem;
 }
 
 // Admin 
@@ -210,12 +229,18 @@ div.card {
 }
 
 #likedBtn {
-  background-color:yellow;
+  background-color:green;
   border: none;
 }
 
 #unLikedBtn {
-  background-color: gray;
+  background-color: transparent;
+  color: black;
+}
+
+#unLikedBtn:hover {
+  background-color: green;
+  color: #fff;
 }
 
 .japaneseImage {
@@ -233,11 +258,32 @@ div.card {
     justify-content: space-evenly;
   }
   div.individualCardStyle {
-    max-width: 45%;
+    max-width: 90%;
+    padding: 1%;
+  }
+  div.cardStyle {
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 560px) {
   div.individualCardStyle {
-    max-width: 90%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .navLinkStyle {
+    display: flex;
+    flex-direction: column;
+  }
+  div.cardStyle {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin: 1%;
+    text-align: center;
+  }
+  .publicCard {
+    max-width: 380px;
+    height: auto;
   }
 }

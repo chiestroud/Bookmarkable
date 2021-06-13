@@ -29,14 +29,12 @@ export default function PersonalBookmarkCard({
   };
 
   return (
-    <IndividualCardStyle>
-      <motion.Card className='personalCard' key={firebaseKey}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.9 }}
+    <IndividualCardStyle className='individualCardStyle'>
+      <motion.div className='publicCard' key={firebaseKey}
+        whileHover={{ scale: 1.05 }}
       >
-        <CardTitle className='cardTitle'>{title}</CardTitle>
+        <CardTitle className='cardTitle'><CardLink href={url} target='_blank'><motion.p className='cardTitleLink' whileHover={{ scale: 1.1 }}>{title}</motion.p></CardLink></CardTitle>
         <CardLink href={url} target='_blank'><LinkPreview url={url} descriptionLength='50' imageHeight='150px' height='300px'/></CardLink>
-        <CardLink href={url} target='_blank'>{url}</CardLink>
         <CardText>{comments}</CardText>
         <Button color='warning' className='editBtn' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
         {showForm
@@ -53,7 +51,7 @@ export default function PersonalBookmarkCard({
           setPersonalCards={setPersonalCards}
         />}
         <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>
-      </motion.Card>
+      </motion.div>
     </IndividualCardStyle>
   );
 }

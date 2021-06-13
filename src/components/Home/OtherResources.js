@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 import {
   Card, CardTitle, CardText, CardLink, Button
 } from 'reactstrap';
@@ -16,7 +17,7 @@ export default function OtherResources({ otherResources }) {
 
   return (
     <Card className='homeCard'>
-      <CardTitle className='randomCardTitle'>{showResource ? '' : 'Other Good Resource'}</CardTitle>
+      <CardTitle><motion.h2 className='randomCardTitle' whileHover={{ rotateZ: -45 }}>{showResource ? '' : 'Other Good Resource'}</motion.h2></CardTitle>
       {showResource && <div>
         <CardText className='cardTitle'>{singleOtherResource.title}</CardText>
         <LinkPreview url={singleOtherResource.url} descriptionLength='80' imageHeight='150px' height='270px' />

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HeadStyle = styled.div`
-  padding: 2%;
+  margin : 2%;
   display: grid;
   grid-template-columns: 60% 40%;
   grid-template-rows: auto;

@@ -15,17 +15,18 @@ import { NavLinkStyle, NavStyle } from '../styles/NavBarStyle';
 
 const NavBar = ({ user, admin }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
 
   return (
     <NavStyle>
       <Navbar expand="md">
         <Link className='navbar-brand' to="/"><i className="fas fa-book-open mr-2"></i>Bookmarkable</Link>
         <NavbarToggler
-          onClick={() => setIsOpen(isOpen ? false : 'isOpen')}>{isOpen ? <i id="close" className="far fa-window-close"></i> : <i className="fas fa-hamburger"></i>}</NavbarToggler>
+          onClick={toggle}>{isOpen ? <i id="close" className="far fa-window-close"></i> : <i className="fas fa-hamburger"></i>}</NavbarToggler>
         <Collapse isOpen={isOpen} navbar>
             {user
             && <Nav className="mr-auto" navbar>
-              <NavLinkStyle>
+              <NavLinkStyle className='navLinkStyle'>
               <NavItem>
                 <Link className='nav-link' to="/open-space">Open Space</Link>
               </NavItem>
