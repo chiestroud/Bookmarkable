@@ -46,7 +46,7 @@ export default function Routes({ user, admin }) {
         <AdminRoute
           path='/admin'
           admin={admin}
-          component={() => <Admin admin={admin}/>} />
+          component={() => <Admin />} />
         <Route path='*' component={NotFound} />
       </Switch>
     </div>

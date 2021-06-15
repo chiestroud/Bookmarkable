@@ -79,7 +79,7 @@ export default function OpenBookmarkCard({
         />}
         <CardTitle className='cardTitle'><CardLink href={url} target='_blank'><motion.p className='cardTitleLink' whileHover={{ scale: 1.1 }}>{title}</motion.p></CardLink></CardTitle>
         <LinkPreview url={url} descriptionLength='50' imageHeight='120px' height='300px'/>
-        <CardText>{comments}</CardText>
+        <CardText id='talkbubble'>{comments}</CardText>
         <LikeReportButton
           allLikes={allLikes}
           firebaseKey={firebaseKey}

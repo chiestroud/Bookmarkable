@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 import { Button, Input } from 'reactstrap';
 import CategoryTable from '../components/Personal/CategoryTable';
 import PersonalBookmarkCard from '../components/Personal/PersonalBookmarkCard';
@@ -45,10 +46,10 @@ export default function Personal({ user }) {
 
   return (
     <section>
-      <header className='m-2'><h1><i className="fas fa-bookmark fa-lg" id='titleBookmark'></i>Personal Bookmark</h1></header>
-      <HeadStyle>
+      <header className='m-2'><h1 className='openPersonalTitle'><i className="fas fa-bookmark fa-lg" id='titleBookmark'></i>Personal Bookmark</h1></header>
+      <HeadStyle id='formSearchContainer'>
       <div>
-        <a type='button' className='addBookmarkbtn' onClick={() => handleClick('display')}>{displayForm ? 'Close Form' : 'Add Bookmark'}</a>
+          <motion.a whileHover={{ scale: 1.1 }} type='button' className='addBookmarkbtn' onClick={() => handleClick('display')}>{displayForm ? 'Close Form' : 'Add Bookmark'}</motion.a>
         {displayForm
           && <PersonalForm
           formTitle='Add a new personal bookmark'
@@ -65,7 +66,7 @@ export default function Personal({ user }) {
           user={user}
         />
         </div>
-        <div>
+        <div className='searchContainer'>
         <CategoryTable
         category={category} user={user} setCategory={setCategory}/>
         <InputStyle>
@@ -82,7 +83,7 @@ export default function Personal({ user }) {
               >{item.categoryName}</option>
             ))}
           </Input>
-          <Button color='success' onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
+          <Button className='searchBtn' color='success' onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
         </InputStyle>
         <InputStyle>
           <Input
@@ -90,7 +91,7 @@ export default function Personal({ user }) {
             placeholder="Search Keywords"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <Button color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
+          <Button className='searchBtn' color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
           </InputStyle>
           </div>
       </HeadStyle>

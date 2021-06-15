@@ -3,18 +3,18 @@
 @import 'variables';
 
 #root {
-  background-color: #eff4ed;
+  background-color: $favColor;
   height: 100vh;
 }
 
 body {
-  background-color: #eff4ed;
+  background-color:$favColor;
   font-family: 'Montserrat', sans-serif;
 }
 
 // Homw page
 .home {
-  background-color: #eff4ed;
+  background-color: $favColor;
   height: 83vh;
   width: 99vw;
   display: grid;
@@ -30,7 +30,20 @@ body {
   justify-content: center;
   margin: 1%;
   height: 100%;
-  border: 2px black solid;
+  border: 1px #498268 solid;
+  background-color: #c3cdd2;
+}
+
+.linkPreviewContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1%;
+}
+
+.japaneseComment {
+  width: 80%;
+  font-size: 1.1rem;
 }
 
 // home buttons
@@ -102,9 +115,11 @@ body {
   border-bottom: 2px solid blue;
 }
 
+// Title
 .randomCardTitle {
   font-size: 2rem;
   font-weight: bold;
+  text-align: center;
 }
 
 .cardTitle {
@@ -112,10 +127,6 @@ body {
   font-weight: bold;
   font-size: 1.1rem;
   text-decoration: underline;
-}
-
-.cardTitleLink {
-  color: #222;
 }
 
 .profileImage {
@@ -134,7 +145,7 @@ body {
 
 .title {
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-align: center;
 }
 
@@ -160,7 +171,7 @@ a.navbar-brand {
 }
 
 a.navbar-brand:hover {
-  color: #A4d1a2;
+  color: #94A5b0;
 }
 
 span.navbar-text {
@@ -173,7 +184,7 @@ a.nav-link {
 }
 
 a.nav-link:hover {
-  color: #a4d1a2;
+  color: #94A5b0;
 }
 
 li.nav-item {
@@ -199,21 +210,21 @@ div.card {
 }
 
 .publicCard {
-  background-color: #d3f8d3;
+  background-color: #c3cdd2;
   border-radius: 5%;
   padding: 2%;
 }
 
 // FORM
 #form {
-  background-color: #cad1c9;
+  background-color: #cadad2;
   display: flex;
   flex-direction: column;
   padding: 2%;
 }
 
 .categoryTable {
-  background-color: #cad1c9;
+  background-color: #cadad2;
   text-align: center;
   font-size: 1.1rem;
 }
@@ -225,7 +236,23 @@ div.card {
   align-items: center;
   background-color: #cad1c9;
   border: 2px solid #212529;
-  max-width: 90%;
+}
+
+.categoryCreateForm {
+  width: 50%;
+  margin: 2%;
+}
+
+#adminPage {
+  margin: 3%;
+  display: flex;
+  flex-direction: column;
+}
+
+#adminUserCards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
 }
 
 #likedBtn {
@@ -248,6 +275,10 @@ div.card {
   height: 200px;
 }
 
+img.japaneseImage.card-img {
+  width: 80%;
+}
+
 @media screen and (max-width: 1000px) {
   .home {
     display: grid;
@@ -265,6 +296,10 @@ div.card {
     display: grid;
     grid-template-columns: 50% 50%;
   }
+  #adminUserCards {
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr;
+  }
 }
 @media screen and (max-width: 560px) {
   div.individualCardStyle {
@@ -274,6 +309,12 @@ div.card {
   .navLinkStyle {
     display: flex;
     flex-direction: column;
+  }
+  header.title {
+    font-size: 1.6rem;
+  }
+  .randomCardTitle {
+    font-size: 1.5rem;
   }
   div.cardStyle {
     display: grid;
@@ -285,5 +326,25 @@ div.card {
   .publicCard {
     max-width: 380px;
     height: auto;
+  }
+  .openPersonalTitle {
+    font-size: 1.8rem;
+  }
+  #formSearchContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 3%;
+  }
+  .searchContainer {
+    width: 93%;
+  }
+  .searchBtn {
+    width: 50px;
+  }
+  .categoryCreateForm {
+    width: 100%;
+  }
+  #adminUserCards {
+    grid-template-columns: 1fr;
   }
 }

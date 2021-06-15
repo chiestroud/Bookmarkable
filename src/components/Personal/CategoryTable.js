@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 import { Table } from 'reactstrap';
 import DeleteButton from './DeleteButton';
 
@@ -12,7 +13,7 @@ export default function CategoryTable({ category, setCategory, user }) {
 
   return (
     <>
-      <a className='categoryBtn' type='button' onClick={handleClick}>{openTable ? 'Close' : 'Category List'}</a>
+      <motion.a whileHover={{ scale: 1.1 }} className='categoryBtn' type='button' onClick={handleClick}>{openTable ? 'Close' : 'Category List'}</motion.a>
       {openTable
         && <Table bordered className='categoryTable'>
           <thead>

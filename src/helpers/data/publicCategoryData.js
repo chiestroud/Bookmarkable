@@ -14,15 +14,15 @@ const getPublicCategoryData = () => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-const findPublicCategory = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/public_category.json?orderBy="firebaseKey"&equalTo="${firebaseKey}`)
+const addPublicCategoryData = (obj) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/public_category.json`, obj)
     .then((response) => {
-      if (response.data) {
-        resolve(Object.values(response.data));
-      } else {
-        resolve([]);
-      }
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/public_category/${response.data.name}.json`, body)
+        .then(() => {
+          getPublicCategoryData().then((returnedCategory) => resolve(returnedCategory));
+        });
     }).catch((err) => reject(err));
 });
 
-export { getPublicCategoryData, findPublicCategory };
+export { getPublicCategoryData, addPublicCategoryData };

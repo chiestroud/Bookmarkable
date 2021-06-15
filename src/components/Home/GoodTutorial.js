@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
-import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import {
   Card, CardTitle, CardText, CardLink, Button
 } from 'reactstrap';
+import { getGoodTutorials } from '../../helpers/data/homeData';
 
-export default function GoodTutorial({ goodTutorials }) {
+export default function GoodTutorial() {
+  const [goodTutorials, setGoodTutorials] = useState([]);
   const [showResource, setShowResource] = useState(false);
   const [singleGoodTutorial, setSingleGoodTutorial] = useState([]);
+
+  useEffect(() => {
+    getGoodTutorials().then((resources) => setGoodTutorials(resources));
+  }, []);
 
   const handleClick = () => {
     setSingleGoodTutorial(goodTutorials[Math.floor(Math.random() * goodTutorials.length)]);
@@ -16,18 +21,23 @@ export default function GoodTutorial({ goodTutorials }) {
   };
   return (
     <Card className='homeCard'>
-      <CardTitle><motion.h2 className='randomCardTitle' whileHover={{ rotateZ: 45 }}>{showResource ? '' : 'Good Tutorial'}</motion.h2></CardTitle>
-      {showResource && <div>
-        <CardText className='cardTitle'>{singleGoodTutorial.title}</CardText>
-        <LinkPreview url={singleGoodTutorial.url} descriptionLength='80' imageHeight='130px' height='270px'/>
-        <CardLink src={singleGoodTutorial.url} target='_blank'>{singleGoodTutorial.url}</CardLink>
+      <CardTitle>
+        <motion.h2 className='randomCardTitle' whileHover={{ rotateZ: 15 }}>
+          {showResource ? '' : 'Good Tutorial'}
+        </motion.h2>
+      </CardTitle>
+      {showResource && <div className='linkPreviewContainer'>
+        <CardText className='cardTitle'>
+          <CardLink href={singleGoodTutorial.url} target='_blank'>
+            <motion.p whileHover={{ scale: 1.1 }}>
+              {singleGoodTutorial.title}
+            </motion.p>
+          </CardLink>
+        </CardText>
+        <LinkPreview url={singleGoodTutorial.url} width='90%' descriptionLength='80' imageHeight='130px' height='270px'/>
       </div>
       }
       <Button id='goodTutorialBtn' onClick={() => handleClick('random')}>{!showResource ? 'Find' : 'Another Good Tutorial'}</Button>
     </Card>
   );
 }
-
-GoodTutorial.propTypes = {
-  goodTutorials: PropTypes.array
-};
