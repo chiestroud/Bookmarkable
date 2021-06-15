@@ -68,6 +68,13 @@ const searchPublicBookmarks = (searchValues) => new Promise((resolve, reject) =>
     .catch((err) => reject(err));
 });
 
+const searchPublicBookmarkComments = (searchValues) => new Promise((resolve, reject) => {
+  getPublicBookmarks().then((bookmarkArray) => {
+    const searchItems = bookmarkArray.filter((word) => word.comments.toLowerCase().includes(searchValues));
+    resolve(searchItems);
+  }).catch((err) => reject(err));
+});
+
 const searchPublicCategory = (firebaseKey) => new Promise((resolve, reject) => {
   getPublicBookmarks().then((bookmarkArray) => {
     const searchItems = bookmarkArray.filter((category) => category.categoryId.includes(firebaseKey));
@@ -77,5 +84,5 @@ const searchPublicCategory = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  getPublicBookmarks, addPublicBookmarks, deletePublicBookmark, updatePublicBookmark, updateReportedPublicBookmark, searchPublicBookmarks, searchPublicCategory, getReportedPublicBookmarks, deleteReportedPublicBookmark
+  getPublicBookmarks, addPublicBookmarks, deletePublicBookmark, updatePublicBookmark, updateReportedPublicBookmark, searchPublicBookmarks, searchPublicCategory, getReportedPublicBookmarks, deleteReportedPublicBookmark, searchPublicBookmarkComments
 };

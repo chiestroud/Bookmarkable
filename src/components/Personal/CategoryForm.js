@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Form, FormGroup, Label, Input, Button
 } from 'reactstrap';
+import { motion } from 'framer-motion';
 import { getCurrentUserUid } from '../../helpers/data/userData';
 import { addPersonalCategoryData } from '../../helpers/data/categoryData';
 import { TitleStyle } from '../../styles/FormStyle';
@@ -35,7 +36,7 @@ export default function CategoryForm({ formTitle, user, setCategory }) {
 
   return (
     <>
-      <div><a className='addCategoryBtn' color='success' onClick={handleClick}>{openForm ? 'Close Form' : 'Add Category'}</a></div>
+      <div><motion.a type='button' whileHover={{ scale: 1.1 }} className='addCategoryBtn' color='success' onClick={handleClick}>{openForm ? 'Close Form' : 'Add Category'}</motion.a></div>
       {openForm
         && <Form
         id="form"

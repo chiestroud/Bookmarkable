@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const NavStyle = styled.div`
-  background-color: #184C34;
+  background-color: #1c3b51;
   font-family: 'Montserrat', sans-serif;
 `;
 

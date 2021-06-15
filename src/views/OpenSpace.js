@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Input } from 'reactstrap';
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import OpenBookmarkCard from '../components/OpenSpace/OpenBookmarkCard';
 import OpenSpaceBookmarkForm from '../components/OpenSpace/OpenSpaceBookmarkForm';
@@ -39,10 +40,12 @@ export default function OpenSpace({ user, admin }) {
 
   return (
     <section>
-      <header className='m-2'><h1><i className="fas fa-bookmark fa-lg" id='titleBookmark'></i>Open Space</h1></header>
-      <HeadStyle>
+      <header className='m-2'>
+        <h1 className='openPersonalTitle'><i className="fas fa-bookmark fa-lg" id='titleBookmark'></i>Open Space</h1>
+      </header>
+      <HeadStyle id='formSearchContainer'>
         <div>
-          <a type='button' className='addBookmarkBtn' onClick={() => handleClick('openForm')}>{openForm ? 'Close Form' : 'Add Bookmark'}</a>
+          <motion.a whileHover={{ scale: 1.1 }} type='button' className='addBookmarkBtn' onClick={() => handleClick('openForm')}>{openForm ? 'Close Form' : 'Add Bookmark'}</motion.a>
           {openForm && <OpenSpaceBookmarkForm
             formTitle='Add Public Bookmark'
             publicCategory={publicCategory}
@@ -50,7 +53,7 @@ export default function OpenSpace({ user, admin }) {
             setOpenForm={setOpenForm}
           />}
         </div>
-        <div>
+        <div className='searchContainer'>
           <InputStyle>
             <Input
               type='select'
@@ -64,7 +67,7 @@ export default function OpenSpace({ user, admin }) {
                 >{item.categoryName}</option>
               ))}
             </Input>
-            <Button color='success' onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
+            <Button className='searchBtn' color='success' onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
           </InputStyle>
           <InputStyle>
             <Input
@@ -72,7 +75,7 @@ export default function OpenSpace({ user, admin }) {
               placeholder='Search Keywords'
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <Button color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
+            <Button className='searchBtn' color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
           </InputStyle>
         </div>
       </HeadStyle>
