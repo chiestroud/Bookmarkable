@@ -52,7 +52,7 @@ export default function Personal({ user }) {
           <motion.a whileHover={{ scale: 1.1 }} type='button' className='addBookmarkbtn' onClick={() => handleClick('display')}>{displayForm ? 'Close Form' : 'Add Bookmark'}</motion.a>
         {displayForm
           && <PersonalForm
-          formTitle='Add a new personal bookmark'
+          formTitle='Add Personal Bookmark'
           personalCards={personalCards}
           setPersonalCards={setPersonalCards}
           category={category}
@@ -61,7 +61,7 @@ export default function Personal({ user }) {
           />
         }
         <CategoryForm
-          formTitle='Add a new category'
+          formTitle='Add New Category'
           setCategory={setCategory}
           user={user}
         />
@@ -83,7 +83,7 @@ export default function Personal({ user }) {
               >{item.categoryName}</option>
             ))}
           </Input>
-          <Button className='searchBtn' color='success' onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
+          <Button id='searchBtn' color='success' onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
         </InputStyle>
         <InputStyle>
           <Input
@@ -91,7 +91,7 @@ export default function Personal({ user }) {
             placeholder="Search Keywords"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <Button className='searchBtn' color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
+          <Button id='searchBtn' color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
           </InputStyle>
           </div>
       </HeadStyle>

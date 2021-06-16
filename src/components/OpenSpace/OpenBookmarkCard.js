@@ -8,6 +8,7 @@ import {
   CardLink
 } from 'reactstrap';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
+import sorry from '../../assets/sorry.jpg';
 import OpenSpaceBookmarkForm from './OpenSpaceBookmarkForm';
 import { deletePublicBookmark } from '../../helpers/data/openSpaceData';
 import BookmarkForm from './BookmarkForm';
@@ -30,7 +31,6 @@ export default function OpenBookmarkCard({
 }) {
   const [showForm, setShowForm] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
-
   const [allLikes, setAllLikes] = useState([]);
 
   useEffect(() => {
@@ -78,8 +78,19 @@ export default function OpenBookmarkCard({
           setShowCategory={setShowCategory}
         />}
         <CardTitle className='cardTitle'><CardLink href={url} target='_blank'><motion.p className='cardTitleLink' whileHover={{ scale: 1.1 }}>{title}</motion.p></CardLink></CardTitle>
-        <LinkPreview url={url} descriptionLength='50' imageHeight='120px' height='300px'/>
-        <CardText id='talkbubble'>{comments}</CardText>
+        <LinkPreview
+          url={url}
+          descriptionLength='50'
+          imageHeight='120px'
+          height='300px'
+          fallback={
+            <div className='errorContainer'>
+              <img width='200px' className='errorImage' src={sorry}/>
+              <a href={url}>{url}</a>
+              <p>Sorry no link preview available</p>
+            </div>
+          }/>
+        <CardText>{comments}</CardText>
         <LikeReportButton
           allLikes={allLikes}
           firebaseKey={firebaseKey}
@@ -88,7 +99,7 @@ export default function OpenBookmarkCard({
           setPublicBookmarks={setPublicBookmarks}
           user={user}
         />
-        {(user && user.uid === uid) && <Button color='warning' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>}
+        {(user && user.uid === uid) && <Button id='cardEditBtn' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>}
           {showForm && <OpenSpaceBookmarkForm
             formTitle='Edit Bookmark'
             publicCategory={publicCategory}
@@ -103,7 +114,7 @@ export default function OpenBookmarkCard({
             categoryId={categoryId}
             setOpenForm={setOpenForm}
           />}
-        {((user && admin) || (user && user.uid === uid)) && <Button color='danger' onClick={() => handleClick('delete')}>Delete</Button>}
+        {((user && admin) || (user && user.uid === uid)) && <Button id='cardDeleteBtn' onClick={() => handleClick('delete')}>Delete</Button>}
       </motion.div>
     </IndividualCardStyle>
   );

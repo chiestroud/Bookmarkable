@@ -40,13 +40,13 @@ const NavBar = ({ user, admin }) => {
               }
               </NavLinkStyle>
               <NavbarText>
-                <Button color='danger' onClick={signOutUser}>Log Out</Button>
+                <Button id='signInOutBtn' onClick={signOutUser}>Log Out</Button>
             </NavbarText>
             </Nav>
             }
           {user
             ? <NavbarText className='welcomeText'>Welcome, <span className='displayName mr-2'>{user.displayName}</span><img className='profileImage' src={user.photoURL} /></NavbarText>
-            : <NavbarText><Button color='warning' onClick={signInUser}>Sign In</Button></NavbarText>}
+            : <NavbarText><Button id='signInOutBtn' onClick={signInUser}>Sign In</Button></NavbarText>}
         </Collapse>
       </Navbar>
     </NavStyle>

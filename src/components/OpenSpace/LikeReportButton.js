@@ -49,9 +49,9 @@ export default function LikeReportButton({
   };
   return (
     <CardButtonStyle>
-      <div><Button id={liked ? 'likedBtn' : 'unLikedBtn'} onClick={handleToggle} title='Like?'><i className="far fa-star"></i></Button><span className='ml-2'>
+      <div><Button id={liked ? 'likedBtn' : 'unLikedBtn'} onClick={handleToggle} title='Like?'><i className="fas fa-star"></i></Button><span className='ml-2'>
         {allLikes.map((response) => response).length} likes</span></div>
-      <div><Button className='reportBtn' color='danger' onClick={handleReport} title='Report?'><i className="fas fa-ban"></i></Button></div>
+      <div><Button id='reportBtn' onClick={handleReport} title='Report?'><i className="fas fa-ban"></i></Button></div>
       <div>{reported ? 'Reported' : ''}</div>
     </CardButtonStyle>
   );

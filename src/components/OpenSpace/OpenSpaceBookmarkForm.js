@@ -104,7 +104,7 @@ export default function OpenSpaceBookmarkForm({
             onChange={handleInputChange}
           />
         </FormGroup>
-        <Button>Submit</Button>
+        <div className='submitBtnContainer'><Button id='submitBtn'>Submit</Button></div>
       </Form>
   );
 }

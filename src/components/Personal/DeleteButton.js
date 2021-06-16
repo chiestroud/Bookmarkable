@@ -13,7 +13,7 @@ export default function DeleteButton({
     deletePersonalCategoryData(firebaseKey, user).then((response) => setCategory(response));
   };
   return (
-    <Button color='danger' key={firebaseKey} onClick={handleSubmit}>Remove</Button>
+    <Button id='categoryDeleteBtn' key={firebaseKey} onClick={handleSubmit}>Remove</Button>
   );
 }
 

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import {
   Card, CardTitle, CardText, CardLink, Button
 } from 'reactstrap';
+import sorry from '../../assets/sorry.jpg';
 import { getOtherResources } from '../../helpers/data/homeData';
 
 export default function OtherResources() {
@@ -30,7 +31,19 @@ export default function OtherResources() {
       {showResource
         && <div className='linkPreviewContainer'>
               <CardText className='cardTitle'><CardLink href={singleOtherResource.url} target='_blank'><motion.p whileHover={{ scale: 1.1 }}>{singleOtherResource.title}</motion.p></CardLink></CardText>
-              <LinkPreview url={singleOtherResource.url} descriptionLength='80' imageHeight='150px' height='270px' />
+        <LinkPreview
+          url={singleOtherResource.url}
+          descriptionLength='80'
+          imageHeight='150px'
+          height='80%'
+          fallback={
+            <div className='errorContainer'>
+              <img width='200px' className='errorImage' src={sorry}/>
+              <a href={singleOtherResource.url}>{singleOtherResource.url}</a>
+              <p>Sorry no link preview available</p>
+            </div>
+          }
+        />
             </div>
       }
       <Button id='goodResourceBtn' onClick={() => handleClick('random')}>{!showResource ? 'Find' : 'Another Good Resource'}</Button>
