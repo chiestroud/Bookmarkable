@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import {
   Card, CardTitle, CardText, CardLink, Button
 } from 'reactstrap';
+import sorry from '../../assets/sorry.jpg';
 import { getGoodTutorials } from '../../helpers/data/homeData';
 
 export default function GoodTutorial() {
@@ -34,7 +35,18 @@ export default function GoodTutorial() {
             </motion.p>
           </CardLink>
         </CardText>
-        <LinkPreview url={singleGoodTutorial.url} width='90%' descriptionLength='80' imageHeight='130px' height='270px'/>
+        <LinkPreview
+          url={singleGoodTutorial.url}
+          width='90%' descriptionLength='80'
+          imageHeight='130px'
+          height='80%'
+          fallback={
+            <div className='errorContainer'>
+              <img width='200px' className='errorImage' src={sorry}/>
+              <a href={singleGoodTutorial.url}>{singleGoodTutorial.url}</a>
+              <p>Sorry no link preview available</p>
+            </div>
+          } />
       </div>
       }
       <Button id='goodTutorialBtn' onClick={() => handleClick('random')}>{!showResource ? 'Find' : 'Another Good Tutorial'}</Button>

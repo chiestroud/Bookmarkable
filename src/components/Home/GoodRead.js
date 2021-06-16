@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import {
   Card, CardTitle, CardText, CardLink, Button
 } from 'reactstrap';
+import sorry from '../../assets/sorry.jpg';
 import { getGoodReads } from '../../helpers/data/homeData';
 
 export default function GoodRead() {
@@ -33,7 +34,20 @@ export default function GoodRead() {
                   <motion.p whileHover={{ scale: 1.1 }}>{singleGoodRead.title}</motion.p>
                 </CardLink>
               </CardText>
-              <LinkPreview url={singleGoodRead.url} width='80%' descriptionLength='80' imageHeight='130px' height='270px'/>
+        <LinkPreview
+          url={singleGoodRead.url}
+          width='80%'
+          descriptionLength='80'
+          imageHeight='130px'
+          height='80%'
+          fallback={
+            <div className='errorContainer'>
+              <img width='200px' className='errorImage' src={sorry}/>
+              <a href={singleGoodRead.url}>{singleGoodRead.url}</a>
+              <p>Sorry no link preview available</p>
+            </div>
+          }
+        />
             </div>
         }
         <Button id='goodReadBtn' onClick={() => handleClick('random')}>{!showResource ? 'Find' : 'Another Good Read'}</Button>

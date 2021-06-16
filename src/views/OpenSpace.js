@@ -67,7 +67,7 @@ export default function OpenSpace({ user, admin }) {
                 >{item.categoryName}</option>
               ))}
             </Input>
-            <Button className='searchBtn' color='success' onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
+            <Button id='searchBtn'onClick={() => handleClick('categorySearch')}><i className="fas fa-search"></i></Button>
           </InputStyle>
           <InputStyle>
             <Input
@@ -75,7 +75,7 @@ export default function OpenSpace({ user, admin }) {
               placeholder='Search Keywords'
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <Button className='searchBtn' color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
+            <Button id='searchBtn' color='success' onClick={() => handleClick('keywordSearch')}><i className="fas fa-search"></i></Button>
           </InputStyle>
         </div>
       </HeadStyle>

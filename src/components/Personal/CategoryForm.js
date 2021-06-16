@@ -55,7 +55,7 @@ export default function CategoryForm({ formTitle, user, setCategory }) {
             onChange={handleInputChange}
           />
           </FormGroup>
-          <Button color='danger'>Submit</Button>
+          <div className='submitBtnContainer'><Button id='submitBtn'>Submit</Button></div>
         </Form>
       }
     </>

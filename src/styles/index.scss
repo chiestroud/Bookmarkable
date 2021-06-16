@@ -30,20 +30,34 @@ body {
   justify-content: center;
   margin: 1%;
   height: 100%;
-  border: 1px #498268 solid;
+  border: 1px #688592 solid;
   background-color: #c3cdd2;
+  padding: 0;
 }
 
 .linkPreviewContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   margin-bottom: 1%;
+  height: 75%;
 }
 
 .japaneseComment {
   width: 80%;
   font-size: 1.1rem;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.errorImg {
+  height: 30%;
 }
 
 // home buttons
@@ -150,8 +164,81 @@ body {
 }
 
 #titleBookmark {
-  color: green;
-  margin-right: 2%;
+  color: #71A289;
+  margin: 1% 2%;
+}
+
+// Button
+#signInOutBtn {
+  background-color: #9b8543;
+  border: 1px solid #021523;
+}
+
+#signInOutBtn:hover {
+  background-color: #bda867;
+}
+
+#submitBtn {
+  background-color: #ffecd5;
+  border: 1px solid #505480;
+  color: #505480;
+  font-weight: bold;
+  width: 20%;
+}
+
+#submitBtn:hover {
+  background-color: #dbbf9d;
+}
+
+#cardEditBtn {
+  background-color: #fff3d4;
+  color: #000000;
+}
+
+#cardEditBtn:hover {
+  background-color: #e7d4A1;
+}
+
+#cardDeleteBtn {
+  background-color: #ffddd4;
+  color: #000000;
+}
+
+#cardDeleteBtn:hover {
+  background-color: #e7b0a1;
+}
+
+#searchBtn {
+  background-color: #d5e9c1;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+#searchBtn:hover {
+  background-color: #b1cf92;
+}
+
+.submitBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#categoryDeleteBtn {
+  background-color: #f0dee5;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+#categoryDeleteBtn:hover {
+  background-color: #cc8ea6;
+}
+
+#reportBtn {
+  background-color: #f7b0a1;
+}
+
+#reportBtn:hover {
+  background-color: #cf7966;
 }
 
 button.bookmarkbtn.btn.btn-secondary {
@@ -256,23 +343,22 @@ div.card {
 }
 
 #likedBtn {
-  background-color:green;
+  background-color: #e7d4a1;
   border: none;
 }
 
 #unLikedBtn {
   background-color: transparent;
-  color: black;
+  color: #fff;
 }
 
 #unLikedBtn:hover {
-  background-color: green;
-  color: #fff;
+  background-color: #e7d4a1;
 }
 
 .japaneseImage {
   object-fit: cover;
-  height: 200px;
+  height: 60%;
 }
 
 img.japaneseImage.card-img {
@@ -338,7 +424,7 @@ img.japaneseImage.card-img {
   .searchContainer {
     width: 93%;
   }
-  .searchBtn {
+  #searchBtn {
     width: 50px;
   }
   .categoryCreateForm {

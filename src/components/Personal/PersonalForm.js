@@ -103,7 +103,7 @@ export default function PersonalForm({
             ))}
           </Input>
         </FormGroup>
-        <Button>Submit</Button>
+        <div className='submitBtnContainer'><Button id='submitBtn'>Submit</Button></div>
       </Form>
   );
 }
