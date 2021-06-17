@@ -16,17 +16,10 @@ export default function Personal({ user }) {
   const [displayForm, setDisplayForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
-  if (user) {
-    useEffect(() => {
-      getPersonalData(user).then((response) => setPersonalCards(response));
-    }, []);
-  }
-
-  if (user) {
-    useEffect(() => {
-      getPersonalCategoryData(user).then((response) => setCategory(response));
-    }, []);
-  }
+  useEffect(() => {
+    getPersonalData(user).then((response) => setPersonalCards(response));
+    getPersonalCategoryData(user).then((response) => setCategory(response));
+  }, []);
 
   const handleClick = (type) => {
     switch (type) {

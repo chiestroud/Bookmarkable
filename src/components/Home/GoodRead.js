@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import { motion } from 'framer-motion';
 import {
-  Card, CardTitle, CardText, CardLink, Button
+  Card, CardTitle, CardLink, Button
 } from 'reactstrap';
 import sorry from '../../assets/sorry.jpg';
 import { getGoodReads } from '../../helpers/data/homeData';
@@ -29,11 +29,9 @@ export default function GoodRead() {
       </CardTitle>
       {showResource
         && <div className='linkPreviewContainer'>
-              <CardText className='cardTitle'>
-                <CardLink href={singleGoodRead.url} target='_blank'>
-                  <motion.p whileHover={{ scale: 1.1 }}>{singleGoodRead.title}</motion.p>
-                </CardLink>
-              </CardText>
+              <CardLink href={singleGoodRead.url} target='_blank'>
+                <motion.p whileHover={{ scale: 1.1 }} className='cardTitle'>{singleGoodRead.title}</motion.p>
+              </CardLink>
         <LinkPreview
           url={singleGoodRead.url}
           width='80%'
