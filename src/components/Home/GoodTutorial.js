@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import { motion } from 'framer-motion';
 import {
-  Card, CardTitle, CardText, CardLink, Button
+  Card, CardTitle, CardLink, Button
 } from 'reactstrap';
 import sorry from '../../assets/sorry.jpg';
 import { getGoodTutorials } from '../../helpers/data/homeData';
@@ -28,13 +28,11 @@ export default function GoodTutorial() {
         </motion.h2>
       </CardTitle>
       {showResource && <div className='linkPreviewContainer'>
-        <CardText className='cardTitle'>
           <CardLink href={singleGoodTutorial.url} target='_blank'>
-            <motion.p whileHover={{ scale: 1.1 }}>
+            <motion.p whileHover={{ scale: 1.1 }} className='cardTitle'>
               {singleGoodTutorial.title}
             </motion.p>
           </CardLink>
-        </CardText>
         <LinkPreview
           url={singleGoodTutorial.url}
           width='90%' descriptionLength='80'

@@ -48,7 +48,7 @@ export default function PersonalForm({
 
   return (
     <Form
-        id="form"
+        id="personalForm"
         autoComplete='off'
         onSubmit={handleSubmit}
       >

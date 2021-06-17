@@ -140,9 +140,14 @@ body {
   text-align: center;
   font-weight: bold;
   font-size: 1.1rem;
+  color: #1c3b51;
   text-decoration: underline;
 }
 
+p.cardTitleLink {
+  color: #1c3b51;
+  text-decoration: underline;
+}
 .profileImage {
   width: 60px;
   border-radius: 50%;
@@ -187,6 +192,31 @@ body {
 }
 
 #submitBtn:hover {
+  background-color: #dbbf9d;
+}
+
+#submitPersonalCategoryBtn {
+  background-color: #ffecd5;
+  border: 1px solid #505480;
+  color: #505480;
+  font-weight: bold;
+  width: 20%;
+}
+
+#submitPersonalCategoryBtn:hover {
+  background-color: #dbbf9d;
+}
+
+#submitBookmarkBtn {
+  background-color: #ffecd5;
+  border: 1px solid #505480;
+  color: #505480;
+  font-weight: bold;
+  width: 30%;
+  font-size: 0.9rem;
+}
+
+#submitBookmarkBtn:hover {
   background-color: #dbbf9d;
 }
 
@@ -243,11 +273,11 @@ body {
 
 button.bookmarkbtn.btn.btn-secondary {
   background-color: transparent;
-  color: green;
+  color: #71A289;
 }
 
 button.bookmarkbtn.btn.btn-secondary:hover {
-  background-color: green;
+  background-color: #71A289;
   color: white;
 }
 // NAVBAR 
@@ -304,6 +334,34 @@ div.card {
 
 // FORM
 #form {
+  background-color: #cadad2;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+#personalForm {
+  background-color: #cadad2;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+#bookmarkForm {
+  background-color: #cadad2;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+#personalForm {
+  background-color: #cadad2;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+#adminForm {
   background-color: #cadad2;
   display: flex;
   flex-direction: column;

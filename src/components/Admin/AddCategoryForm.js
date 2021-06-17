@@ -28,6 +28,8 @@ export default function AddCategoryForm({ formTitle, setOpenCategory }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     addPublicCategoryData(publicCategoryData).then((response) => setOpenCategory(response));
+    setOpenForm(false);
+    setPublicCategoryData({ categoryName: '' });
   };
 
   return (
@@ -35,7 +37,7 @@ export default function AddCategoryForm({ formTitle, setOpenCategory }) {
       <div><motion.a whileHover={{ scale: 1.1 }} type='button' className='add' onClick={() => handleClick('openForm')}>{openForm ? 'Close Form' : 'Add New Public Category'}</motion.a></div>
       {openForm
         && <Form
-              id="form"
+              id="adminForm"
               autoComplete='off'
               onSubmit={handleSubmit}
               className='categoryCreateForm'

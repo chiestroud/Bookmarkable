@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import { motion } from 'framer-motion';
 import {
-  Card, CardTitle, CardText, CardLink, Button
+  Card, CardTitle, CardLink, Button
 } from 'reactstrap';
 import sorry from '../../assets/sorry.jpg';
 import { getOtherResources } from '../../helpers/data/homeData';
@@ -30,8 +30,10 @@ export default function OtherResources() {
       </CardTitle>
       {showResource
         && <div className='linkPreviewContainer'>
-              <CardText className='cardTitle'><CardLink href={singleOtherResource.url} target='_blank'><motion.p whileHover={{ scale: 1.1 }}>{singleOtherResource.title}</motion.p></CardLink></CardText>
-        <LinkPreview
+            <CardLink href={singleOtherResource.url} target='_blank'>
+              <motion.p whileHover={{ scale: 1.1 }} className='cardTitle'>{singleOtherResource.title}</motion.p>
+            </CardLink>
+          <LinkPreview
           url={singleOtherResource.url}
           descriptionLength='80'
           imageHeight='150px'

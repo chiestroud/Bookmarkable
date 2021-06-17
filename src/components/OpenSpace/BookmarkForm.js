@@ -46,7 +46,7 @@ export default function BookmarkForm({
   };
 
   return (
-      <Form id='form' onSubmit={handleSubmit}>
+      <Form id='bookmarkForm' onSubmit={handleSubmit}>
       <FormGroup className='formContainer'>
         <Label for="categoryId">Select Category</Label>
           <Input
@@ -65,7 +65,7 @@ export default function BookmarkForm({
             ))}
           </Input>
       </FormGroup>
-      <Button>Submit</Button>
+      <div className='submitBtnContainer'><Button id='submitBookmarkBtn'>Submit</Button></div>
     </Form>
   );
 }
