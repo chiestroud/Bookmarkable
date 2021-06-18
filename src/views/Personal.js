@@ -55,7 +55,8 @@ export default function Personal({ user }) {
         }
         <CategoryForm
           formTitle='Add New Category'
-          setCategory={setCategory}
+            setCategory={setCategory}
+            setPersonalCards={setPersonalCards}
           user={user}
         />
         </div>
