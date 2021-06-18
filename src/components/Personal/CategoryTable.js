@@ -13,7 +13,14 @@ export default function CategoryTable({ category, setCategory, user }) {
 
   return (
     <>
-      <motion.a whileHover={{ scale: 1.1 }} className='categoryBtn' type='button' onClick={handleClick}>{openTable ? 'Close' : 'Category List'}</motion.a>
+      <motion.a
+        whileHover={{ scale: 1.1 }}
+        className='categoryBtn'
+        type='button'
+        onClick={handleClick}
+      ><i className="far fa-list-alt mr-2"></i>
+        {openTable ? 'Close' : 'Category List'}
+      </motion.a>
       {openTable
         && <Table bordered className='categoryTable'>
           <thead>

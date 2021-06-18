@@ -45,7 +45,12 @@ export default function OpenSpace({ user, admin }) {
       </header>
       <HeadStyle id='formSearchContainer'>
         <div>
-          <motion.a whileHover={{ scale: 1.1 }} type='button' className='addBookmarkBtn' onClick={() => handleClick('openForm')}>{openForm ? 'Close Form' : 'Add Bookmark'}</motion.a>
+          <motion.a
+            whileHover={{ scale: 1.1 }}
+            type='button'
+            className='addBookmarkBtn'
+            onClick={() => handleClick('openForm')}
+          ><i className="fas fa-bookmark mr-2"></i>{openForm ? 'Close Form' : 'Add Bookmark'}</motion.a>
           {openForm && <OpenSpaceBookmarkForm
             formTitle='Add Public Bookmark'
             publicCategory={publicCategory}

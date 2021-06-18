@@ -21,8 +21,8 @@ export default function Japanese() {
   return (
     <Card className='homeCard'>
       <CardTitle>
-        <motion.h2 className='randomCardTitle' whileHover={{ translateX: -45 }}>
-          {showResource ? '' : 'Did you know? (Japanese words in English)'}
+        <motion.h2 className='randomCardTitle' whileHover={{ translateX: -50 }}>
+          {showResource ? '' : 'Did you know?'}
         </motion.h2>
       </CardTitle>
       {showResource && <div className='linkPreviewContainer'>

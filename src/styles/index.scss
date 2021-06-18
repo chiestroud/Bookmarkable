@@ -62,12 +62,12 @@ body {
 
 // home buttons
 #goodResourceBtn {
-  background-color: #f7ba0b;
+  background-color: #fff3d4;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-bottom: 5px solid orange;
-  color: #fff;
+  border-bottom: 5px solid #dbca9c;
+  color: #222;
   font-weight: bold;
   border-radius: 100vh;
   width: 220px;
@@ -75,16 +75,16 @@ body {
 
 #goodResourceBtn:hover {
   margin-top: 3px;
-  border-bottom: 2px solid orange;
+  border-bottom: 2px solid #dbca9c;
 }
 
 #goodReadBtn {
-  background-color: #007243;
+  background-color: #a0c1ae;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-bottom: 5px solid #006400;
-  color: #fff;
+  border-bottom: 5px solid #4c8b67;
+  color: #222;
   font-weight: bold;
   border-radius: 100vh;
   width: 220px;
@@ -92,16 +92,16 @@ body {
 
 #goodReadBtn:hover {
   margin-top: 3px;
-  border-bottom: 2px solid green;
+  border-bottom: 2px solid #4c8b67;
 }
 
 #goodTutorialBtn {
-  background-color: #E60012;
+  background-color: #ffddd4;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-bottom: 5px solid darkred;
-  color: white;
+  border-bottom: 5px solid #be879c;
+  color: #222;
   font-weight: bold;
   border-radius: 100vh;
   width: 220px;
@@ -109,16 +109,16 @@ body {
 
 #goodTutorialBtn:hover {
   margin-top: 3px;
-  border-bottom: 2px solid darkred;
+  border-bottom: 2px solid #be879c;
 }
 
 #randomJapaneseBtn {
-  background-color: #0000FF;
+  background-color: #a0a3bb;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-bottom: 5px solid #00004c;
-  color: white;
+  border-bottom: 5px solid #777c9f;
+  color: #222;
   font-weight: bold;
   border-radius: 100vh;
   width: 220px;
@@ -126,7 +126,7 @@ body {
 
 #randomJapaneseBtn:hover {
   margin-top: 3px;
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid #777c9f;
 }
 
 // Title
@@ -134,6 +134,7 @@ body {
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
+  padding-bottom: 30%;
 }
 
 .cardTitle {
@@ -173,7 +174,14 @@ p.cardTitleLink {
   margin: 1% 2%;
 }
 
+.openCardEditDelete {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5%;
+}
+
 // Button
+
 #signInOutBtn {
   background-color: #9b8543;
   border: 1px solid #021523;
@@ -264,21 +272,21 @@ p.cardTitleLink {
 }
 
 #reportBtn {
-  background-color: #f7b0a1;
-}
-
-#reportBtn:hover {
-  background-color: #cf7966;
-}
-
-button.bookmarkbtn.btn.btn-secondary {
   background-color: transparent;
-  color: #71A289;
+  outline: none;
+  border: none;
+  color: #cf7966;
 }
 
-button.bookmarkbtn.btn.btn-secondary:hover {
-  background-color: #71A289;
-  color: white;
+button.bookmarkbtn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: #71A289; 
+}
+
+button.bookmarkbtn:hover {
+  color:#4b8869;
 }
 // NAVBAR 
 a.navbar-brand {
@@ -409,17 +417,28 @@ div.card {
 }
 
 #likedBtn {
-  background-color: #e7d4a1;
+  background-color: transparent;
+  outline: none;
   border: none;
+  color: #fdfd96;
 }
 
 #unLikedBtn {
   background-color: transparent;
-  color: #fff;
+  border: none;
+  color: #93a6af;
 }
 
 #unLikedBtn:hover {
-  background-color: #e7d4a1;
+  color: #fdfd96;
+  outline: none;
+}
+
+
+.starAndCount {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .japaneseImage {

@@ -59,11 +59,12 @@ export default function OpenBookmarkCard({
         whileHover={{ scale: 1.05 }}
       >
         <span>
-          <Button
+          <motion.button
             className='bookmarkbtn'
             title='bookmark?'
-            onClick={() => handleClick('categoryList')}><i className="far fa-bookmark"></i>
-          </Button>
+            whileHover={{ scale: 1.2 }}
+            onClick={() => handleClick('categoryList')}><i className="fas fa-bookmark fa-2x"></i>
+          </motion.button>
         </span>
         {showCategory
           && <BookmarkForm
@@ -99,7 +100,10 @@ export default function OpenBookmarkCard({
           setPublicBookmarks={setPublicBookmarks}
           user={user}
         />
-        {(user && user.uid === uid) && <Button id='cardEditBtn' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>}
+        <div className='openCardEditDelete'>
+          {(user && user.uid === uid) && <Button id='cardEditBtn' onClick={() => handleClick('edit')}><i className="far fa-edit mr-1"></i>{showForm ? 'Close' : 'Edit'}</Button>}
+          {((user && admin) || (user && user.uid === uid)) && <Button id='cardDeleteBtn' onClick={() => handleClick('delete')} ><i className="far fa-trash-alt mr-1"></i>Delete</Button>}
+        </div>
           {showForm && <OpenSpaceBookmarkForm
             formTitle='Edit Bookmark'
             publicCategory={publicCategory}
@@ -114,7 +118,6 @@ export default function OpenBookmarkCard({
             categoryId={categoryId}
             setOpenForm={setOpenForm}
           />}
-        {((user && admin) || (user && user.uid === uid)) && <Button id='cardDeleteBtn' onClick={() => handleClick('delete')}>Delete</Button>}
       </motion.div>
     </IndividualCardStyle>
   );

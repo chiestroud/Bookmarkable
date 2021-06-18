@@ -36,7 +36,16 @@ export default function CategoryForm({ formTitle, user, setCategory }) {
 
   return (
     <>
-      <div><motion.a type='button' whileHover={{ scale: 1.1 }} className='addCategoryBtn' onClick={handleClick}>{openForm ? 'Close Form' : 'Add Category'}</motion.a></div>
+      <div>
+        <motion.a
+          type='button'
+          whileHover={{ scale: 1.1 }}
+          className='addCategoryBtn'
+          onClick={handleClick}
+        ><i className="far fa-address-book mr-1"></i>
+          {openForm ? 'Close Form' : 'Add Category'}
+        </motion.a>
+      </div>
       {openForm
         && <Form
         id="personalForm"
