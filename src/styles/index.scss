@@ -379,8 +379,16 @@ div.card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #cad1c9;
+  background-color: #c3cdd2;
   border: 2px solid #212529;
+}
+
+.reportedCards.card {
+  background-color: #c3cdd2;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 5%;
 }
 
 .categoryCreateForm {
