@@ -4,6 +4,7 @@ import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import {
   Card, CardTitle, CardText, CardLink, Button
 } from 'reactstrap';
+import { motion } from 'framer-motion';
 import { deleteReportedPublicBookmark, updateReportedPublicBookmark } from '../../helpers/data/openSpaceData';
 import { ButtonStyle, IndividualCardStyle } from '../../styles/BookmarkStyle';
 
@@ -27,8 +28,8 @@ export default function ReportedCards({
 
   return (
     <IndividualCardStyle>
-      <Card>
-        <CardTitle>{title}</CardTitle>
+      <Card className='reportedCards'>
+        <CardTitle className='cardTitle'><CardLink href={url} target='_blank'><motion.p className='cardTitleLink' whileHover={{ scale: 1.1 }}>{title}</motion.p></CardLink></CardTitle>
         <div>
           <LinkPreview url={url} descriptionLength='50' imageHeight='150px' height='300px' />
         </div>

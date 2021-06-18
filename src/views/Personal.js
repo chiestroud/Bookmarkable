@@ -42,7 +42,13 @@ export default function Personal({ user }) {
       <header className='m-2'><h1 className='openPersonalTitle'><i className="fas fa-bookmark fa-lg" id='titleBookmark'></i>Personal Bookmark</h1></header>
       <HeadStyle id='formSearchContainer'>
       <div>
-          <motion.a whileHover={{ scale: 1.1 }} type='button' className='addBookmarkbtn' onClick={() => handleClick('display')}>{displayForm ? 'Close Form' : 'Add Bookmark'}</motion.a>
+          <motion.a
+            whileHover={{ scale: 1.1 }}
+            type='button' className='addBookmarkbtn'
+            onClick={() => handleClick('display')}
+          ><i className="fas fa-bookmark mr-1"></i>
+            {displayForm ? 'Close Form' : 'Add Bookmark'}
+          </motion.a>
         {displayForm
           && <PersonalForm
           formTitle='Add Personal Bookmark'

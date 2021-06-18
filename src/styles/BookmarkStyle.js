@@ -17,7 +17,7 @@ const CardStyle = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   padding: 2%;
-  background-color: #eff4ed;
+  background-color: #EDF1ef;
 `;
 
 const IndividualCardStyle = styled.div`
@@ -29,7 +29,7 @@ const IndividualCardStyle = styled.div`
 
 const CardButtonStyle = styled.div`
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 35% 35%;
   margin-bottom: 1%;
 `;
 

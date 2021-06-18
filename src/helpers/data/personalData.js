@@ -46,7 +46,7 @@ const searchPersonalCategory = (searchTerm, user) => new Promise((resolve, rejec
 
 const searchPersonalBookmark = (searchTerm, user) => new Promise((resolve, reject) => {
   getPersonalData(user).then((bookmarkArray) => {
-    const searchItems = bookmarkArray.filter((word) => word.title.toLowerCase().includes(searchTerm));
+    const searchItems = bookmarkArray.filter((word) => word.title.toLowerCase().includes(searchTerm.toLowerCase()));
     resolve(searchItems);
   }).catch((err) => reject(err));
 });

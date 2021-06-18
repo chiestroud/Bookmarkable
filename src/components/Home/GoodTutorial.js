@@ -23,7 +23,7 @@ export default function GoodTutorial() {
   return (
     <Card className='homeCard'>
       <CardTitle>
-        <motion.h2 className='randomCardTitle' whileHover={{ rotateZ: 15 }}>
+        <motion.h2 className='randomCardTitle' whileHover={{ rotateZ: 30 }}>
           {showResource ? '' : 'Good Tutorial'}
         </motion.h2>
       </CardTitle>

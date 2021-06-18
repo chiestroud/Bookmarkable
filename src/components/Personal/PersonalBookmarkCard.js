@@ -50,7 +50,10 @@ export default function PersonalBookmarkCard({
             }
           /></CardLink>
         <CardText>{comments}</CardText>
-        <Button id='cardEditBtn' className='editBtn' onClick={() => handleClick('edit')}>{showForm ? 'Close' : 'Edit'}</Button>
+        <div className='openCardEditDelete'>
+          <Button id='cardEditBtn' className='editBtn' onClick={() => handleClick('edit')}><i className="far fa-edit mr-1"></i>{showForm ? 'Close' : 'Edit'}</Button>
+          <Button id='cardDeleteBtn' onClick={() => handleClick('delete')}><i className="far fa-trash-alt mr-1"></i>Delete</Button>
+        </div>
         {showForm
           && <PersonalForm
           formTitle='Edit Bookmark'
@@ -64,7 +67,6 @@ export default function PersonalBookmarkCard({
           comments={comments}
           setPersonalCards={setPersonalCards}
         />}
-        <Button id='cardDeleteBtn' onClick={() => handleClick('delete')}>Delete</Button>
       </motion.div>
     </IndividualCardStyle>
   );

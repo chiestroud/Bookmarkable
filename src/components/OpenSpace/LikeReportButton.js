@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import { motion } from 'framer-motion';
 import { CardButtonStyle } from '../../styles/BookmarkStyle';
 import { updatePublicBookmark } from '../../helpers/data/openSpaceData';
 import { getCurrentUserUid } from '../../helpers/data/userData';
@@ -49,10 +49,26 @@ export default function LikeReportButton({
   };
   return (
     <CardButtonStyle>
-      <div><Button id={liked ? 'likedBtn' : 'unLikedBtn'} onClick={handleToggle} title='Like?'><i className="fas fa-star"></i></Button><span className='ml-2'>
-        {allLikes.map((response) => response).length} likes</span></div>
-      <div><Button id='reportBtn' onClick={handleReport} title='Report?'><i className="fas fa-ban"></i></Button></div>
-      <div>{reported ? 'Reported' : ''}</div>
+      <div className='starAndCount'>
+        <motion.button
+          id={liked ? 'likedBtn' : 'unLikedBtn'}
+          onClick={handleToggle}
+          title='Like?'
+          whileHover={{ scale: 1.3 }}
+        ><i className="fas fa-star fa-lg"></i></motion.button>
+        <span className='likesCount'>
+          {allLikes.map((response) => response).length} likes
+        </span>
+      </div>
+      <div>
+        <motion.button
+          id='reportBtn'
+          onClick={handleReport}
+          title='Report?'
+          whileHover={{ scale: 1.3 }}
+        ><i className="fas fa-ban fa-lg"></i></motion.button>
+      <span>{reported ? 'Reported' : 'Report?'}</span>
+      </div>
     </CardButtonStyle>
   );
 }

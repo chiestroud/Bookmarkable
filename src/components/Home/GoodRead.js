@@ -23,7 +23,7 @@ export default function GoodRead() {
   return (
     <Card className='homeCard' id='goodRead'>
       <CardTitle>
-        <motion.h2 className='randomCardTitle' whileHover={{ translateX: 45 }}>
+        <motion.h2 className='randomCardTitle' whileHover={{ translateX: 50 }}>
           {showResource ? '' : 'Good Read'}
         </motion.h2>
       </CardTitle>

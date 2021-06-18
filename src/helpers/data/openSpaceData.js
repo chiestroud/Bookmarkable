@@ -62,7 +62,7 @@ const deleteReportedPublicBookmark = (firebaseKey) => new Promise((resolve, reje
 
 const searchPublicBookmarks = (searchValues) => new Promise((resolve, reject) => {
   getPublicBookmarks().then((bookmarkArray) => {
-    const searchItems = bookmarkArray.filter((word) => word.title.toLowerCase().includes(searchValues));
+    const searchItems = bookmarkArray.filter((word) => word.title.toLowerCase().includes(searchValues.toLowerCase()));
     resolve(searchItems);
   })
     .catch((err) => reject(err));
