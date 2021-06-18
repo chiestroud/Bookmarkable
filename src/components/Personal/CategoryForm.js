@@ -12,7 +12,6 @@ export default function CategoryForm({ formTitle, user, setCategory }) {
   const [openForm, setOpenForm] = useState(false);
   const [personalCategory, setPersonalCategory] = useState({
     categoryName: '',
-    uid: getCurrentUserUid(),
     firebaseKey: null,
   });
 
@@ -23,7 +22,8 @@ export default function CategoryForm({ formTitle, user, setCategory }) {
   const handleInputChange = (e) => {
     setPersonalCategory((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      uid: getCurrentUserUid()
     }));
   };
 
@@ -31,6 +31,7 @@ export default function CategoryForm({ formTitle, user, setCategory }) {
     e.preventDefault();
     addPersonalCategoryData(personalCategory, user).then((response) => setCategory(response));
     setOpenForm(false);
+    setPersonalCategory('');
   };
 
   return (
