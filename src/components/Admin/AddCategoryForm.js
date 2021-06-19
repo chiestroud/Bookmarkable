@@ -33,8 +33,15 @@ export default function AddCategoryForm({ formTitle, setOpenCategory }) {
   };
 
   return (
-    <>
-      <div><motion.a whileHover={{ scale: 1.1 }} type='button' className='add' onClick={() => handleClick('openForm')}>{openForm ? 'Close Form' : 'Add New Public Category'}</motion.a></div>
+    <div>
+      <div>
+        <motion.a
+          whileHover={{ scale: 1.1 }}
+          type='button' className='add'
+          onClick={() => handleClick('openForm')}
+        ><i className="far fa-address-book mr-1"></i>{openForm ? 'Close Form' : 'Add New Public Category'}
+        </motion.a>
+      </div>
       {openForm
         && <Form
               id="adminForm"
@@ -57,7 +64,7 @@ export default function AddCategoryForm({ formTitle, setOpenCategory }) {
             <div className='submitBtnContainer'><Button id='submitBtn'>Submit</Button></div>
           </Form>
       }
-    </>
+    </div>
   );
 }
 

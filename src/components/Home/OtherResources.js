@@ -24,7 +24,7 @@ export default function OtherResources() {
   return (
     <Card className='homeCard'>
       <CardTitle>
-        <motion.h2 className='randomCardTitle' whileHover={{ rotateZ: -30 }}>
+        <motion.h2 className='randomCardTitle' whileHover={{ translateX: -50 }}>
           {showResource ? '' : 'Other Good Resource'}
         </motion.h2>
       </CardTitle>

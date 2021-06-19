@@ -25,4 +25,10 @@ const addPublicCategoryData = (obj) => new Promise((resolve, reject) => {
     }).catch((err) => reject(err));
 });
 
-export { getPublicCategoryData, addPublicCategoryData };
+const deletePublicCategoryData = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/public_category/${firebaseKey}.json`)
+    .then(() => getPublicCategoryData().then((response) => resolve(response)))
+    .catch((err) => reject(err));
+});
+
+export { getPublicCategoryData, addPublicCategoryData, deletePublicCategoryData };

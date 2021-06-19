@@ -27,7 +27,7 @@ export default function ReportedCards({
   };
 
   return (
-    <IndividualCardStyle>
+    <IndividualCardStyle id='reportedCardsContainer'>
       <Card className='reportedCards'>
         <CardTitle className='cardTitle'><CardLink href={url} target='_blank'><motion.p className='cardTitleLink' whileHover={{ scale: 1.1 }}>{title}</motion.p></CardLink></CardTitle>
         <div>
@@ -36,8 +36,8 @@ export default function ReportedCards({
         <CardLink href={url} target='_blank'>{url}</CardLink>
         <CardText>{comments}</CardText>
         <ButtonStyle>
-          <Button color='warning' className='mr-2' onClick={handleReport}>TOTALLY APPROPRIATE</Button>
-          <Button color='danger' onClick={handleDelete}>GOODBYE</Button>
+          <Button id='appropriateBtn' className='mr-2' onClick={handleReport}>TOTALLY APPROPRIATE</Button>
+          <Button id='notAppropriateBtn' onClick={handleDelete}>GOODBYE</Button>
         </ButtonStyle>
       </Card>
     </IndividualCardStyle>
