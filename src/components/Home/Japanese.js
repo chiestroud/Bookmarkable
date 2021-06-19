@@ -21,7 +21,7 @@ export default function Japanese() {
   return (
     <Card className='homeCard'>
       <CardTitle>
-        <motion.h2 className='randomCardTitle' whileHover={{ translateX: -50 }}>
+        <motion.h2 className='randomCardTitle' whileHover={{ rotateZ: -30 }}>
           {showResource ? '' : 'Did you know?'}
         </motion.h2>
       </CardTitle>

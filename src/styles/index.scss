@@ -196,11 +196,59 @@ p.cardTitleLink {
   border: 1px solid #505480;
   color: #505480;
   font-weight: bold;
-  width: 20%;
+  width: 25%;
 }
 
 #submitBtn:hover {
   background-color: #dbbf9d;
+}
+
+#submitJapaneseBtn {
+  background-color: #ffecd5;
+  border: 1px solid #505480;
+  color: #505480;
+  font-weight: bold;
+  width: 25%;
+}
+
+#submitJapaneseBtn:hover {
+  background-color: #dbbf9d;
+}
+
+#editJapaneseBtn {
+  background-color: #fff3d4;
+  color: #000000;
+}
+
+#editJapaneseBtn:hover {
+  background-color: #e7d4A1;
+}
+
+#deleteJapaneseBtn {
+  background-color: #ffddd4;
+  color: #000000;
+}
+
+#deleteJapaneseBtn:hover {
+  background-color: #e7b0a1;
+}
+
+#appropriateBtn {
+  background-color: #fff3d4;
+  color: #000000;
+}
+
+#appropriateBtn:hover {
+  background-color: #e7d4A1;
+}
+
+#notAppropriateBtn {
+  background-color: #ffddd4;
+  color: #000000;
+}
+
+#notAppropriateBtn:hover {
+  background-color: #e7b0a1;
 }
 
 #submitPersonalCategoryBtn {
@@ -208,7 +256,7 @@ p.cardTitleLink {
   border: 1px solid #505480;
   color: #505480;
   font-weight: bold;
-  width: 20%;
+  width: 25%;
 }
 
 #submitPersonalCategoryBtn:hover {
@@ -268,6 +316,16 @@ p.cardTitleLink {
 }
 
 #categoryDeleteBtn:hover {
+  background-color: #cc8ea6;
+}
+
+#publicCategoryDeleteBtn {
+  background-color: #f0dee5;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+#publicCategoryDeleteBtn:hover {
   background-color: #cc8ea6;
 }
 
@@ -376,6 +434,12 @@ div.card {
   padding: 2%;
 }
 
+#addJapanese {
+  background-color: #cadad2;
+  padding: 1%;
+  width: 100%;
+}
+
 .categoryTable {
   background-color: #cadad2;
   text-align: center;
@@ -383,6 +447,14 @@ div.card {
 }
 
 // Admin 
+.adminPage {
+  background-color: $favColor;
+}
+
+.adminCategory {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
 .userCards.card {
   display: flex;
   flex-direction: column;
@@ -400,8 +472,31 @@ div.card {
 }
 
 .categoryCreateForm {
-  width: 50%;
-  margin: 2%;
+  width: 100%;
+}
+
+img.japaneseCardsImage {
+  width: 200px;
+}
+
+.wordTitle {
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+
+.adminJapaneseCards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div#japaneseCards {
+  max-width: 33%;
+  background-color: #c3cdd2;
+  border: 1px solid #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #adminPage {
@@ -463,6 +558,9 @@ img.japaneseImage.card-img {
     max-width: 90%;
     padding: 1%;
   }
+  #reportedCardsContainer {
+    max-width: 50%;
+  }
   div.cardStyle {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -471,11 +569,17 @@ img.japaneseImage.card-img {
     grid-template-columns: 50% 50%;
     grid-template-rows: 1fr;
   }
+  div#japaneseCards {
+    max-width: 50%;
+  } 
 }
 @media screen and (max-width: 560px) {
   div.individualCardStyle {
     display: grid;
     grid-template-columns: 1fr;
+  }
+  #reportedCardsContainer {
+    max-width: 100%;
   }
   .navLinkStyle {
     display: flex;
@@ -518,4 +622,11 @@ img.japaneseImage.card-img {
   #adminUserCards {
     grid-template-columns: 1fr;
   }
+  div#japaneseCards {
+    max-width: 100%;
+  }
+  .adminCategory {
+    grid-template-columns: 1fr;
+  }
+
 }
