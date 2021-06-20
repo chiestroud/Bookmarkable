@@ -7,7 +7,7 @@ import OtherResources from '../components/Home/OtherResources';
 
 export default function Home() {
   return (
-    <div>
+    <div className='mobileDiv'>
       <motion.header
         className='title'
         initial={{ x: -1000 }}

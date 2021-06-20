@@ -21,7 +21,7 @@ export default function GoodTutorial() {
     setShowResource(true);
   };
   return (
-    <Card className='homeCard'>
+    <Card className='homeCard' id='goodTutorial'>
       <CardTitle>
         <motion.h2 className='randomCardTitle' whileHover={{ rotateZ: 30 }}>
           {showResource ? '' : 'Good Tutorial'}
