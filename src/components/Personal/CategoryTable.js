@@ -30,7 +30,7 @@ export default function CategoryTable({ category, setCategory, user }) {
             </tr>
         </thead>
         <tbody>
-          {category.map((item) => (
+          {category.reverse().map((item) => (
             <tr
               key={item.firebaseKey}
             >

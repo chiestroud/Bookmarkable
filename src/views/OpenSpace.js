@@ -85,7 +85,7 @@ export default function OpenSpace({ user, admin }) {
         </div>
       </HeadStyle>
       <CardStyle className='cardStyle'>
-      {publicBookmarks.map((publicBookmark) => (
+      {publicBookmarks.reverse().map((publicBookmark) => (
         <OpenBookmarkCard
           key={publicBookmark.firebaseKey}
           {...publicBookmark}
