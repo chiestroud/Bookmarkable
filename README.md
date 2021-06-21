@@ -7,6 +7,7 @@ This is a social bookmarking application to help people organize learning resour
 
 ## Motivation
 I have personally come across many good resources to learn JavaScript through simple google searches or friends' recommendations on social media. However, it is hard to keep track of all the different resources available. The websites saved in my bookmark folder keep growing and finding items from this list is growing more difficult with it. If I had an app to keep track of the resources by category for me, that would help me tremendously. The social features of this app will benefit other users as well.
+
 ## User Stories
 
 <h3>Authentication</h3>
@@ -82,7 +83,10 @@ I have personally come across many good resources to learn JavaScript through si
 [Chie Stroud's Portfolio Site](https://chiestroud.com/)
 
 ## Loom Video
+Planning Video
 https://www.loom.com/share/b5baf7b3f5584c129f540ed1c2e568a4n
+MVP view video
+https://www.loom.com/share/e2f3bbce2ddd41809de1e028352fbcb7
 ## Sample JSON
 [Sample JSON File](https://github.com/chiestroud/Bookmarkable/tree/cs-planning/src/sample_json)
 ## ERD

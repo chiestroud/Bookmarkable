@@ -96,7 +96,7 @@ export default function Personal({ user }) {
           </div>
       </HeadStyle>
       <CardStyle className='cardStyle'>
-      {personalCards.map((personalCard) => (
+      {personalCards.reverse().map((personalCard) => (
         <PersonalBookmarkCard
           key={personalCard.firebaseKey}
           {...personalCard}
