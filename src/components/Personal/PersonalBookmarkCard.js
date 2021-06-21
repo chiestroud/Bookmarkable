@@ -35,20 +35,19 @@ export default function PersonalBookmarkCard({
         whileHover={{ scale: 1.05 }}
       >
         <CardTitle className='cardTitle'><CardLink href={url} target='_blank'><motion.p className='cardTitleLink' whileHover={{ scale: 1.1 }}>{title}</motion.p></CardLink></CardTitle>
-        <CardLink href={url} target='_blank'>
-          <LinkPreview
-            url={url}
-            descriptionLength='50'
-            imageHeight='150px'
-            height='300px'
-            fallback={
-              <div className='errorContainer'>
+        <LinkPreview
+          url={url}
+          descriptionLength='50'
+          imageHeight='150px'
+          height='300px'
+          fallback={
+            <div className='errorContainer'>
               <img width='200px' className='errorImage' src={sorry}/>
-                <a href={url}>{url}</a>
-                <p>Sorry no link preview available</p>
-              </div>
+              <a href={url}>{url}</a>
+              <p>Sorry no link preview available</p>
+            </div>
             }
-          /></CardLink>
+        />
         <CardText>{comments}</CardText>
         <div className='openCardEditDelete'>
           <Button id='cardEditBtn' className='editBtn' onClick={() => handleClick('edit')}><i className="far fa-edit mr-1"></i>{showForm ? 'Close' : 'Edit'}</Button>
