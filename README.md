@@ -6,7 +6,7 @@
 This is a social & personal bookmarking application to help people organize learning resources. Users of this app can post useful resources in an Open Space and other users can review all the recommended read/tutorials/other resources with user comments. If they wish to keep the post private for their own personal use, they can save the link and comments to their own personal page. Persoal page is all yours so you can add any categories and bookmarks as you would like.
 
 ## Images from Bookmarkable
-(From left - without signing in / Open Space / Personal)
+(Top left - without signing in / Top right - Open Space / Bottom left - Personal)
 <p float="left">
   <img src="./src/assets/bookmarkable.png" alt="homepage" width="400" height="200">
   <img src="./src/assets/openspace.png" alt="open-space" width="400" height="200">
@@ -15,8 +15,8 @@ This is a social & personal bookmarking application to help people organize lear
 
 ## Mobile images from Bookmarkable
 <p float="left">
-  <img src="./src/assets/mobilehome.png" alt="homepage" width="150" height="300">
-  <img src="./src/assets/mobile.png" alt="open-space" width="150" height="300">
+  <img src="./src/assets/mobilehome.png" alt="homepage" width="180" height="300">
+  <img src="./src/assets/mobile.png" alt="open-space" width="180" height="300">
 </p>
 
 
@@ -47,4 +47,6 @@ HTML / SCSS / JavaScript / React / Firebase
 
 ## Personal Biosite
 [Chie Stroud's Portfolio Site](https://chiestroud.com/)
-<img src='./src/assets/cs-portfolio.png' alt='portfolio' width='300'>
+<p>
+  <img src='./src/assets/cs-portfolio.png' alt='portfolio' width='300'>
+</p>
